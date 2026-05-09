@@ -1,0 +1,90 @@
+/* css styles */
+/* Importar una fuente elegante de Google */
+@import url('https://googleapis.com');
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.8;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* Estilo para el título de la barra de navegación */
+.navbar-brand {
+    font-family: 'Fira Code', monospace; /* Fuente tipo código */
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.5rem;
+    margin-left: 2rem;
+    letter-spacing: -0.5px;
+    color: #2c3e50 !important;
+}
+
+/* Estilo para el título principal */
+h1.title {
+    font-weight: 700;
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+    margin-top: 50px;
+}
+
+/* Estilo para los párrafos */
+p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    max-width: 800px; /* Mejora la lectura */
+}
+
+/* Resaltado en negrita (para tus tecnologías) */
+strong {
+    color: #2980b9;
+    font-weight: 600;
+}
+
+/* Botón de "Ver mis proyectos" */
+a[href="about.qmd"] {
+    display: inline-block;
+    background-color: #3498db;
+    color: white !important;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+a[href="about.qmd"]:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Un toque especial para el bloque de texto */
+.quarto-title-block {
+    margin-bottom: 3rem;
+}
+
+/* Estilo para la lista de proyectos */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li {
+    background: white;
+    margin-bottom: 10px;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    border-left: 5px solid #3498db;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+ul li a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #2c3e50;
+}
+

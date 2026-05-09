@@ -1,0 +1,15 @@
+---
+title: "Mi Portfolio data science"
+---
+
+Hace poco que he decidido dar un paso estratégico hacia la **ciencia de datos**.
+
+Recientemente he culminado una formación especializada en **Machine Learning**, Data Science y Python, integrando capacidades analíticas y modelos predictivos a mi base técnica de desarrollo.
+
+Mi objetivo es unir ambos mundos: la ingeniería de software de alta disponibilidad con el potencial transformador de los datos.
+
+De forma autodidacta y también mediante formaciones tengo amplios conocimientos de programación en diversos lenguajes como javascript, java, C# y sobre todo **python.**
+
+Aquí se pueden ver algunos de mis proyectos de análisis de datos:
+
+[Ver mis proyectos](proyectos.qmd){.btn .btn-primary .btn-lg}

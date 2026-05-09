@@ -1,0 +1,17 @@
+# Quarto - Archivos generados
+/.quarto/
+/_site/
+/site_libs/
+*_files/
+*.html
+
+# Python / Jupyter
+__pycache__/
+.ipynb_checkpoints/
+.virtualenv/
+.env
+venv/
+
+# Sistema y VS Code
+.DS_Store
+.vscode/

@@ -1,0 +1,8 @@
+---
+title: "Mis Proyectos"
+---
+
+Aquí puedes explorar mis trabajos de Machine Learning:
+
+*   [Marketing Bancario](final_project_bf_juan_eguia_v2.ipynb)
+*   [Clasificación de Imágenes con Python]
