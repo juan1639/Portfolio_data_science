@@ -2,4 +2,15 @@
 title: "About"
 ---
 
-Juan Eguía Abad
+::: {.column-margin}
+<!-- <div style="text-align: center;"> -->
+![](fotoJuan.jpg){.profile-photo}
+<!-- <div> -->
+:::
+
+Me gusta el mundo de la programación. He aprendido de forma autodidacta y mediante formaciones especializadas a desplegar proyectos web con diversas tecnologías, principalmente en los entornos de Java/Spring y node.js.
+
+Domino varios lenguajes de programación como java, javascript, C# y sobre todo **python**
+
+También como hobby me gusta programar pequeños videojuegos principalmente con el motor gráfico de uso profesional Unity.
+
