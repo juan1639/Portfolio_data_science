@@ -4,18 +4,16 @@ title: "Mi Portfolio data science"
 
 ::: {.column-margin}
 <!-- <div style="text-align: center;"> -->
-![](fotoJuan.jpg){.profile-photo}
+![](img/fotoJuan.jpg){.profile-photo}
 <!-- <div> -->
 :::
 
 <br>
-Hace poco que he decidido dar un paso estratégico hacia la **ciencia de datos**.
+Hace poco que he decidido dar un paso estratégico hacia la **ciencia de datos** y estaría encantado de incorporarme a un proyecto.
 
 Recientemente he culminado una formación especializada a cargo de la <em>VASS University<em> en **Machine Learning**, Data Science y Python, integrando capacidades analíticas y modelos predictivos a mi base técnica de desarrollo.
 
-Mi objetivo es unir ambos mundos: la ingeniería de software de alta disponibilidad con el potencial transformador de los datos.
-
-De forma autodidacta y también mediante formaciones especializadas tengo amplios conocimientos de programación en diversos lenguajes como javascript, java, C# y sobre todo **python.**
+De forma autodidacta y también mediante formaciones especializadas tengo amplios conocimientos de programación en diversos lenguajes como javascript, java, C# y sobre todo **python**, teniendo también conocimientos del lado del servidor por lo que también sé desplegar los proyectos. 
 
 Aquí se pueden ver algunos de mis proyectos de análisis de datos:
 

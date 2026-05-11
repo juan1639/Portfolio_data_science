@@ -4,5 +4,16 @@ title: "Mis Proyectos"
 
 Aquí puedes explorar mis trabajos de Machine Learning:
 
+<br>
+
 *   [Marketing Bancario](final_project_bf_juan_eguia_v2.ipynb)
-*   [Clasificación de Imágenes con Python]
+*   [Histórico ganadores Grand Slams](#bar-chart-race-histórico-tenistas-ganadores-de-grand-slams)
+
+## 🎥 Bar Chart Race: Histórico tenistas ganadores de Grand Slams
+
+En este proyecto realicé un "Bar Chart Race" de 4 minutos, procesando grandes volúmenes de datos históricos para mostrar su evolución animada.
+
+{{< video https://www.youtube.com/watch?v=O4D2Vah2AWo >}}
+
+---
+
