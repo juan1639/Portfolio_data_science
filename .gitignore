@@ -3,7 +3,6 @@
 /_site/
 /site_libs/
 *_files/
-*.html
 
 # Python / Jupyter
 __pycache__/

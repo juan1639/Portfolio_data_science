@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Proyecto con el objetivo de predecir si un cliente contratará un servicio bancario. – Juan Eguía Abad</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Juan Eguía Abad</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> <i class="bi bi-house" role="img">
+</i> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> <i class="bi bi-person" role="img">
+</i> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyectos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-cpu" role="img">
+</i> 
+ <span class="menu-text">Proyectos</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-proyectos">    
+        <li>
+    <a class="dropdown-item" href="./final_project_bf_juan_eguia_v2.html">
+ <span class="dropdown-text">📊 Marketing Bancario</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.youtube.com/watch?v=O4D2Vah2AWo">
+ <span class="dropdown-text">🏆 Histórico ganadores Grand Slams</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#importamos-todas-las-librerías-que-vamos-a-necesitar" id="toc-importamos-todas-las-librerías-que-vamos-a-necesitar" class="nav-link active" data-scroll-target="#importamos-todas-las-librerías-que-vamos-a-necesitar">Importamos todas las librerías que vamos a necesitar:</a>
+  <ul class="collapse">
+  <li><a href="#cargar-los-datos-indicamos-que-los-datos-vienen-separados-por" id="toc-cargar-los-datos-indicamos-que-los-datos-vienen-separados-por" class="nav-link" data-scroll-target="#cargar-los-datos-indicamos-que-los-datos-vienen-separados-por">Cargar los datos ( indicamos que los datos vienen separados por ; )</a></li>
+  </ul></li>
+  <li><a href="#visualizacion-en-consola-de-aspectos-generales-del-df" id="toc-visualizacion-en-consola-de-aspectos-generales-del-df" class="nav-link" data-scroll-target="#visualizacion-en-consola-de-aspectos-generales-del-df">Visualizacion en consola de aspectos generales del df</a></li>
+  <li><a href="#creamos-varias-listas" id="toc-creamos-varias-listas" class="nav-link" data-scroll-target="#creamos-varias-listas">Creamos varias listas:</a></li>
+  <li><a href="#aplicamos-minmaxscaler-solo-a-las-features-numéricas" id="toc-aplicamos-minmaxscaler-solo-a-las-features-numéricas" class="nav-link" data-scroll-target="#aplicamos-minmaxscaler-solo-a-las-features-numéricas">Aplicamos MinMaxScaler SOLO a las features numéricas:</a></li>
+  <li><a href="#esto-es-bastante-opcional" id="toc-esto-es-bastante-opcional" class="nav-link" data-scroll-target="#esto-es-bastante-opcional">Esto es bastante opcional:</a></li>
+  <li><a href="#conclusion-decision-tree" id="toc-conclusion-decision-tree" class="nav-link" data-scroll-target="#conclusion-decision-tree">Conclusion Decision-Tree:</a></li>
+  <li><a href="#conclusion-random-forest" id="toc-conclusion-random-forest" class="nav-link" data-scroll-target="#conclusion-random-forest">Conclusion Random-Forest:</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Proyecto con el objetivo de predecir si un cliente contratará un servicio bancario.</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Modelos de ML empleados: - Decision Tree Classifier - Random Forest Classifier</p>
+<section id="importamos-todas-las-librerías-que-vamos-a-necesitar" class="level1">
+<h1>Importamos todas las librerías que vamos a necesitar:</h1>
+<div id="cell-3" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, confusion_matrix</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="cargar-los-datos-indicamos-que-los-datos-vienen-separados-por" class="level2">
+<h2 class="anchored" data-anchor-id="cargar-los-datos-indicamos-que-los-datos-vienen-separados-por">Cargar los datos ( indicamos que los datos vienen separados por ; )</h2>
+<p>No está agregada ninguna ruta (sólo ‘bank.csv’ o bien ‘bank-full.csv’)</p>
+<div id="cell-5" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df = pd.read_csv("bank.csv", sep=";")</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"bank-full.csv"</span>, sep<span class="op">=</span><span class="st">";"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="visualizacion-en-consola-de-aspectos-generales-del-df" class="level1">
+<h1>Visualizacion en consola de aspectos generales del df</h1>
+<p>Mostramos las 5 primeras filas (head) y las 5 últimas (tail):</p>
+<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="fee5a30c-0a45-4bd4-cee4-241266889686">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"dataframe_head:</span><span class="ch">\n</span><span class="st">"</span>, df.head())</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"dataframe_tail:</span><span class="ch">\n</span><span class="st">"</span>, df.tail())</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dataframe_head:
+    age           job  marital  education default  balance housing loan  \
+0   58    management  married   tertiary      no     2143     yes   no   
+1   44    technician   single  secondary      no       29     yes   no   
+2   33  entrepreneur  married  secondary      no        2     yes  yes   
+3   47   blue-collar  married    unknown      no     1506     yes   no   
+4   33       unknown   single    unknown      no        1      no   no   
+
+   contact  day month  duration  campaign  pdays  previous poutcome   y  
+0  unknown    5   may       261         1     -1         0  unknown  no  
+1  unknown    5   may       151         1     -1         0  unknown  no  
+2  unknown    5   may        76         1     -1         0  unknown  no  
+3  unknown    5   may        92         1     -1         0  unknown  no  
+4  unknown    5   may       198         1     -1         0  unknown  no  
+
+
+dataframe_tail:
+        age           job   marital  education default  balance housing loan  \
+45206   51    technician   married   tertiary      no      825      no   no   
+45207   71       retired  divorced    primary      no     1729      no   no   
+45208   72       retired   married  secondary      no     5715      no   no   
+45209   57   blue-collar   married  secondary      no      668      no   no   
+45210   37  entrepreneur   married  secondary      no     2971      no   no   
+
+         contact  day month  duration  campaign  pdays  previous poutcome    y  
+45206   cellular   17   nov       977         3     -1         0  unknown  yes  
+45207   cellular   17   nov       456         2     -1         0  unknown  yes  
+45208   cellular   17   nov      1127         5    184         3  success  yes  
+45209  telephone   17   nov       508         4     -1         0  unknown   no  
+45210   cellular   17   nov       361         2    188        11    other   no  
+
+</code></pre>
+</div>
+</div>
+<p>Mostramos un rango concreto (desde la fila 20 hasta la 35 como ejemplo):</p>
+<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="45fb6bac-a61e-463d-a049-42f1a17d540a">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"dataframe rango concreto (filas 20 a 35):</span><span class="ch">\n</span><span class="st">"</span>, df.iloc[<span class="dv">24</span>:<span class="dv">31</span>]) <span class="co"># ejemplo 20 a 35 filas</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dataframe rango concreto (filas 20 a 35):
+          age  job  marital  education  default   balance  housing  loan  \
+24  0.285714    5        1          0        0  0.072803        1     1   
+25  0.337662    0        1          1        0  0.069426        1     0   
+26  0.272727    4        2          2        0  0.075118        1     0   
+27  0.441558    2        1          1        0  0.073829        1     1   
+28  0.363636    4        2          1        0  0.070570        1     0   
+29  0.233766    9        2          1        0  0.075209        1     1   
+30  0.506494    9        1          1        0  0.080421        0     1   
+
+    contact       day  month  duration  campaign  pdays  previous  poutcome  y  
+24        2  0.133333      8  0.036804  0.000000    0.0       0.0         3  0  
+25        2  0.133333      8  0.034974  0.000000    0.0       0.0         3  0  
+26        2  0.133333      8  0.060187  0.000000    0.0       0.0         3  0  
+27        2  0.133333      8  0.025824  0.000000    0.0       0.0         3  0  
+28        2  0.133333      8  0.051850  0.016129    0.0       0.0         3  0  
+29        2  0.133333      8  0.070760  0.000000    0.0       0.0         3  0  
+30        2  0.133333      8  0.045750  0.000000    0.0       0.0         3  0  
+
+</code></pre>
+</div>
+</div>
+<p>Mostramos los tipos de datos de las features del df y las dimensiones (filas x columnas)</p>
+<div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="8e1e66bf-d1c0-4ba6-a8b8-2391f90248b0">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"df_types:</span><span class="ch">\n</span><span class="st">"</span>, df.dtypes)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"df_shape:</span><span class="ch">\n</span><span class="st">"</span>, df.shape)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"numero de filas: "</span>, df.shape[<span class="dv">0</span>]) <span class="co"># tb vale len(df)</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"numero de columnas: "</span>, df.shape[<span class="dv">1</span>])</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>df_types:
+ age           int64
+job          object
+marital      object
+education    object
+default      object
+balance       int64
+housing      object
+loan         object
+contact      object
+day           int64
+month        object
+duration      int64
+campaign      int64
+pdays         int64
+previous      int64
+poutcome     object
+y            object
+dtype: object
+
+
+df_shape:
+ (45211, 17)
+
+
+numero de filas:  45211
+numero de columnas:  17
+
+</code></pre>
+</div>
+</div>
+<p>Mostramos las columnas (features) incluída la columna objetivo ‘y’:</p>
+<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ef459b74-d6c7-4dea-a715-4acb7f101def">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"df_columns:</span><span class="ch">\n</span><span class="st"> "</span>, df.columns)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>df_columns:
+  Index(['age', 'job', 'marital', 'education', 'default', 'balance', 'housing',
+       'loan', 'contact', 'day', 'month', 'duration', 'campaign', 'pdays',
+       'previous', 'poutcome', 'y'],
+      dtype='object')
+
+</code></pre>
+</div>
+</div>
+<p>Mostramos info del dataframe, sobre todo la más relevante para hacernos una idea general del df (describe):</p>
+<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="afec778d-b953-4caf-b75f-0750b34d9eae">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"df_info:</span><span class="ch">\n</span><span class="st">"</span>, df.info())</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"describe:</span><span class="ch">\n</span><span class="st">"</span>, df.describe())</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 45211 entries, 0 to 45210
+Data columns (total 17 columns):
+ #   Column     Non-Null Count  Dtype 
+---  ------     --------------  ----- 
+ 0   age        45211 non-null  int64 
+ 1   job        45211 non-null  object
+ 2   marital    45211 non-null  object
+ 3   education  45211 non-null  object
+ 4   default    45211 non-null  object
+ 5   balance    45211 non-null  int64 
+ 6   housing    45211 non-null  object
+ 7   loan       45211 non-null  object
+ 8   contact    45211 non-null  object
+ 9   day        45211 non-null  int64 
+ 10  month      45211 non-null  object
+ 11  duration   45211 non-null  int64 
+ 12  campaign   45211 non-null  int64 
+ 13  pdays      45211 non-null  int64 
+ 14  previous   45211 non-null  int64 
+ 15  poutcome   45211 non-null  object
+ 16  y          45211 non-null  object
+dtypes: int64(7), object(10)
+memory usage: 5.9+ MB
+df_info:
+ None
+
+
+describe:
+                 age        balance           day      duration      campaign  \
+count  45211.000000   45211.000000  45211.000000  45211.000000  45211.000000   
+mean      40.936210    1362.272058     15.806419    258.163080      2.763841   
+std       10.618762    3044.765829      8.322476    257.527812      3.098021   
+min       18.000000   -8019.000000      1.000000      0.000000      1.000000   
+25%       33.000000      72.000000      8.000000    103.000000      1.000000   
+50%       39.000000     448.000000     16.000000    180.000000      2.000000   
+75%       48.000000    1428.000000     21.000000    319.000000      3.000000   
+max       95.000000  102127.000000     31.000000   4918.000000     63.000000   
+
+              pdays      previous  
+count  45211.000000  45211.000000  
+mean      40.197828      0.580323  
+std      100.128746      2.303441  
+min       -1.000000      0.000000  
+25%       -1.000000      0.000000  
+50%       -1.000000      0.000000  
+75%       -1.000000      0.000000  
+max      871.000000    275.000000  
+
+</code></pre>
+</div>
+</div>
+<p>Checkeamos datos vacíos / NaN</p>
+<div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="52c7cbbd-cc7a-478b-d365-733cb4efc77c">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Algun valor NaN o vacio? "</span>, df.isnull().values.<span class="bu">any</span>())</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sum valores NaN o vacio? "</span>, df.isnull().values.<span class="bu">sum</span>())</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Algun valor NaN o vacio?  False
+Sum valores NaN o vacio?  0
+
+</code></pre>
+</div>
+</div>
+</section>
+<section id="creamos-varias-listas" class="level1">
+<h1>Creamos varias listas:</h1>
+<ul>
+<li>features (lista con todas las features)</li>
+<li>num_features (lista con las features de tipo numérico)</li>
+<li>text_features (lista con las features de tipo NO numérico text/str/object…)</li>
+</ul>
+<div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="0dc015fd-2376-4906-d4bb-f865761e1a86">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> [feature <span class="cf">for</span> feature <span class="kw">in</span> df.columns]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"numero de features: "</span>, <span class="bu">len</span>(features))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(features)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>numeric_features <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'number'</span>]).columns.to_list()</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Numero de NUMERIC features: "</span>, <span class="bu">len</span>(numeric_features))</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numeric_features)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>text_features <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>, <span class="st">'string'</span>]).columns.to_list()</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Numero de OBJECT/STRING features: "</span>, <span class="bu">len</span>(text_features))</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text_features)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>numero de features:  17
+['age', 'job', 'marital', 'education', 'default', 'balance', 'housing', 'loan', 'contact', 'day', 'month', 'duration', 'campaign', 'pdays', 'previous', 'poutcome', 'y']
+
+
+Numero de NUMERIC features:  7
+['age', 'balance', 'day', 'duration', 'campaign', 'pdays', 'previous']
+
+
+Numero de OBJECT/STRING features:  10
+['job', 'marital', 'education', 'default', 'housing', 'loan', 'contact', 'month', 'poutcome', 'y']
+
+</code></pre>
+</div>
+</div>
+</section>
+<section id="aplicamos-minmaxscaler-solo-a-las-features-numéricas" class="level1">
+<h1>Aplicamos MinMaxScaler SOLO a las features numéricas:</h1>
+<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="d14980eb-5654-4aca-fb99-99ab0761cfea">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mmscaler <span class="op">=</span> MinMaxScaler()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df[numeric_features] <span class="op">=</span> mmscaler.fit_transform(df[numeric_features])</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Checkeamos una muestra pequeña de datos (para ver si esta correcto el mmscaler)</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"muestra df_head (para checkear el mmscaler):</span><span class="ch">\n</span><span class="st">"</span>, df.head())</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>muestra df_head (para checkear el mmscaler):
+         age           job  marital  education default   balance housing loan  \
+0  0.519481    management  married   tertiary      no  0.092259     yes   no   
+1  0.337662    technician   single  secondary      no  0.073067     yes   no   
+2  0.194805  entrepreneur  married  secondary      no  0.072822     yes  yes   
+3  0.376623   blue-collar  married    unknown      no  0.086476     yes   no   
+4  0.194805       unknown   single    unknown      no  0.072812      no   no   
+
+   contact       day month  duration  campaign  pdays  previous poutcome   y  
+0  unknown  0.133333   may  0.053070       0.0    0.0       0.0  unknown  no  
+1  unknown  0.133333   may  0.030704       0.0    0.0       0.0  unknown  no  
+2  unknown  0.133333   may  0.015453       0.0    0.0       0.0  unknown  no  
+3  unknown  0.133333   may  0.018707       0.0    0.0       0.0  unknown  no  
+4  unknown  0.133333   may  0.040260       0.0    0.0       0.0  unknown  no  
+
+</code></pre>
+</div>
+</div>
+</section>
+<section id="esto-es-bastante-opcional" class="level1">
+<h1>Esto es bastante opcional:</h1>
+<p>Codificamos los valores que NO sean numeros y los guardamos en un dict (encoders[]):</p>
+<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="763b13a0-9abb-48cd-f0b9-e906fbae981a">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>encoders <span class="op">=</span> {}</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> text_features:</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Codificamos los valores que NO sean numeros y los guardamos en un dict (encoders[])"""</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    label_encoder <span class="op">=</span> LabelEncoder()</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#clientes[col] = label_encoder.fit_transform(clientes[col].values.ravel())</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    df[col] <span class="op">=</span> label_encoder.fit_transform(df[col])</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    encoders[col] <span class="op">=</span> label_encoder</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------------------------------------------------------------------------</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co">#  Visualizamos en consola el dict creado (viendo todos los encoders creados)</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------------------------------------------------------------------------</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Diccionario de Correspondencias (LabelEncoder):</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> columna, le <span class="kw">in</span> encoders.items():</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Iteramos el diccionario del LabelEncoder"""</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Columna: </span><span class="sc">{</span>columna<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># le.classes_ contiene las palabras originales en el orden 0, 1, 2...</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> indice, nombre <span class="kw">in</span> <span class="bu">enumerate</span>(le.classes_):</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>indice<span class="sc">}</span><span class="ss"> -&gt; </span><span class="sc">{</span>nombre<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Diccionario de Correspondencias (LabelEncoder):
+
+
+Columna: job
+  0 -&gt; admin.
+  1 -&gt; blue-collar
+  2 -&gt; entrepreneur
+  3 -&gt; housemaid
+  4 -&gt; management
+  5 -&gt; retired
+  6 -&gt; self-employed
+  7 -&gt; services
+  8 -&gt; student
+  9 -&gt; technician
+  10 -&gt; unemployed
+  11 -&gt; unknown
+
+Columna: marital
+  0 -&gt; divorced
+  1 -&gt; married
+  2 -&gt; single
+
+Columna: education
+  0 -&gt; primary
+  1 -&gt; secondary
+  2 -&gt; tertiary
+  3 -&gt; unknown
+
+Columna: default
+  0 -&gt; no
+  1 -&gt; yes
+
+Columna: housing
+  0 -&gt; no
+  1 -&gt; yes
+
+Columna: loan
+  0 -&gt; no
+  1 -&gt; yes
+
+Columna: contact
+  0 -&gt; cellular
+  1 -&gt; telephone
+  2 -&gt; unknown
+
+Columna: month
+  0 -&gt; apr
+  1 -&gt; aug
+  2 -&gt; dec
+  3 -&gt; feb
+  4 -&gt; jan
+  5 -&gt; jul
+  6 -&gt; jun
+  7 -&gt; mar
+  8 -&gt; may
+  9 -&gt; nov
+  10 -&gt; oct
+  11 -&gt; sep
+
+Columna: poutcome
+  0 -&gt; failure
+  1 -&gt; other
+  2 -&gt; success
+  3 -&gt; unknown
+
+Columna: y
+  0 -&gt; no
+  1 -&gt; yes
+
+</code></pre>
+</div>
+</div>
+<p>#1. Corte Vertical (Creamos X y creamos y): Separación de variables (corte vertical) (X= inputs, y= target) ‘y’= nombre la columna objetivo (target)</p>
+<div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="904188c8-a970-413a-e8f9-f41f2115933b">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">'y'</span>, axis<span class="op">=</span><span class="dv">1</span>)    <span class="co"># axis=1 indicamos que es columna (0 seria fila)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">'y'</span>]                 <span class="co"># 2do corte (solo una columna)</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"X (clues):</span><span class="ch">\n</span><span class="st">"</span>, X)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"y (target):</span><span class="ch">\n</span><span class="st">"</span>, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>X (clues):
+             age  job  marital  education  default   balance  housing  loan  \
+0      0.519481    4        1          2        0  0.092259        1     0   
+1      0.337662    9        2          1        0  0.073067        1     0   
+2      0.194805    2        1          1        0  0.072822        1     1   
+3      0.376623    1        1          3        0  0.086476        1     0   
+4      0.194805   11        2          3        0  0.072812        0     0   
+...         ...  ...      ...        ...      ...       ...      ...   ...   
+45206  0.428571    9        1          2        0  0.080293        0     0   
+45207  0.688312    5        0          0        0  0.088501        0     0   
+45208  0.701299    5        1          1        0  0.124689        0     0   
+45209  0.506494    1        1          1        0  0.078868        0     0   
+45210  0.246753    2        1          1        0  0.099777        0     0   
+
+       contact       day  month  duration  campaign     pdays  previous  \
+0            2  0.133333      8  0.053070  0.000000  0.000000  0.000000   
+1            2  0.133333      8  0.030704  0.000000  0.000000  0.000000   
+2            2  0.133333      8  0.015453  0.000000  0.000000  0.000000   
+3            2  0.133333      8  0.018707  0.000000  0.000000  0.000000   
+4            2  0.133333      8  0.040260  0.000000  0.000000  0.000000   
+...        ...       ...    ...       ...       ...       ...       ...   
+45206        0  0.533333      9  0.198658  0.032258  0.000000  0.000000   
+45207        0  0.533333      9  0.092721  0.016129  0.000000  0.000000   
+45208        0  0.533333      9  0.229158  0.064516  0.212156  0.010909   
+45209        1  0.533333      9  0.103294  0.048387  0.000000  0.000000   
+45210        0  0.533333      9  0.073404  0.016129  0.216743  0.040000   
+
+       poutcome  
+0             3  
+1             3  
+2             3  
+3             3  
+4             3  
+...         ...  
+45206         3  
+45207         3  
+45208         2  
+45209         3  
+45210         1  
+
+[45211 rows x 16 columns]
+
+
+y (target):
+ 0        0
+1        0
+2        0
+3        0
+4        0
+        ..
+45206    1
+45207    1
+45208    1
+45209    0
+45210    0
+Name: y, Length: 45211, dtype: int64</code></pre>
+</div>
+</div>
+<p>#2. División entre datos de Train 80% y Test 20% (corte horizontal), (el método también nos hace el shuffle): - El param test_size=0.2 es el que determina que el 20% sea para test - Usamos random_state=22 como pide el PDF para que siempre de los mismos resultados</p>
+<div id="cell-27" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.20</span>, random_state<span class="op">=</span><span class="dv">22</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>#3. Instanciamos un Decision Tree Classifier con parámetros: - param 1 -&gt; Aplicamos el parámetro clave: class_weight=“balanced” para manejar el desbalanceo - param 2 -&gt; random_state=22 (para que el aleatorio sea siempre igual en cada ejecucion)</p>
+<div id="cell-29" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>decisionTree_model <span class="op">=</span> DecisionTreeClassifier(class_weight<span class="op">=</span><span class="st">"balanced"</span>, random_state<span class="op">=</span><span class="dv">22</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>#4. Instanciamos un RandomForestClassifier con parámetros: - param 1 -&gt; n_estimators entre 100-200 (son suficientes para un buen resultado) - param 2 -&gt; min_samples_split entre 0.2-0.5 - param 3 -&gt; Aplicamos balanced para manejar el desbalanceo - param 4 -&gt; Random_state 22 para que NO cambie el aleatorio en cada ejecucion</p>
+<div id="cell-31" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>randomForest_model <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">150</span>, min_samples_split<span class="op">=</span><span class="fl">0.3</span>, class_weight<span class="op">=</span><span class="st">"balanced"</span>, random_state<span class="op">=</span><span class="dv">22</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="5" type="1">
+<li>Creamos una lista con lo necesario para cada modelo (vamos a iterar los modelos en un bucle, en este caso sólo son 2):</li>
+</ol>
+<div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="80b7ea81-9365-4fd5-f247-020717d89e1c">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>models <span class="op">=</span> [</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    (decisionTree_model, <span class="st">"--- METRICAS DECISION-TREE ---"</span>, <span class="st">"--- MATRIZ DE CONFUSION (DECISION-TREE) ---"</span>),</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    (randomForest_model, <span class="st">"--- METRICAS RANDOM-FOREST ---"</span>, <span class="st">"--- MATRIZ DE CONFUSION (RANDOM-FOREST) ---"</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(models))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2</code></pre>
+</div>
+</div>
+<ol start="6" type="1">
+<li>Creamos unas listas vacias para almacenar predicciones, reportes, etc.</li>
+</ol>
+<ul>
+<li>predictions: almacena los resultados de los métodos predict</li>
+<li>reportes: almacena los resultados de los reportes</li>
+<li>reportes_dict: lo mismo que el anterior, pero genera un dict</li>
+<li>df_reportes_dict: crea un nuevo df con el dict anterior</li>
+<li>reportes_conf_matrix: almacena los resultados de los confusion_matrix</li>
+</ul>
+<div id="cell-35" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> []</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>reportes <span class="op">=</span> []</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>reportes_dict <span class="op">=</span> []</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>df_reportes_dict <span class="op">=</span> []</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>reportes_conf_matrix <span class="op">=</span> []</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="7" type="1">
+<li>Iteramos cada modelo con bucle for:</li>
+</ol>
+<div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="a0d9914b-ea28-414a-c398-08cc26b6c22c">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(models)):</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Entrenamos el model correspondiente a la iteración:</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  models[i][<span class="dv">0</span>].fit(X_train, y_train)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Aplicamos el método predict:</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  predictions.append(models[i][<span class="dv">0</span>].predict(X_test))</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Almacenamos e imprimimos las métricas:</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(models[i][<span class="dv">1</span>])</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  reportes.append(classification_report(y_test, predictions[i]))</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(reportes[i])</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Opcional) Lo almacenamos tb en un diccionario y creamos otro df:</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  reportes_dict.append(classification_report(y_test, predictions[i], output_dict<span class="op">=</span><span class="va">True</span>))</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  df_reportes_dict.append(pd.DataFrame(reportes_dict[i]).transpose())</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#print(df_reportes_dict[i])</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Almacenamos e imprimimos el reporte confusion-matrix:</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(models[i][<span class="dv">2</span>])</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>  reportes_conf_matrix.append(confusion_matrix(y_test, predictions[i]))</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(reportes_conf_matrix[i])</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>--- METRICAS DECISION-TREE ---
+              precision    recall  f1-score   support
+
+           0       0.93      0.93      0.93      7971
+           1       0.46      0.46      0.46      1072
+
+    accuracy                           0.87      9043
+   macro avg       0.69      0.69      0.69      9043
+weighted avg       0.87      0.87      0.87      9043
+
+--- MATRIZ DE CONFUSION (DECISION-TREE) ---
+[[7384  587]
+ [ 581  491]]
+
+
+--- METRICAS RANDOM-FOREST ---
+              precision    recall  f1-score   support
+
+           0       0.97      0.69      0.81      7971
+           1       0.27      0.82      0.40      1072
+
+    accuracy                           0.71      9043
+   macro avg       0.62      0.76      0.61      9043
+weighted avg       0.88      0.71      0.76      9043
+
+--- MATRIZ DE CONFUSION (RANDOM-FOREST) ---
+[[5537 2434]
+ [ 191  881]]
+
+</code></pre>
+</div>
+</div>
+</section>
+<section id="conclusion-decision-tree" class="level1">
+<h1>Conclusion Decision-Tree:</h1>
+<p>Aun con el parametro class_weight=balanced al modelo le cuesta distinguir patrones de ontratacion. (con un f1-score de un 46%)</p>
+<p>Sólo tiene buen resultado en patrones de no contratacion al tener muchos mas ejemplos para aprender de ellos. (Aquí el f1-score llega hasta el 93%)</p>
+<p>En cuanto a la matriz de confusión sólo consiguió encontrar a 491 dejando “escapar” a 581</p>
+</section>
+<section id="conclusion-random-forest" class="level1">
+<h1>Conclusion Random-Forest:</h1>
+<p>Aunque el Decision Tree tiene mejor Accuracy y F1-Score, para una campaña de marketing el modelo más útil es el Random Forest, ya que su Recall del 82% nos asegura que el banco captará a la gran mayoría de clientes interesados, aunque a costa de hacer más llamadas a clientes que finalmente no contratarán.</p>
+<p>En este modelo la matriz de confusión muestra que logró captar a 881 dejando “escapar” sólo a 191, mejorando muchísimo al otro modelo. Parece que este modelo es mejor para este ejercicio.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
