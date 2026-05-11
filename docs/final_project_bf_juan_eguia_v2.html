@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Proyecto con el objetivo de predecir si un cliente contratará un servicio bancario. – Juan Eguía Abad</title>
+<title>Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio – Juan Eguía Abad</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -180,6 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#esto-es-bastante-opcional" id="toc-esto-es-bastante-opcional" class="nav-link" data-scroll-target="#esto-es-bastante-opcional">Esto es bastante opcional:</a></li>
   <li><a href="#conclusion-decision-tree" id="toc-conclusion-decision-tree" class="nav-link" data-scroll-target="#conclusion-decision-tree">Conclusion Decision-Tree:</a></li>
   <li><a href="#conclusion-random-forest" id="toc-conclusion-random-forest" class="nav-link" data-scroll-target="#conclusion-random-forest">Conclusion Random-Forest:</a></li>
+  <li><a href="#gráfico-de-barras-mostrando-las-features-más-influyentes-random-forest" id="toc-gráfico-de-barras-mostrando-las-features-más-influyentes-random-forest" class="nav-link" data-scroll-target="#gráfico-de-barras-mostrando-las-features-más-influyentes-random-forest">Gráfico de barras mostrando las features más influyentes (Random forest)</a></li>
   </ul>
 </nav>
     </div>
@@ -188,7 +189,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Proyecto con el objetivo de predecir si un cliente contratará un servicio bancario.</h1>
+<h1 class="title">Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio</h1>
 </div>
 
 
@@ -205,7 +206,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Modelos de ML empleados: - Decision Tree Classifier - Random Forest Classifier</p>
 <section id="importamos-todas-las-librerías-que-vamos-a-necesitar" class="level1">
 <h1>Importamos todas las librerías que vamos a necesitar:</h1>
 <div id="cell-3" class="cell">
@@ -215,7 +215,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, confusion_matrix</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, confusion_matrix</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="cargar-los-datos-indicamos-que-los-datos-vienen-separados-por" class="level2">
 <h2 class="anchored" data-anchor-id="cargar-los-datos-indicamos-que-los-datos-vienen-separados-por">Cargar los datos ( indicamos que los datos vienen separados por ; )</h2>
@@ -229,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="visualizacion-en-consola-de-aspectos-generales-del-df" class="level1">
 <h1>Visualizacion en consola de aspectos generales del df</h1>
 <p>Mostramos las 5 primeras filas (head) y las 5 últimas (tail):</p>
-<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="fee5a30c-0a45-4bd4-cee4-241266889686">
+<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="8e41972f-9513-4427-9cfc-96bc1ede8f5f">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"dataframe_head:</span><span class="ch">\n</span><span class="st">"</span>, df.head())</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -271,34 +273,34 @@ dataframe_tail:
 </div>
 </div>
 <p>Mostramos un rango concreto (desde la fila 20 hasta la 35 como ejemplo):</p>
-<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="45fb6bac-a61e-463d-a049-42f1a17d540a">
+<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e5f74cfd-36f2-4192-8715-bda42848d980">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"dataframe rango concreto (filas 20 a 35):</span><span class="ch">\n</span><span class="st">"</span>, df.iloc[<span class="dv">24</span>:<span class="dv">31</span>]) <span class="co"># ejemplo 20 a 35 filas</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>dataframe rango concreto (filas 20 a 35):
-          age  job  marital  education  default   balance  housing  loan  \
-24  0.285714    5        1          0        0  0.072803        1     1   
-25  0.337662    0        1          1        0  0.069426        1     0   
-26  0.272727    4        2          2        0  0.075118        1     0   
-27  0.441558    2        1          1        0  0.073829        1     1   
-28  0.363636    4        2          1        0  0.070570        1     0   
-29  0.233766    9        2          1        0  0.075209        1     1   
-30  0.506494    9        1          1        0  0.080421        0     1   
+     age           job  marital  education default  balance housing loan  \
+24   40       retired  married    primary      no        0     yes  yes   
+25   44        admin.  married  secondary      no     -372     yes   no   
+26   39    management   single   tertiary      no      255     yes   no   
+27   52  entrepreneur  married  secondary      no      113     yes  yes   
+28   46    management   single  secondary      no     -246     yes   no   
+29   36    technician   single  secondary      no      265     yes  yes   
+30   57    technician  married  secondary      no      839      no  yes   
 
-    contact       day  month  duration  campaign  pdays  previous  poutcome  y  
-24        2  0.133333      8  0.036804  0.000000    0.0       0.0         3  0  
-25        2  0.133333      8  0.034974  0.000000    0.0       0.0         3  0  
-26        2  0.133333      8  0.060187  0.000000    0.0       0.0         3  0  
-27        2  0.133333      8  0.025824  0.000000    0.0       0.0         3  0  
-28        2  0.133333      8  0.051850  0.016129    0.0       0.0         3  0  
-29        2  0.133333      8  0.070760  0.000000    0.0       0.0         3  0  
-30        2  0.133333      8  0.045750  0.000000    0.0       0.0         3  0  
+    contact  day month  duration  campaign  pdays  previous poutcome   y  
+24  unknown    5   may       181         1     -1         0  unknown  no  
+25  unknown    5   may       172         1     -1         0  unknown  no  
+26  unknown    5   may       296         1     -1         0  unknown  no  
+27  unknown    5   may       127         1     -1         0  unknown  no  
+28  unknown    5   may       255         2     -1         0  unknown  no  
+29  unknown    5   may       348         1     -1         0  unknown  no  
+30  unknown    5   may       225         1     -1         0  unknown  no  
 
 </code></pre>
 </div>
 </div>
 <p>Mostramos los tipos de datos de las features del df y las dimensiones (filas x columnas)</p>
-<div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="8e1e66bf-d1c0-4ba6-a8b8-2391f90248b0">
+<div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="61547d31-c4fb-49e2-b3e8-3c7f4380e36a">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"df_types:</span><span class="ch">\n</span><span class="st">"</span>, df.dtypes)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -341,7 +343,7 @@ numero de columnas:  17
 </div>
 </div>
 <p>Mostramos las columnas (features) incluída la columna objetivo ‘y’:</p>
-<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ef459b74-d6c7-4dea-a715-4acb7f101def">
+<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="8d630f37-4089-4fbc-aace-b5b44517a775">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"df_columns:</span><span class="ch">\n</span><span class="st"> "</span>, df.columns)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -355,7 +357,7 @@ numero de columnas:  17
 </div>
 </div>
 <p>Mostramos info del dataframe, sobre todo la más relevante para hacernos una idea general del df (describe):</p>
-<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="afec778d-b953-4caf-b75f-0750b34d9eae">
+<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="dcc0e0de-16bb-46d5-8045-79378a94aad0">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"df_info:</span><span class="ch">\n</span><span class="st">"</span>, df.info())</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -415,7 +417,7 @@ max      871.000000    275.000000
 </div>
 </div>
 <p>Checkeamos datos vacíos / NaN</p>
-<div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="52c7cbbd-cc7a-478b-d365-733cb4efc77c">
+<div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="4262e299-a27d-4e1b-f104-4fceb1c10a64">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Algun valor NaN o vacio? "</span>, df.isnull().values.<span class="bu">any</span>())</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sum valores NaN o vacio? "</span>, df.isnull().values.<span class="bu">sum</span>())</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -434,7 +436,7 @@ Sum valores NaN o vacio?  0
 <li>num_features (lista con las features de tipo numérico)</li>
 <li>text_features (lista con las features de tipo NO numérico text/str/object…)</li>
 </ul>
-<div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="0dc015fd-2376-4906-d4bb-f865761e1a86">
+<div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="fc845215-2ba0-4744-f342-9cacad849c3e">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> [feature <span class="cf">for</span> feature <span class="kw">in</span> df.columns]</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"numero de features: "</span>, <span class="bu">len</span>(features))</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(features)</span>
@@ -467,7 +469,7 @@ Numero de OBJECT/STRING features:  10
 </section>
 <section id="aplicamos-minmaxscaler-solo-a-las-features-numéricas" class="level1">
 <h1>Aplicamos MinMaxScaler SOLO a las features numéricas:</h1>
-<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="d14980eb-5654-4aca-fb99-99ab0761cfea">
+<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7765b6c9-f0fe-460b-e807-192482d7899e">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mmscaler <span class="op">=</span> MinMaxScaler()</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df[numeric_features] <span class="op">=</span> mmscaler.fit_transform(df[numeric_features])</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -497,7 +499,7 @@ Numero de OBJECT/STRING features:  10
 <section id="esto-es-bastante-opcional" class="level1">
 <h1>Esto es bastante opcional:</h1>
 <p>Codificamos los valores que NO sean numeros y los guardamos en un dict (encoders[]):</p>
-<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="763b13a0-9abb-48cd-f0b9-e906fbae981a">
+<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="69b3cd27-8c8b-4bad-ce9a-8ffdd898ee10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>encoders <span class="op">=</span> {}</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> text_features:</span>
@@ -596,7 +598,7 @@ Columna: y
 </div>
 </div>
 <p>#1. Corte Vertical (Creamos X y creamos y): Separación de variables (corte vertical) (X= inputs, y= target) ‘y’= nombre la columna objetivo (target)</p>
-<div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="904188c8-a970-413a-e8f9-f41f2115933b">
+<div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ee1cf91a-2501-406e-b807-b6715d47144d">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">'y'</span>, axis<span class="op">=</span><span class="dv">1</span>)    <span class="co"># axis=1 indicamos que es columna (0 seria fila)</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">'y'</span>]                 <span class="co"># 2do corte (solo una columna)</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"X (clues):</span><span class="ch">\n</span><span class="st">"</span>, X)</span>
@@ -676,7 +678,7 @@ Name: y, Length: 45211, dtype: int64</code></pre>
 <ol start="5" type="1">
 <li>Creamos una lista con lo necesario para cada modelo (vamos a iterar los modelos en un bucle, en este caso sólo son 2):</li>
 </ol>
-<div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="80b7ea81-9365-4fd5-f247-020717d89e1c">
+<div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="9e518e0a-1ceb-4f7a-dc61-3e1bfc56ee14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>models <span class="op">=</span> [</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    (decisionTree_model, <span class="st">"--- METRICAS DECISION-TREE ---"</span>, <span class="st">"--- MATRIZ DE CONFUSION (DECISION-TREE) ---"</span>),</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    (randomForest_model, <span class="st">"--- METRICAS RANDOM-FOREST ---"</span>, <span class="st">"--- MATRIZ DE CONFUSION (RANDOM-FOREST) ---"</span>)</span>
@@ -706,7 +708,7 @@ Name: y, Length: 45211, dtype: int64</code></pre>
 <ol start="7" type="1">
 <li>Iteramos cada modelo con bucle for:</li>
 </ol>
-<div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="a0d9914b-ea28-414a-c398-08cc26b6c22c">
+<div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="a14d7f02-beb3-42ee-ed14-7fd6cfb7bca9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(models)):</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Entrenamos el model correspondiente a la iteración:</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  models[i][<span class="dv">0</span>].fit(X_train, y_train)</span>
@@ -773,6 +775,43 @@ weighted avg       0.88      0.71      0.76      9043
 <h1>Conclusion Random-Forest:</h1>
 <p>Aunque el Decision Tree tiene mejor Accuracy y F1-Score, para una campaña de marketing el modelo más útil es el Random Forest, ya que su Recall del 82% nos asegura que el banco captará a la gran mayoría de clientes interesados, aunque a costa de hacer más llamadas a clientes que finalmente no contratarán.</p>
 <p>En este modelo la matriz de confusión muestra que logró captar a 881 dejando “escapar” sólo a 191, mejorando muchísimo al otro modelo. Parece que este modelo es mejor para este ejercicio.</p>
+</section>
+<section id="gráfico-de-barras-mostrando-las-features-más-influyentes-random-forest" class="level1">
+<h1>Gráfico de barras mostrando las features más influyentes (Random forest)</h1>
+<ul>
+<li>Creamos un pequeño dataframe</li>
+</ul>
+<div id="cell-43" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>importancias <span class="op">=</span> randomForest_model.feature_importances_</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>nombres_features <span class="op">=</span> X.columns</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos un pequeño DF para graficarlo fácilmente</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>df_importancia <span class="op">=</span> pd.DataFrame({<span class="st">'Feature'</span>: nombres_features, <span class="st">'Importancia'</span>: importancias})</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>df_importancia <span class="op">=</span> df_importancia.sort_values(by<span class="op">=</span><span class="st">'Importancia'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li>Y creamos el gráfico de barras:</li>
+</ul>
+<div id="cell-45" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:652}}" data-outputid="f745454f-8865-471d-ebca-dae2325741e5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">'Importancia'</span>, y<span class="op">=</span><span class="st">'Feature'</span>, data<span class="op">=</span>df_importancia, palette<span class="op">=</span><span class="st">'magma'</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'¿Qué variables influyen más en la contratación?'</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_3175/1618845787.py:2: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x='Importancia', y='Feature', data=df_importancia, palette='magma')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="final_project_bf_juan_eguia_v2_files/figure-html/cell-21-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>

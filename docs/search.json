@@ -23,16 +23,16 @@
   {
     "objectID": "final_project_bf_juan_eguia_v2.html",
     "href": "final_project_bf_juan_eguia_v2.html",
-    "title": "Proyecto con el objetivo de predecir si un cliente contratará un servicio bancario.",
+    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
     "section": "",
-    "text": "Modelos de ML empleados: - Decision Tree Classifier - Random Forest Classifier"
+    "text": "import pandas as pd\nfrom sklearn.preprocessing import MinMaxScaler\nfrom sklearn.preprocessing import LabelEncoder\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import classification_report, confusion_matrix\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n\n\nNo está agregada ninguna ruta (sólo ‘bank.csv’ o bien ‘bank-full.csv’)\n\n#df = pd.read_csv(\"bank.csv\", sep=\";\")\ndf = pd.read_csv(\"bank-full.csv\", sep=\";\")"
   },
   {
     "objectID": "final_project_bf_juan_eguia_v2.html#cargar-los-datos-indicamos-que-los-datos-vienen-separados-por",
     "href": "final_project_bf_juan_eguia_v2.html#cargar-los-datos-indicamos-que-los-datos-vienen-separados-por",
-    "title": "Proyecto con el objetivo de predecir si un cliente contratará un servicio bancario.",
-    "section": "Cargar los datos ( indicamos que los datos vienen separados por ; )",
-    "text": "Cargar los datos ( indicamos que los datos vienen separados por ; )\nNo está agregada ninguna ruta (sólo ‘bank.csv’ o bien ‘bank-full.csv’)\n\n#df = pd.read_csv(\"bank.csv\", sep=\";\")\ndf = pd.read_csv(\"bank-full.csv\", sep=\";\")"
+    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
+    "section": "",
+    "text": "No está agregada ninguna ruta (sólo ‘bank.csv’ o bien ‘bank-full.csv’)\n\n#df = pd.read_csv(\"bank.csv\", sep=\";\")\ndf = pd.read_csv(\"bank-full.csv\", sep=\";\")"
   },
   {
     "objectID": "proyectos.html#visualización-de-datos-dinámica",
