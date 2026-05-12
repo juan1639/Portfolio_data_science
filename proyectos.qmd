@@ -1,5 +1,5 @@
 ---
-title: "Mis Proyectos"
+title: "Mis proyectos más recientes"
 ---
 
 Aquí puedes explorar mis trabajos de Machine Learning:
@@ -8,6 +8,9 @@ Aquí puedes explorar mis trabajos de Machine Learning:
 
 *   [Marketing Bancario](final_project_bf_juan_eguia_v2.ipynb)
 *   [Histórico ganadores Grand Slams](#bar-chart-race-histórico-tenistas-ganadores-de-grand-slams)
+
+<br>
+<br>
 
 ## 🎥 Bar Chart Race: Histórico tenistas ganadores de Grand Slams
 

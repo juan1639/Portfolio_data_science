@@ -9,7 +9,7 @@
   {
     "objectID": "proyectos.html",
     "href": "proyectos.html",
-    "title": "Mis Proyectos",
+    "title": "Mis proyectos más recientes",
     "section": "",
     "text": "Aquí puedes explorar mis trabajos de Machine Learning:"
   },
@@ -51,8 +51,57 @@
   {
     "objectID": "proyectos.html#bar-chart-race-histórico-tenistas-ganadores-de-grand-slams",
     "href": "proyectos.html#bar-chart-race-histórico-tenistas-ganadores-de-grand-slams",
-    "title": "Mis Proyectos",
+    "title": "Mis proyectos más recientes",
     "section": "🎥 Bar Chart Race: Histórico tenistas ganadores de Grand Slams",
     "text": "🎥 Bar Chart Race: Histórico tenistas ganadores de Grand Slams\nEn este proyecto realicé un “Bar Chart Race” de 4 minutos, procesando grandes volúmenes de datos históricos para mostrar su evolución animada."
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#corte-vertical-creamos-x-y-creamos-y",
+    "href": "final_project_bf_juan_eguia_v2.html#corte-vertical-creamos-x-y-creamos-y",
+    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
+    "section": "1. Corte Vertical (Creamos X y creamos y):",
+    "text": "1. Corte Vertical (Creamos X y creamos y):\nSeparación de variables (corte vertical) (X= inputs, y= target) ‘y’= nombre la columna objetivo (target)\n\nX = df.drop('y', axis=1)    # axis=1 indicamos que es columna (0 seria fila)\ny = df['y']                 # 2do corte (solo una columna)\nprint(\"X (clues):\\n\", X)\nprint(\"\\n\")\nprint(\"y (target):\\n\", y)\n\nX (clues):\n             age  job  marital  education  default   balance  housing  loan  \\\n0      0.519481    4        1          2        0  0.092259        1     0   \n1      0.337662    9        2          1        0  0.073067        1     0   \n2      0.194805    2        1          1        0  0.072822        1     1   \n3      0.376623    1        1          3        0  0.086476        1     0   \n4      0.194805   11        2          3        0  0.072812        0     0   \n...         ...  ...      ...        ...      ...       ...      ...   ...   \n45206  0.428571    9        1          2        0  0.080293        0     0   \n45207  0.688312    5        0          0        0  0.088501        0     0   \n45208  0.701299    5        1          1        0  0.124689        0     0   \n45209  0.506494    1        1          1        0  0.078868        0     0   \n45210  0.246753    2        1          1        0  0.099777        0     0   \n\n       contact       day  month  duration  campaign     pdays  previous  \\\n0            2  0.133333      8  0.053070  0.000000  0.000000  0.000000   \n1            2  0.133333      8  0.030704  0.000000  0.000000  0.000000   \n2            2  0.133333      8  0.015453  0.000000  0.000000  0.000000   \n3            2  0.133333      8  0.018707  0.000000  0.000000  0.000000   \n4            2  0.133333      8  0.040260  0.000000  0.000000  0.000000   \n...        ...       ...    ...       ...       ...       ...       ...   \n45206        0  0.533333      9  0.198658  0.032258  0.000000  0.000000   \n45207        0  0.533333      9  0.092721  0.016129  0.000000  0.000000   \n45208        0  0.533333      9  0.229158  0.064516  0.212156  0.010909   \n45209        1  0.533333      9  0.103294  0.048387  0.000000  0.000000   \n45210        0  0.533333      9  0.073404  0.016129  0.216743  0.040000   \n\n       poutcome  \n0             3  \n1             3  \n2             3  \n3             3  \n4             3  \n...         ...  \n45206         3  \n45207         3  \n45208         2  \n45209         3  \n45210         1  \n\n[45211 rows x 16 columns]\n\n\ny (target):\n 0        0\n1        0\n2        0\n3        0\n4        0\n        ..\n45206    1\n45207    1\n45208    1\n45209    0\n45210    0\nName: y, Length: 45211, dtype: int64"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#división-entre-datos-de-train-80-y-test-20-corte-horizontal-el-método-también-nos-hace-el-shuffle",
+    "href": "final_project_bf_juan_eguia_v2.html#división-entre-datos-de-train-80-y-test-20-corte-horizontal-el-método-también-nos-hace-el-shuffle",
+    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
+    "section": "2. División entre datos de Train 80% y Test 20% (corte horizontal), (el método también nos hace el shuffle):",
+    "text": "2. División entre datos de Train 80% y Test 20% (corte horizontal), (el método también nos hace el shuffle):\n\nEl param test_size=0.2 es el que determina que el 20% sea para test\nUsamos random_state=22 como pide el PDF para que siempre de los mismos resultados\n\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=22)"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#instanciamos-un-decision-tree-classifier-con-parámetros",
+    "href": "final_project_bf_juan_eguia_v2.html#instanciamos-un-decision-tree-classifier-con-parámetros",
+    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
+    "section": "3. Instanciamos un Decision Tree Classifier con parámetros:",
+    "text": "3. Instanciamos un Decision Tree Classifier con parámetros:\n\nparam 1 -&gt; Aplicamos el parámetro clave: class_weight=“balanced” para manejar el desbalanceo\nparam 2 -&gt; random_state=22 (para que el aleatorio sea siempre igual en cada ejecucion)\n\n\ndecisionTree_model = DecisionTreeClassifier(class_weight=\"balanced\", random_state=22)"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#instanciamos-un-randomforestclassifier-con-parámetros",
+    "href": "final_project_bf_juan_eguia_v2.html#instanciamos-un-randomforestclassifier-con-parámetros",
+    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
+    "section": "4. Instanciamos un RandomForestClassifier con parámetros:",
+    "text": "4. Instanciamos un RandomForestClassifier con parámetros:\n\nparam 1 -&gt; n_estimators entre 100-200 (son suficientes para un buen resultado)\nparam 2 -&gt; min_samples_split entre 0.2-0.5\nparam 3 -&gt; Aplicamos balanced para manejar el desbalanceo\nparam 4 -&gt; Random_state 22 para que NO cambie el aleatorio en cada ejecucion\n\n\nrandomForest_model = RandomForestClassifier(n_estimators=150, min_samples_split=0.3, class_weight=\"balanced\", random_state=22)"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#creamos-una-lista-con-lo-necesario-para-cada-modelo-vamos-a-iterar-los-modelos-en-un-bucle-en-este-caso-sólo-son-2",
+    "href": "final_project_bf_juan_eguia_v2.html#creamos-una-lista-con-lo-necesario-para-cada-modelo-vamos-a-iterar-los-modelos-en-un-bucle-en-este-caso-sólo-son-2",
+    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
+    "section": "5. Creamos una lista con lo necesario para cada modelo (vamos a iterar los modelos en un bucle, en este caso sólo son 2):",
+    "text": "5. Creamos una lista con lo necesario para cada modelo (vamos a iterar los modelos en un bucle, en este caso sólo son 2):\n\nmodels = [\n    (decisionTree_model, \"--- METRICAS DECISION-TREE ---\", \"--- MATRIZ DE CONFUSION (DECISION-TREE) ---\"),\n    (randomForest_model, \"--- METRICAS RANDOM-FOREST ---\", \"--- MATRIZ DE CONFUSION (RANDOM-FOREST) ---\")\n]\nprint(len(models))\n\n2"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#creamos-unas-listas-vacias-para-almacenar-predicciones-reportes-etc.",
+    "href": "final_project_bf_juan_eguia_v2.html#creamos-unas-listas-vacias-para-almacenar-predicciones-reportes-etc.",
+    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
+    "section": "6. Creamos unas listas vacias para almacenar predicciones, reportes, etc.",
+    "text": "6. Creamos unas listas vacias para almacenar predicciones, reportes, etc.\n\npredictions: almacena los resultados de los métodos predict\nreportes: almacena los resultados de los reportes\nreportes_dict: lo mismo que el anterior, pero genera un dict\ndf_reportes_dict: crea un nuevo df con el dict anterior\nreportes_conf_matrix: almacena los resultados de los confusion_matrix\n\n\npredictions = []\nreportes = []\nreportes_dict = []\ndf_reportes_dict = []\nreportes_conf_matrix = []"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#iteramos-cada-modelo-con-bucle-for",
+    "href": "final_project_bf_juan_eguia_v2.html#iteramos-cada-modelo-con-bucle-for",
+    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
+    "section": "7. Iteramos cada modelo con bucle for:",
+    "text": "7. Iteramos cada modelo con bucle for:\n\nfor i in range(len(models)):\n  # Entrenamos el model correspondiente a la iteración:\n  models[i][0].fit(X_train, y_train)\n\n  # Aplicamos el método predict:\n  predictions.append(models[i][0].predict(X_test))\n\n  # Almacenamos e imprimimos las métricas:\n  print(models[i][1])\n  reportes.append(classification_report(y_test, predictions[i]))\n  print(reportes[i])\n\n  # (Opcional) Lo almacenamos tb en un diccionario y creamos otro df:\n  reportes_dict.append(classification_report(y_test, predictions[i], output_dict=True))\n  df_reportes_dict.append(pd.DataFrame(reportes_dict[i]).transpose())\n  #print(df_reportes_dict[i])\n\n  # Almacenamos e imprimimos el reporte confusion-matrix:\n  print(models[i][2])\n  reportes_conf_matrix.append(confusion_matrix(y_test, predictions[i]))\n  print(reportes_conf_matrix[i])\n  print(\"\\n\")\n\n--- METRICAS DECISION-TREE ---\n              precision    recall  f1-score   support\n\n           0       0.93      0.93      0.93      7971\n           1       0.46      0.46      0.46      1072\n\n    accuracy                           0.87      9043\n   macro avg       0.69      0.69      0.69      9043\nweighted avg       0.87      0.87      0.87      9043\n\n--- MATRIZ DE CONFUSION (DECISION-TREE) ---\n[[7384  587]\n [ 581  491]]\n\n\n--- METRICAS RANDOM-FOREST ---\n              precision    recall  f1-score   support\n\n           0       0.97      0.69      0.81      7971\n           1       0.27      0.82      0.40      1072\n\n    accuracy                           0.71      9043\n   macro avg       0.62      0.76      0.61      9043\nweighted avg       0.88      0.71      0.76      9043\n\n--- MATRIZ DE CONFUSION (RANDOM-FOREST) ---\n[[5537 2434]\n [ 191  881]]"
   }
 ]
