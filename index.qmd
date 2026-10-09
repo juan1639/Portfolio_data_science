@@ -14,9 +14,13 @@ Hace poco que he decidido dar un paso estratégico hacia la **implementación de
 Recientemente he culminado una formación especializada a cargo de <em>VASS University<em> de **Técnico especialista en IA** adquiriendo estas habilidades:
 
 - **Machine Learning**, Data Science y Python, integrando capacidades analíticas y modelos predictivos a mi base técnica de desarrollo.
+
 - **Deep Learning**, integrando modelos más complejos dotados de redes neuronales.
+
 - **IA generativa**, mediante la cual puedo crear chatbots, automatizaciones y agentes.
+
 - **MLOps**, para convertir lo mencionado anteriormente en una app lista para producción y ser consumida por un cliente.
+
 
 También mediante formaciones especializadas tengo amplios conocimientos de programación en diversos lenguajes como javascript, java, C# y sobre todo **python**, teniendo también conocimientos del lado del servidor.
 
