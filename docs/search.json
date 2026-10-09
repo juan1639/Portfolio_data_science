@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Mi Portfolio data science",
-    "section": "",
-    "text": "Hace poco que he decidido dar un paso estratégico hacia la ciencia de datos y estaría encantado de incorporarme a un proyecto.\nRecientemente he culminado una formación especializada a cargo de la VASS University en Machine Learning, Data Science y Python, integrando capacidades analíticas y modelos predictivos a mi base técnica de desarrollo.\nDe forma autodidacta y también mediante formaciones especializadas tengo amplios conocimientos de programación en diversos lenguajes como javascript, java, C# y sobre todo python, teniendo también conocimientos del lado del servidor por lo que también sé desplegar los proyectos.\nAquí se pueden ver algunos de mis proyectos de análisis de datos:\n\nVer mis proyectos"
-  },
-  {
     "objectID": "proyectos.html",
     "href": "proyectos.html",
     "title": "Mis proyectos más recientes",
@@ -14,11 +7,11 @@
     "text": "Aquí puedes explorar mis trabajos de Machine Learning:"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "Me gusta el mundo de la programación. He aprendido de forma autodidacta y mediante formaciones especializadas a desplegar proyectos web con diversas tecnologías, principalmente en los entornos de spring/java y node.js.\nDomino varios lenguajes de programación como java, javascript, C# y sobre todo python, mediante el cual me he introducido en el Machine Learning y la ciencia de datos.\nTambién como hobby me gusta programar pequeños videojuegos principalmente con el motor gráfico de uso profesional Unity."
+    "objectID": "proyectos.html#bar-chart-race-histórico-tenistas-ganadores-de-grand-slams",
+    "href": "proyectos.html#bar-chart-race-histórico-tenistas-ganadores-de-grand-slams",
+    "title": "Mis proyectos más recientes",
+    "section": "🎥 Bar Chart Race: Histórico tenistas ganadores de Grand Slams",
+    "text": "🎥 Bar Chart Race: Histórico tenistas ganadores de Grand Slams\nEn este proyecto realicé un “Bar Chart Race” de 4 minutos, procesando grandes volúmenes de datos históricos para mostrar su evolución animada."
   },
   {
     "objectID": "final_project_bf_juan_eguia_v2.html",
@@ -33,27 +26,6 @@
     "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
     "section": "",
     "text": "No está agregada ninguna ruta (sólo ‘bank.csv’ o bien ‘bank-full.csv’)\n\n#df = pd.read_csv(\"bank.csv\", sep=\";\")\ndf = pd.read_csv(\"bank-full.csv\", sep=\";\")"
-  },
-  {
-    "objectID": "proyectos.html#visualización-de-datos-dinámica",
-    "href": "proyectos.html#visualización-de-datos-dinámica",
-    "title": "Mis Proyectos",
-    "section": "🎥 Visualización de Datos Dinámica",
-    "text": "🎥 Visualización de Datos Dinámica\n\nBar Chart Race: Histórico tenistas ganadores de Grand Slams\nEn este proyecto realicé un “Bar Chart Race” de 4 minutos, procesando grandes volúmenes de datos históricos para mostrar su evolución animada."
-  },
-  {
-    "objectID": "proyectos.html#software-interactivo",
-    "href": "proyectos.html#software-interactivo",
-    "title": "Mis Proyectos",
-    "section": "⌨️ Software Interactivo",
-    "text": "⌨️ Software Interactivo\n\nEvolución de Grand Slams (Python Desktop)\nHe desarrollado una herramienta interactiva en Python que permite navegar por la historia del tenis usando eventos de teclado.\n(Próximamente: Subiré el GIF de la herramienta funcionando aquí)"
-  },
-  {
-    "objectID": "proyectos.html#bar-chart-race-histórico-tenistas-ganadores-de-grand-slams",
-    "href": "proyectos.html#bar-chart-race-histórico-tenistas-ganadores-de-grand-slams",
-    "title": "Mis proyectos más recientes",
-    "section": "🎥 Bar Chart Race: Histórico tenistas ganadores de Grand Slams",
-    "text": "🎥 Bar Chart Race: Histórico tenistas ganadores de Grand Slams\nEn este proyecto realicé un “Bar Chart Race” de 4 minutos, procesando grandes volúmenes de datos históricos para mostrar su evolución animada."
   },
   {
     "objectID": "final_project_bf_juan_eguia_v2.html#corte-vertical-creamos-x-y-creamos-y",
@@ -103,5 +75,19 @@
     "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
     "section": "7. Iteramos cada modelo con bucle for:",
     "text": "7. Iteramos cada modelo con bucle for:\n\nfor i in range(len(models)):\n  # Entrenamos el model correspondiente a la iteración:\n  models[i][0].fit(X_train, y_train)\n\n  # Aplicamos el método predict:\n  predictions.append(models[i][0].predict(X_test))\n\n  # Almacenamos e imprimimos las métricas:\n  print(models[i][1])\n  reportes.append(classification_report(y_test, predictions[i]))\n  print(reportes[i])\n\n  # (Opcional) Lo almacenamos tb en un diccionario y creamos otro df:\n  reportes_dict.append(classification_report(y_test, predictions[i], output_dict=True))\n  df_reportes_dict.append(pd.DataFrame(reportes_dict[i]).transpose())\n  #print(df_reportes_dict[i])\n\n  # Almacenamos e imprimimos el reporte confusion-matrix:\n  print(models[i][2])\n  reportes_conf_matrix.append(confusion_matrix(y_test, predictions[i]))\n  print(reportes_conf_matrix[i])\n  print(\"\\n\")\n\n--- METRICAS DECISION-TREE ---\n              precision    recall  f1-score   support\n\n           0       0.93      0.93      0.93      7971\n           1       0.46      0.46      0.46      1072\n\n    accuracy                           0.87      9043\n   macro avg       0.69      0.69      0.69      9043\nweighted avg       0.87      0.87      0.87      9043\n\n--- MATRIZ DE CONFUSION (DECISION-TREE) ---\n[[7384  587]\n [ 581  491]]\n\n\n--- METRICAS RANDOM-FOREST ---\n              precision    recall  f1-score   support\n\n           0       0.97      0.69      0.81      7971\n           1       0.27      0.82      0.40      1072\n\n    accuracy                           0.71      9043\n   macro avg       0.62      0.76      0.61      9043\nweighted avg       0.88      0.71      0.76      9043\n\n--- MATRIZ DE CONFUSION (RANDOM-FOREST) ---\n[[5537 2434]\n [ 191  881]]"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Me gusta el mundo de la programación. He aprendido de forma autodidacta y mediante formaciones especializadas a desplegar proyectos web con diversas tecnologías, principalmente en los entornos de spring/java y node.js.\nDomino varios lenguajes de programación como java, javascript, C# y sobre todo python, mediante el cual me he introducido en el Machine Learning y la ciencia de datos.\nTambién como hobby me gusta programar pequeños videojuegos principalmente con el motor gráfico de uso profesional Unity."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mi Portfolio data science",
+    "section": "",
+    "text": "Hace poco que he decidido dar un paso estratégico hacia la implementación de IA en la empresa y estaría encantado de incorporarme a un proyecto.\nRecientemente he culminado una formación especializada a cargo de VASS University de Técnico especialista en IA adquiriendo estas habilidades:\n\nMachine Learning, Data Science y Python, integrando capacidades analíticas y modelos predictivos a mi base técnica de desarrollo.\nDeep Learning, integrando modelos más complejos dotados de redes neuronales.\nIA generativa, mediante la cual puedo crear chatbots, automatizaciones y agentes.\nMLOps, para convertir lo mencionado anteriormente en una app lista para producción y ser consumida por un cliente.\n\nTambién mediante formaciones especializadas tengo amplios conocimientos de programación en diversos lenguajes como javascript, java, C# y sobre todo python, teniendo también conocimientos del lado del servidor.\nAquí se pueden ver algunos de mis proyectos de análisis de datos:\n\nVer mis proyectos"
   }
 ]

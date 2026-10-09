@@ -16,9 +16,9 @@ Recientemente he culminado una formación especializada a cargo de <em>VASS Univ
 - **Machine Learning**, Data Science y Python, integrando capacidades analíticas y modelos predictivos a mi base técnica de desarrollo.
 - **Deep Learning**, integrando modelos más complejos dotados de redes neuronales.
 - **IA generativa**, mediante la cual puedo crear chatbots, automatizaciones y agentes.
-- **MLOps**, para convertir lo mencionado anteriormente en una app lista para produccion y ser consumida por un cliente.
+- **MLOps**, para convertir lo mencionado anteriormente en una app lista para producción y ser consumida por un cliente.
 
-De forma autodidacta y también mediante formaciones especializadas tengo amplios conocimientos de programación en diversos lenguajes como javascript, java, C# y sobre todo **python**, teniendo también conocimientos del lado del servidor.
+También mediante formaciones especializadas tengo amplios conocimientos de programación en diversos lenguajes como javascript, java, C# y sobre todo **python**, teniendo también conocimientos del lado del servidor.
 
 Aquí se pueden ver algunos de mis proyectos de análisis de datos:
 
