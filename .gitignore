@@ -2,7 +2,7 @@
 /.quarto/
 /_site/
 /site_libs/
-*_files/
+/*_files/
 
 # Python / Jupyter
 __pycache__/
