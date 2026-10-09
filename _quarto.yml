@@ -18,7 +18,7 @@ website:
           - text: "📊 Marketing Bancario" # Nombre elegante en lugar del archivo
             href: final_project_bf_juan_eguia_v2.ipynb
           - text: "🏆 Histórico ganadores Grand Slams" # Añade una línea separadora si tienes varios
-            href: https://www.youtube.com/watch?v=O4D2Vah2AWo
+            href: https://www.youtube.com/watch?v=UpP2fRecgTw
 
 format:
   html:

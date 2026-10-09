@@ -16,7 +16,7 @@ Aquí puedes explorar mis trabajos de Machine Learning:
 
 En este proyecto realicé un "Bar Chart Race" de 4 minutos, procesando grandes volúmenes de datos históricos para mostrar su evolución animada.
 
-{{< video https://www.youtube.com/watch?v=O4D2Vah2AWo >}}
+{{< video https://www.youtube.com/watch?v=UpP2fRecgTw >}}
 
 ---
 

@@ -14,6 +14,7 @@ Hace poco que he decidido dar un paso estratégico hacia la **implementación de
 Recientemente he culminado una formación especializada a cargo de <em>VASS University<em> de **Técnico especialista en IA** adquiriendo estas habilidades:
 
 <br>
+
 - **Machine Learning**, Data Science y Python, integrando capacidades analíticas y modelos predictivos a mi base técnica de desarrollo.
 
 - **Deep Learning**, integrando modelos más complejos dotados de redes neuronales.
