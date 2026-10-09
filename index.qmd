@@ -1,5 +1,5 @@
 ---
-title: "Mi Portfolio data science"
+title: "Mi Portfolio data science AI"
 ---
 
 ::: {.column-margin}
@@ -13,6 +13,7 @@ Hace poco que he decidido dar un paso estratégico hacia la **implementación de
 
 Recientemente he culminado una formación especializada a cargo de <em>VASS University<em> de **Técnico especialista en IA** adquiriendo estas habilidades:
 
+<br>
 - **Machine Learning**, Data Science y Python, integrando capacidades analíticas y modelos predictivos a mi base técnica de desarrollo.
 
 - **Deep Learning**, integrando modelos más complejos dotados de redes neuronales.
@@ -21,10 +22,10 @@ Recientemente he culminado una formación especializada a cargo de <em>VASS Univ
 
 - **MLOps**, para convertir lo mencionado anteriormente en una app lista para producción y ser consumida por un cliente.
 
-
+<br>
 También mediante formaciones especializadas tengo amplios conocimientos de programación en diversos lenguajes como javascript, java, C# y sobre todo **python**, teniendo también conocimientos del lado del servidor.
 
-Aquí se pueden ver algunos de mis proyectos de análisis de datos:
+Aquí se pueden ver algunos de mis proyectos:
 
 <br>
 
