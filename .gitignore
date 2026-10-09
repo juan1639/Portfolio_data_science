@@ -16,3 +16,7 @@ venv/
 .vscode/
 
 **/*.quarto_ipynb
+
+# Others
+novale*.*
+**/novale*.*

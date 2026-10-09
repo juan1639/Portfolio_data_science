@@ -1,33 +1,41 @@
 ---
-title: "Mi Portfolio data science AI"
+title: "Juan Eguía Abad · IA y Data Science"
+description: "Portfolio de Juan Eguía Abad: desarrollador en transición hacia la IA aplicada (Machine Learning, Deep Learning, IA generativa y MLOps) con base en desarrollo web."
 ---
 
 ::: {.column-margin}
-<!-- <div style="text-align: center;"> -->
-![](img/fotoJuan.jpg){.profile-photo}
-<!-- <div> -->
+![](img/fotoJuan.jpg){.profile-photo fig-alt="Foto de Juan Eguía Abad"}
 :::
 
-<br>
-Hace poco que he decidido dar un paso estratégico en mi perfil profesional hacia la **implementación de IA en la empresa** y estaría encantado de incorporarme a un proyecto.
+Soy desarrollador y estoy dando un paso estratégico en mi carrera hacia la **implementación de IA en la empresa**. Busco incorporarme a un proyecto donde pueda aportar tanto mi base de desarrollo como lo que estoy aprendiendo en IA.
 
-Recientemente he culminado una formación especializada a cargo de <em>VASS University</em> de **Técnico especialista en IA** adquiriendo estas habilidades:
+Estoy finalizando la formación **Técnico especialista en IA** de *VASS University*, donde he trabajado:
 
-<br>
+- **Machine Learning y Data Science** con Python: análisis de datos y modelos predictivos.
 
-- **Machine Learning**, Data Science y Python, integrando capacidades analíticas y modelos predictivos a mi base técnica de desarrollo.
+- **Deep Learning**: redes neuronales para problemas más complejos.
 
-- **Deep Learning**, integrando modelos más complejos dotados de redes neuronales.
+- **IA generativa**: chatbots, automatizaciones y agentes.
 
-- **IA generativa**, mediante la cual puedo crear chatbots, automatizaciones y agentes.
+- **MLOps**: llevar los modelos a producción para que un cliente pueda usarlos.
 
-- **MLOps**, para convertir lo mencionado anteriormente en una app lista para producción y ser consumida por un cliente.
+## Base técnica
 
-<br>
-También mediante formaciones especializadas tengo amplios conocimientos de programación en diversos lenguajes como javascript, java, C# y sobre todo **python**, teniendo también conocimientos del lado del servidor.
+Vengo del desarrollo web, con formación autodidacta y especializada, y eso me permite conectar los modelos con aplicaciones reales:
 
-Aquí se pueden ver algunos de mis proyectos:
+- **IA / datos:** Python, pandas, scikit-learn
+- **Backend:** Java y Spring Boot, Node.js, SQL
+- **Frontend:** HTML, CSS, JavaScript y React
+- **Hobby:** pequeños videojuegos con Unity (C#)
 
-<br>
+## Proyectos
+
+Un ejemplo es el análisis de **marketing bancario**: un modelo que predice qué clientes contratarán un servicio, con conclusiones pensadas para una campaña real.
 
 [Ver mis proyectos](proyectos.qmd){.btn .btn-primary .btn-lg}
+
+## Contacto
+
+<!-- Sustituye TU-USUARIO por tus URLs reales -->
+[LinkedIn](https://www.linkedin.com/in/juan-eguía-638878b7/){.btn .btn-outline-primary target="_blank"}
+[GitHub](https://github.com/juan1639){.btn .btn-outline-primary target="_blank"}
