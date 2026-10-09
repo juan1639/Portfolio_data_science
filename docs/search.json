@@ -14,67 +14,130 @@
     "text": "🎥 Bar Chart Race: Histórico tenistas ganadores de Grand Slams\nEn este proyecto realicé un “Bar Chart Race” de 4 minutos, procesando grandes volúmenes de datos históricos para mostrar su evolución animada."
   },
   {
-    "objectID": "final_project_bf_juan_eguia_v2.html",
-    "href": "final_project_bf_juan_eguia_v2.html",
-    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
-    "section": "",
-    "text": "import pandas as pd\nfrom sklearn.preprocessing import MinMaxScaler\nfrom sklearn.preprocessing import LabelEncoder\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import classification_report, confusion_matrix\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n\n\nNo está agregada ninguna ruta (sólo ‘bank.csv’ o bien ‘bank-full.csv’)\n\n#df = pd.read_csv(\"bank.csv\", sep=\";\")\ndf = pd.read_csv(\"bank-full.csv\", sep=\";\")"
+    "objectID": "final_project_bf_juan_eguia_v2.html#importamos-todas-las-librerías-que-vamos-a-necesitar",
+    "href": "final_project_bf_juan_eguia_v2.html#importamos-todas-las-librerías-que-vamos-a-necesitar",
+    "title": "Proyecto de marketing bancario",
+    "section": "Importamos todas las librerías que vamos a necesitar:",
+    "text": "Importamos todas las librerías que vamos a necesitar:\n\nimport pandas as pd\nfrom sklearn.preprocessing import MinMaxScaler\nfrom sklearn.preprocessing import LabelEncoder\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import classification_report, confusion_matrix\nimport matplotlib.pyplot as plt\nimport seaborn as sns"
   },
   {
-    "objectID": "final_project_bf_juan_eguia_v2.html#cargar-los-datos-indicamos-que-los-datos-vienen-separados-por",
-    "href": "final_project_bf_juan_eguia_v2.html#cargar-los-datos-indicamos-que-los-datos-vienen-separados-por",
-    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
-    "section": "",
-    "text": "No está agregada ninguna ruta (sólo ‘bank.csv’ o bien ‘bank-full.csv’)\n\n#df = pd.read_csv(\"bank.csv\", sep=\";\")\ndf = pd.read_csv(\"bank-full.csv\", sep=\";\")"
+    "objectID": "final_project_bf_juan_eguia_v2.html#cargar-los-datos",
+    "href": "final_project_bf_juan_eguia_v2.html#cargar-los-datos",
+    "title": "Proyecto de marketing bancario",
+    "section": "Cargar los datos:",
+    "text": "Cargar los datos:\n\nIndicamos que los datos vienen separados por ; (no por , como suele ser habitual)\n\n\ndf = pd.read_csv(\"bank-full.csv\", sep=\";\")"
   },
   {
-    "objectID": "final_project_bf_juan_eguia_v2.html#corte-vertical-creamos-x-y-creamos-y",
-    "href": "final_project_bf_juan_eguia_v2.html#corte-vertical-creamos-x-y-creamos-y",
-    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
-    "section": "1. Corte Vertical (Creamos X y creamos y):",
-    "text": "1. Corte Vertical (Creamos X y creamos y):\nSeparación de variables (corte vertical) (X= inputs, y= target) ‘y’= nombre la columna objetivo (target)\n\nX = df.drop('y', axis=1)    # axis=1 indicamos que es columna (0 seria fila)\ny = df['y']                 # 2do corte (solo una columna)\nprint(\"X (clues):\\n\", X)\nprint(\"\\n\")\nprint(\"y (target):\\n\", y)\n\nX (clues):\n             age  job  marital  education  default   balance  housing  loan  \\\n0      0.519481    4        1          2        0  0.092259        1     0   \n1      0.337662    9        2          1        0  0.073067        1     0   \n2      0.194805    2        1          1        0  0.072822        1     1   \n3      0.376623    1        1          3        0  0.086476        1     0   \n4      0.194805   11        2          3        0  0.072812        0     0   \n...         ...  ...      ...        ...      ...       ...      ...   ...   \n45206  0.428571    9        1          2        0  0.080293        0     0   \n45207  0.688312    5        0          0        0  0.088501        0     0   \n45208  0.701299    5        1          1        0  0.124689        0     0   \n45209  0.506494    1        1          1        0  0.078868        0     0   \n45210  0.246753    2        1          1        0  0.099777        0     0   \n\n       contact       day  month  duration  campaign     pdays  previous  \\\n0            2  0.133333      8  0.053070  0.000000  0.000000  0.000000   \n1            2  0.133333      8  0.030704  0.000000  0.000000  0.000000   \n2            2  0.133333      8  0.015453  0.000000  0.000000  0.000000   \n3            2  0.133333      8  0.018707  0.000000  0.000000  0.000000   \n4            2  0.133333      8  0.040260  0.000000  0.000000  0.000000   \n...        ...       ...    ...       ...       ...       ...       ...   \n45206        0  0.533333      9  0.198658  0.032258  0.000000  0.000000   \n45207        0  0.533333      9  0.092721  0.016129  0.000000  0.000000   \n45208        0  0.533333      9  0.229158  0.064516  0.212156  0.010909   \n45209        1  0.533333      9  0.103294  0.048387  0.000000  0.000000   \n45210        0  0.533333      9  0.073404  0.016129  0.216743  0.040000   \n\n       poutcome  \n0             3  \n1             3  \n2             3  \n3             3  \n4             3  \n...         ...  \n45206         3  \n45207         3  \n45208         2  \n45209         3  \n45210         1  \n\n[45211 rows x 16 columns]\n\n\ny (target):\n 0        0\n1        0\n2        0\n3        0\n4        0\n        ..\n45206    1\n45207    1\n45208    1\n45209    0\n45210    0\nName: y, Length: 45211, dtype: int64"
+    "objectID": "final_project_bf_juan_eguia_v2.html#visualizacion-en-consola-de-una-muestra-de-los-datos",
+    "href": "final_project_bf_juan_eguia_v2.html#visualizacion-en-consola-de-una-muestra-de-los-datos",
+    "title": "Proyecto de marketing bancario",
+    "section": "Visualizacion en consola de una muestra de los datos:",
+    "text": "Visualizacion en consola de una muestra de los datos:\n\n#print(\"dataframe_head:\\n\", df.head())\n#print(\"\\n\")\ndf.head()\n\n\n    \n\n\n\n\n\n\nage\njob\nmarital\neducation\ndefault\nbalance\nhousing\nloan\ncontact\nday\nmonth\nduration\ncampaign\npdays\nprevious\npoutcome\ny\n\n\n\n\n0\n58\nmanagement\nmarried\ntertiary\nno\n2143\nyes\nno\nunknown\n5\nmay\n261\n1\n-1\n0\nunknown\nno\n\n\n1\n44\ntechnician\nsingle\nsecondary\nno\n29\nyes\nno\nunknown\n5\nmay\n151\n1\n-1\n0\nunknown\nno\n\n\n2\n33\nentrepreneur\nmarried\nsecondary\nno\n2\nyes\nyes\nunknown\n5\nmay\n76\n1\n-1\n0\nunknown\nno\n\n\n3\n47\nblue-collar\nmarried\nunknown\nno\n1506\nyes\nno\nunknown\n5\nmay\n92\n1\n-1\n0\nunknown\nno\n\n\n4\n33\nunknown\nsingle\nunknown\nno\n1\nno\nno\nunknown\n5\nmay\n198\n1\n-1\n0\nunknown\nno"
   },
   {
-    "objectID": "final_project_bf_juan_eguia_v2.html#división-entre-datos-de-train-80-y-test-20-corte-horizontal-el-método-también-nos-hace-el-shuffle",
-    "href": "final_project_bf_juan_eguia_v2.html#división-entre-datos-de-train-80-y-test-20-corte-horizontal-el-método-también-nos-hace-el-shuffle",
-    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
-    "section": "2. División entre datos de Train 80% y Test 20% (corte horizontal), (el método también nos hace el shuffle):",
-    "text": "2. División entre datos de Train 80% y Test 20% (corte horizontal), (el método también nos hace el shuffle):\n\nEl param test_size=0.2 es el que determina que el 20% sea para test\nUsamos random_state=22 como pide el PDF para que siempre de los mismos resultados\n\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=22)"
+    "objectID": "final_project_bf_juan_eguia_v2.html#mostramos-los-tipos-de-datos-de-las-features-del-df-y-las-dimensiones-filas-x-columnas",
+    "href": "final_project_bf_juan_eguia_v2.html#mostramos-los-tipos-de-datos-de-las-features-del-df-y-las-dimensiones-filas-x-columnas",
+    "title": "Proyecto de marketing bancario",
+    "section": "Mostramos los tipos de datos de las features del df y las dimensiones (filas x columnas)",
+    "text": "Mostramos los tipos de datos de las features del df y las dimensiones (filas x columnas)\n\nprint(\"numero de filas: \", df.shape[0]) # tb vale len(df)\nprint(\"numero de columnas: \", df.shape[1])\nprint(\"\\n\")\n\nprint(\"df_types:\\n\", df.dtypes)\nprint(\"\\n\")\n\nnumero de filas:  45211\nnumero de columnas:  17\n\n\ndf_types:\n age           int64\njob          object\nmarital      object\neducation    object\ndefault      object\nbalance       int64\nhousing      object\nloan         object\ncontact      object\nday           int64\nmonth        object\nduration      int64\ncampaign      int64\npdays         int64\nprevious      int64\npoutcome     object\ny            object\ndtype: object"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#mostramos-las-columnas-features-incluída-la-columna-objetivo-y",
+    "href": "final_project_bf_juan_eguia_v2.html#mostramos-las-columnas-features-incluída-la-columna-objetivo-y",
+    "title": "Proyecto de marketing bancario",
+    "section": "Mostramos las columnas (features) incluída la columna objetivo ‘y’:",
+    "text": "Mostramos las columnas (features) incluída la columna objetivo ‘y’:\n\nprint(\"df_columns:\\n \", df.columns)\nprint(\"\\n\")\n\ndf_columns:\n  Index(['age', 'job', 'marital', 'education', 'default', 'balance', 'housing',\n       'loan', 'contact', 'day', 'month', 'duration', 'campaign', 'pdays',\n       'previous', 'poutcome', 'y'],\n      dtype='object')"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#mostramos-info-del-dataframe",
+    "href": "final_project_bf_juan_eguia_v2.html#mostramos-info-del-dataframe",
+    "title": "Proyecto de marketing bancario",
+    "section": "Mostramos info del dataframe:",
+    "text": "Mostramos info del dataframe:\n\ndf.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 45211 entries, 0 to 45210\nData columns (total 17 columns):\n #   Column     Non-Null Count  Dtype \n---  ------     --------------  ----- \n 0   age        45211 non-null  int64 \n 1   job        45211 non-null  object\n 2   marital    45211 non-null  object\n 3   education  45211 non-null  object\n 4   default    45211 non-null  object\n 5   balance    45211 non-null  int64 \n 6   housing    45211 non-null  object\n 7   loan       45211 non-null  object\n 8   contact    45211 non-null  object\n 9   day        45211 non-null  int64 \n 10  month      45211 non-null  object\n 11  duration   45211 non-null  int64 \n 12  campaign   45211 non-null  int64 \n 13  pdays      45211 non-null  int64 \n 14  previous   45211 non-null  int64 \n 15  poutcome   45211 non-null  object\n 16  y          45211 non-null  object\ndtypes: int64(7), object(10)\nmemory usage: 5.9+ MB"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#valores-generales-de-dataframe-describe",
+    "href": "final_project_bf_juan_eguia_v2.html#valores-generales-de-dataframe-describe",
+    "title": "Proyecto de marketing bancario",
+    "section": "Valores generales de dataframe (describe):",
+    "text": "Valores generales de dataframe (describe):\n\ndf.describe()\n\n\n    \n\n\n\n\n\n\nage\nbalance\nday\nduration\ncampaign\npdays\nprevious\n\n\n\n\ncount\n45211.000000\n45211.000000\n45211.000000\n45211.000000\n45211.000000\n45211.000000\n45211.000000\n\n\nmean\n40.936210\n1362.272058\n15.806419\n258.163080\n2.763841\n40.197828\n0.580323\n\n\nstd\n10.618762\n3044.765829\n8.322476\n257.527812\n3.098021\n100.128746\n2.303441\n\n\nmin\n18.000000\n-8019.000000\n1.000000\n0.000000\n1.000000\n-1.000000\n0.000000\n\n\n25%\n33.000000\n72.000000\n8.000000\n103.000000\n1.000000\n-1.000000\n0.000000\n\n\n50%\n39.000000\n448.000000\n16.000000\n180.000000\n2.000000\n-1.000000\n0.000000\n\n\n75%\n48.000000\n1428.000000\n21.000000\n319.000000\n3.000000\n-1.000000\n0.000000\n\n\nmax\n95.000000\n102127.000000\n31.000000\n4918.000000\n63.000000\n871.000000\n275.000000"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#checkeamos-si-hay-datos-corruptos-vacíos-nan",
+    "href": "final_project_bf_juan_eguia_v2.html#checkeamos-si-hay-datos-corruptos-vacíos-nan",
+    "title": "Proyecto de marketing bancario",
+    "section": "Checkeamos si hay datos corruptos (vacíos / NaN)…",
+    "text": "Checkeamos si hay datos corruptos (vacíos / NaN)…\n\nprint(\"Algun valor NaN o vacio? \", df.isnull().values.any())\nprint(\"Suma de valores NaN o vacio? \", df.isnull().values.sum())\nprint(\"\\n\")\n\nAlgun valor NaN o vacio?  False\nSuma de valores NaN o vacio?  0"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#aplicamos-minmaxscaler-solo-a-las-features-numéricas",
+    "href": "final_project_bf_juan_eguia_v2.html#aplicamos-minmaxscaler-solo-a-las-features-numéricas",
+    "title": "Proyecto de marketing bancario",
+    "section": "Aplicamos MinMaxScaler SOLO a las features numéricas:",
+    "text": "Aplicamos MinMaxScaler SOLO a las features numéricas:\n\nmmscaler = MinMaxScaler()\ndf[numeric_features] = mmscaler.fit_transform(df[numeric_features])\n\n# Checkeamos una muestra pequeña de datos (para ver si esta correcto el mmscaler)\ndf.head()\n\n\n    \n\n\n\n\n\n\nage\njob\nmarital\neducation\ndefault\nbalance\nhousing\nloan\ncontact\nday\nmonth\nduration\ncampaign\npdays\nprevious\npoutcome\ny\n\n\n\n\n0\n0.519481\nmanagement\nmarried\ntertiary\nno\n0.092259\nyes\nno\nunknown\n0.133333\nmay\n0.053070\n0.0\n0.0\n0.0\nunknown\nno\n\n\n1\n0.337662\ntechnician\nsingle\nsecondary\nno\n0.073067\nyes\nno\nunknown\n0.133333\nmay\n0.030704\n0.0\n0.0\n0.0\nunknown\nno\n\n\n2\n0.194805\nentrepreneur\nmarried\nsecondary\nno\n0.072822\nyes\nyes\nunknown\n0.133333\nmay\n0.015453\n0.0\n0.0\n0.0\nunknown\nno\n\n\n3\n0.376623\nblue-collar\nmarried\nunknown\nno\n0.086476\nyes\nno\nunknown\n0.133333\nmay\n0.018707\n0.0\n0.0\n0.0\nunknown\nno\n\n\n4\n0.194805\nunknown\nsingle\nunknown\nno\n0.072812\nno\nno\nunknown\n0.133333\nmay\n0.040260\n0.0\n0.0\n0.0\nunknown\nno"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#opcional",
+    "href": "final_project_bf_juan_eguia_v2.html#opcional",
+    "title": "Proyecto de marketing bancario",
+    "section": "Opcional:",
+    "text": "Opcional:\n\nCodificamos los valores que NO sean numeros y los guardamos en un dict (encoders[]):\n\n\nencoders = {}\n\nfor col in text_features:\n    \"\"\"Codificamos los valores que NO sean numeros y los guardamos en un dict (encoders[])\"\"\"\n    label_encoder = LabelEncoder()\n\n    #clientes[col] = label_encoder.fit_transform(clientes[col].values.ravel())\n    df[col] = label_encoder.fit_transform(df[col])\n    encoders[col] = label_encoder\n\n# --------------------------------------------------------------------------------------------\n#  Visualizamos en consola el dict creado (viendo todos los encoders creados)\n# --------------------------------------------------------------------------------------------\nprint(\"Diccionario de Correspondencias (LabelEncoder):\\n\")\n\nfor columna, le in encoders.items():\n    \"\"\"Iteramos el diccionario del LabelEncoder\"\"\"\n    print(f\"\\nColumna: {columna}\")\n\n    # le.classes_ contiene las palabras originales en el orden 0, 1, 2...\n    for indice, nombre in enumerate(le.classes_):\n        print(f\"  {indice} -&gt; {nombre}\")\n\nprint(\"\\n\")\n\nDiccionario de Correspondencias (LabelEncoder):\n\n\nColumna: job\n  0 -&gt; admin.\n  1 -&gt; blue-collar\n  2 -&gt; entrepreneur\n  3 -&gt; housemaid\n  4 -&gt; management\n  5 -&gt; retired\n  6 -&gt; self-employed\n  7 -&gt; services\n  8 -&gt; student\n  9 -&gt; technician\n  10 -&gt; unemployed\n  11 -&gt; unknown\n\nColumna: marital\n  0 -&gt; divorced\n  1 -&gt; married\n  2 -&gt; single\n\nColumna: education\n  0 -&gt; primary\n  1 -&gt; secondary\n  2 -&gt; tertiary\n  3 -&gt; unknown\n\nColumna: default\n  0 -&gt; no\n  1 -&gt; yes\n\nColumna: housing\n  0 -&gt; no\n  1 -&gt; yes\n\nColumna: loan\n  0 -&gt; no\n  1 -&gt; yes\n\nColumna: contact\n  0 -&gt; cellular\n  1 -&gt; telephone\n  2 -&gt; unknown\n\nColumna: month\n  0 -&gt; apr\n  1 -&gt; aug\n  2 -&gt; dec\n  3 -&gt; feb\n  4 -&gt; jan\n  5 -&gt; jul\n  6 -&gt; jun\n  7 -&gt; mar\n  8 -&gt; may\n  9 -&gt; nov\n  10 -&gt; oct\n  11 -&gt; sep\n\nColumna: poutcome\n  0 -&gt; failure\n  1 -&gt; other\n  2 -&gt; success\n  3 -&gt; unknown\n\nColumna: y\n  0 -&gt; no\n  1 -&gt; yes"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#corte-vertical-separamos-la-variable-objetivotarget-almacenándola-en-y",
+    "href": "final_project_bf_juan_eguia_v2.html#corte-vertical-separamos-la-variable-objetivotarget-almacenándola-en-y",
+    "title": "Proyecto de marketing bancario",
+    "section": "1. Corte Vertical (separamos la variable objetivo/target almacenándola en ‘y’):",
+    "text": "1. Corte Vertical (separamos la variable objetivo/target almacenándola en ‘y’):\nSeparación de variables (corte vertical) (X= inputs, y= target) ‘y’= nombre la columna objetivo (target)\n\nX = df.drop('y', axis=1)    # axis=1 indicamos que es columna (0 seria fila)\ny = df['y']                 # 2do corte (solo una columna)\ny.head()\n#X.head()\n\n\n\n\n\n\n\n\ny\n\n\n\n\n0\n0\n\n\n1\n0\n\n\n2\n0\n\n\n3\n0\n\n\n4\n0\n\n\n\n\ndtype: int64"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#división-entre-datos-de-train-80-y-test-20-corte-horizontal",
+    "href": "final_project_bf_juan_eguia_v2.html#división-entre-datos-de-train-80-y-test-20-corte-horizontal",
+    "title": "Proyecto de marketing bancario",
+    "section": "2. División entre datos de Train 80% y Test 20% (corte horizontal):",
+    "text": "2. División entre datos de Train 80% y Test 20% (corte horizontal):\n\n(El método también nos hace el shuffle):\nEl param test_size=0.2 es el que determina que el 20% sea para test\nUsamos random_state=22 como pide el PDF para que siempre de los mismos resultados\n\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=22)"
   },
   {
     "objectID": "final_project_bf_juan_eguia_v2.html#instanciamos-un-decision-tree-classifier-con-parámetros",
     "href": "final_project_bf_juan_eguia_v2.html#instanciamos-un-decision-tree-classifier-con-parámetros",
-    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
+    "title": "Proyecto de marketing bancario",
     "section": "3. Instanciamos un Decision Tree Classifier con parámetros:",
-    "text": "3. Instanciamos un Decision Tree Classifier con parámetros:\n\nparam 1 -&gt; Aplicamos el parámetro clave: class_weight=“balanced” para manejar el desbalanceo\nparam 2 -&gt; random_state=22 (para que el aleatorio sea siempre igual en cada ejecucion)\n\n\ndecisionTree_model = DecisionTreeClassifier(class_weight=\"balanced\", random_state=22)"
+    "text": "3. Instanciamos un Decision Tree Classifier con parámetros:\n\nparam 1: Aplicamos el parámetro clave: class_weight=“balanced” para manejar el desbalanceo\nparam 2: random_state=22 (para que el aleatorio sea siempre igual en cada ejecucion)\n\n\ndecisionTree_model = DecisionTreeClassifier(class_weight=\"balanced\", random_state=22)"
   },
   {
     "objectID": "final_project_bf_juan_eguia_v2.html#instanciamos-un-randomforestclassifier-con-parámetros",
     "href": "final_project_bf_juan_eguia_v2.html#instanciamos-un-randomforestclassifier-con-parámetros",
-    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
+    "title": "Proyecto de marketing bancario",
     "section": "4. Instanciamos un RandomForestClassifier con parámetros:",
-    "text": "4. Instanciamos un RandomForestClassifier con parámetros:\n\nparam 1 -&gt; n_estimators entre 100-200 (son suficientes para un buen resultado)\nparam 2 -&gt; min_samples_split entre 0.2-0.5\nparam 3 -&gt; Aplicamos balanced para manejar el desbalanceo\nparam 4 -&gt; Random_state 22 para que NO cambie el aleatorio en cada ejecucion\n\n\nrandomForest_model = RandomForestClassifier(n_estimators=150, min_samples_split=0.3, class_weight=\"balanced\", random_state=22)"
+    "text": "4. Instanciamos un RandomForestClassifier con parámetros:\n\nparam 1: n_estimators entre 100-200 (suficientes para un buen resultado)\nparam 2 : entre 0.2-0.5\nparam 3: Aplicamos balanced para manejar el desbalanceo\nparam 4: Random_state 22 para que NO cambie el aleatorio en cada ejecucion\n\n\nrandomForest_model = RandomForestClassifier(n_estimators=150, min_samples_split=0.3, class_weight=\"balanced\", random_state=22)"
   },
   {
-    "objectID": "final_project_bf_juan_eguia_v2.html#creamos-una-lista-con-lo-necesario-para-cada-modelo-vamos-a-iterar-los-modelos-en-un-bucle-en-este-caso-sólo-son-2",
-    "href": "final_project_bf_juan_eguia_v2.html#creamos-una-lista-con-lo-necesario-para-cada-modelo-vamos-a-iterar-los-modelos-en-un-bucle-en-este-caso-sólo-son-2",
-    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
-    "section": "5. Creamos una lista con lo necesario para cada modelo (vamos a iterar los modelos en un bucle, en este caso sólo son 2):",
-    "text": "5. Creamos una lista con lo necesario para cada modelo (vamos a iterar los modelos en un bucle, en este caso sólo son 2):\n\nmodels = [\n    (decisionTree_model, \"--- METRICAS DECISION-TREE ---\", \"--- MATRIZ DE CONFUSION (DECISION-TREE) ---\"),\n    (randomForest_model, \"--- METRICAS RANDOM-FOREST ---\", \"--- MATRIZ DE CONFUSION (RANDOM-FOREST) ---\")\n]\nprint(len(models))\n\n2"
+    "objectID": "final_project_bf_juan_eguia_v2.html#creamos-una-lista-con-lo-necesario-para-cada-modelo",
+    "href": "final_project_bf_juan_eguia_v2.html#creamos-una-lista-con-lo-necesario-para-cada-modelo",
+    "title": "Proyecto de marketing bancario",
+    "section": "5. Creamos una lista con lo necesario para cada modelo:",
+    "text": "5. Creamos una lista con lo necesario para cada modelo:\n\n(vamos a iterar los modelos en un bucle, en este caso sólo son 2):\n\n\nmodels = [\n    (decisionTree_model, \"--- METRICAS DECISION-TREE ---\", \"--- MATRIZ DE CONFUSION (DECISION-TREE) ---\"),\n    (randomForest_model, \"--- METRICAS RANDOM-FOREST ---\", \"--- MATRIZ DE CONFUSION (RANDOM-FOREST) ---\")\n]\nprint(f\"Número de modelos: {len(models)}\")\n\nNúmero de modelos: 2"
   },
   {
     "objectID": "final_project_bf_juan_eguia_v2.html#creamos-unas-listas-vacias-para-almacenar-predicciones-reportes-etc.",
     "href": "final_project_bf_juan_eguia_v2.html#creamos-unas-listas-vacias-para-almacenar-predicciones-reportes-etc.",
-    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
+    "title": "Proyecto de marketing bancario",
     "section": "6. Creamos unas listas vacias para almacenar predicciones, reportes, etc.",
     "text": "6. Creamos unas listas vacias para almacenar predicciones, reportes, etc.\n\npredictions: almacena los resultados de los métodos predict\nreportes: almacena los resultados de los reportes\nreportes_dict: lo mismo que el anterior, pero genera un dict\ndf_reportes_dict: crea un nuevo df con el dict anterior\nreportes_conf_matrix: almacena los resultados de los confusion_matrix\n\n\npredictions = []\nreportes = []\nreportes_dict = []\ndf_reportes_dict = []\nreportes_conf_matrix = []"
   },
   {
     "objectID": "final_project_bf_juan_eguia_v2.html#iteramos-cada-modelo-con-bucle-for",
     "href": "final_project_bf_juan_eguia_v2.html#iteramos-cada-modelo-con-bucle-for",
-    "title": "Proyecto de marketing bancario con el objetivo de predecir si un cliente contratará un servicio",
+    "title": "Proyecto de marketing bancario",
     "section": "7. Iteramos cada modelo con bucle for:",
-    "text": "7. Iteramos cada modelo con bucle for:\n\nfor i in range(len(models)):\n  # Entrenamos el model correspondiente a la iteración:\n  models[i][0].fit(X_train, y_train)\n\n  # Aplicamos el método predict:\n  predictions.append(models[i][0].predict(X_test))\n\n  # Almacenamos e imprimimos las métricas:\n  print(models[i][1])\n  reportes.append(classification_report(y_test, predictions[i]))\n  print(reportes[i])\n\n  # (Opcional) Lo almacenamos tb en un diccionario y creamos otro df:\n  reportes_dict.append(classification_report(y_test, predictions[i], output_dict=True))\n  df_reportes_dict.append(pd.DataFrame(reportes_dict[i]).transpose())\n  #print(df_reportes_dict[i])\n\n  # Almacenamos e imprimimos el reporte confusion-matrix:\n  print(models[i][2])\n  reportes_conf_matrix.append(confusion_matrix(y_test, predictions[i]))\n  print(reportes_conf_matrix[i])\n  print(\"\\n\")\n\n--- METRICAS DECISION-TREE ---\n              precision    recall  f1-score   support\n\n           0       0.93      0.93      0.93      7971\n           1       0.46      0.46      0.46      1072\n\n    accuracy                           0.87      9043\n   macro avg       0.69      0.69      0.69      9043\nweighted avg       0.87      0.87      0.87      9043\n\n--- MATRIZ DE CONFUSION (DECISION-TREE) ---\n[[7384  587]\n [ 581  491]]\n\n\n--- METRICAS RANDOM-FOREST ---\n              precision    recall  f1-score   support\n\n           0       0.97      0.69      0.81      7971\n           1       0.27      0.82      0.40      1072\n\n    accuracy                           0.71      9043\n   macro avg       0.62      0.76      0.61      9043\nweighted avg       0.88      0.71      0.76      9043\n\n--- MATRIZ DE CONFUSION (RANDOM-FOREST) ---\n[[5537 2434]\n [ 191  881]]"
+    "text": "7. Iteramos cada modelo con bucle for:\n\nfor i in range(len(models)):\n  # Entrenamos el model correspondiente a la iteración:\n  models[i][0].fit(X_train, y_train)\n\n  # Aplicamos el método predict:\n  predictions.append(models[i][0].predict(X_test))\n\n  # Almacenamos e imprimimos las métricas:\n  print(\"=\" * 55)\n  print(models[i][1])\n  print(\"=\" * 55)\n  reportes.append(classification_report(y_test, predictions[i]))\n  print(reportes[i])\n\n  # (Opcional) Lo almacenamos tb en un diccionario y creamos otro df:\n  reportes_dict.append(classification_report(y_test, predictions[i], output_dict=True))\n  df_reportes_dict.append(pd.DataFrame(reportes_dict[i]).transpose())\n  #print(df_reportes_dict[i])\n\n  # Almacenamos e imprimimos el reporte confusion-matrix:\n  print(models[i][2])\n  reportes_conf_matrix.append(confusion_matrix(y_test, predictions[i]))\n  print(reportes_conf_matrix[i])\n  print(\"\\n\")\n\n=======================================================\n--- METRICAS DECISION-TREE ---\n=======================================================\n              precision    recall  f1-score   support\n\n           0       0.93      0.93      0.93      7971\n           1       0.46      0.46      0.46      1072\n\n    accuracy                           0.87      9043\n   macro avg       0.69      0.69      0.69      9043\nweighted avg       0.87      0.87      0.87      9043\n\n--- MATRIZ DE CONFUSION (DECISION-TREE) ---\n[[7384  587]\n [ 581  491]]\n\n\n=======================================================\n--- METRICAS RANDOM-FOREST ---\n=======================================================\n              precision    recall  f1-score   support\n\n           0       0.97      0.69      0.81      7971\n           1       0.27      0.82      0.40      1072\n\n    accuracy                           0.71      9043\n   macro avg       0.62      0.76      0.61      9043\nweighted avg       0.88      0.71      0.76      9043\n\n--- MATRIZ DE CONFUSION (RANDOM-FOREST) ---\n[[5537 2434]\n [ 191  881]]"
+  },
+  {
+    "objectID": "final_project_bf_juan_eguia_v2.html#gráfico-de-barras-mostrando-las-features-más-influyentes-random-forest",
+    "href": "final_project_bf_juan_eguia_v2.html#gráfico-de-barras-mostrando-las-features-más-influyentes-random-forest",
+    "title": "Proyecto de marketing bancario",
+    "section": "Gráfico de barras mostrando las features más influyentes (Random forest)",
+    "text": "Gráfico de barras mostrando las features más influyentes (Random forest)\n\nCreamos un pequeño dataframe\n\n\nimportancias = randomForest_model.feature_importances_\nnombres_features = X.columns\n\n# Creamos un pequeño DF para graficarlo fácilmente\ndf_importancia = pd.DataFrame({'Feature': nombres_features, 'Importancia': importancias})\ndf_importancia = df_importancia.sort_values(by='Importancia', ascending=False)\n\n\nY creamos el gráfico de barras:\n\n\nplt.figure(figsize=(10, 6))\nsns.barplot(x='Importancia', y='Feature', data=df_importancia, palette='magma')\nplt.title('¿Qué variables influyen más en la contratación?')\nplt.show()\n\n/tmp/ipykernel_949/1618845787.py:2: FutureWarning: \n\nPassing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.\n\n  sns.barplot(x='Importancia', y='Feature', data=df_importancia, palette='magma')"
   },
   {
     "objectID": "about.html",
