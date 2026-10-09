@@ -1,11 +1,13 @@
 ---
 title: "Juan Eguía Abad · IA y Data Science"
-description: "Portfolio de Juan Eguía Abad: desarrollador en transición hacia la IA aplicada (Machine Learning, Deep Learning, IA generativa y MLOps) con base en desarrollo web."
+# description: "Portfolio de Juan Eguía Abad: desarrollador en transición hacia la IA aplicada (Machine Learning, Deep Learning, IA generativa y MLOps) con base en desarrollo web."
 ---
 
 ::: {.column-margin}
 ![](img/fotoJuan.jpg){.profile-photo fig-alt="Foto de Juan Eguía Abad"}
 :::
+
+<br>
 
 Soy desarrollador y estoy dando un paso estratégico en mi carrera hacia la **implementación de IA en la empresa**. Busco incorporarme a un proyecto donde pueda aportar tanto mi base de desarrollo como lo que estoy aprendiendo en IA.
 
@@ -19,6 +21,8 @@ Estoy finalizando la formación **Técnico especialista en IA** de *VASS Univers
 
 - **MLOps**: llevar los modelos a producción para que un cliente pueda usarlos.
 
+<br>
+
 ## Base técnica
 
 Vengo del desarrollo web, con formación autodidacta y especializada, y eso me permite conectar los modelos con aplicaciones reales:
@@ -27,6 +31,8 @@ Vengo del desarrollo web, con formación autodidacta y especializada, y eso me p
 - **Backend:** Java y Spring Boot, Node.js, SQL
 - **Frontend:** HTML, CSS, JavaScript y React
 - **Hobby:** pequeños videojuegos con Unity (C#)
+
+<br>
 
 ## Proyectos
 
