@@ -108,7 +108,13 @@ ul li a {
   font-size: 1.05rem;
 }
 
-.quarto-grid-item .listing-description {
+/* .quarto-grid-item .listing-description {
+  font-size: 0.85rem !important;
+  line-height: 1.4;
+} */
+
+.quarto-grid-item .listing-description,
+.quarto-grid-item .listing-description * {
   font-size: 0.85rem !important;
   line-height: 1.4;
 }
