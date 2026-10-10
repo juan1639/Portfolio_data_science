@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Modelo que predice qué clientes contratarán un depósito a plazo tras una campaña telefónica, construido con Pipelines de scikit-learn.">
 
-<title>Mis proyectos – Juan Eguía Abad</title>
+<title>Marketing bancario con Machine Learning – Juan Eguía Abad</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,25 +27,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,67 +71,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-image','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -142,7 +83,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Juan Eguía Abad</span>
     </a>
   </div>
@@ -153,17 +94,17 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> <i class="bi bi-house" role="img">
+    <a class="nav-link" href="../index.html"> <i class="bi bi-house" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> <i class="bi bi-person" role="img">
+    <a class="nav-link" href="../about.html"> <i class="bi bi-person" role="img">
 </i> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./proyectos.html" aria-current="page"> <i class="bi bi-cpu" role="img">
+    <a class="nav-link" href="../proyectos.html"> <i class="bi bi-cpu" role="img">
 </i> 
 <span class="menu-text">Proyectos</span></a>
   </li>  
@@ -181,15 +122,36 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="QWdlbnRlcw==">Agentes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q0klMkZDRA==">CI/CD <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGVlcCUyMExlYXJuaW5n">Deep Learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RG9ja2Vy">Docker <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SUElMjBnZW5lcmF0aXZh">IA generativa <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWFjaGluZSUyMExlYXJuaW5n">Machine Learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TUxPcHM=">MLOps <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UGlwZWxpbmVz">Pipelines <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c2Npa2l0LWxlYXJu">scikit-learn <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VmlzaSVDMyVCM24lMjBwb3IlMjBjb21wdXRhZG9y">Visión por computador <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VmlzdWFsaXphY2klQzMlQjNuJTIwZGUlMjBkYXRvcw==">Visualización de datos <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#el-problema" id="toc-el-problema" class="nav-link active" data-scroll-target="#el-problema">El problema</a></li>
+  <li><a href="#los-datos" id="toc-los-datos" class="nav-link" data-scroll-target="#los-datos">Los datos</a></li>
+  <li><a href="#enfoque" id="toc-enfoque" class="nav-link" data-scroll-target="#enfoque">Enfoque</a></li>
+  <li><a href="#resultados" id="toc-resultados" class="nav-link" data-scroll-target="#resultados">Resultados</a></li>
+  <li><a href="#código" id="toc-código" class="nav-link" data-scroll-target="#código">Código</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Mis proyectos</h1>
-</div>
+<h1 class="title">Marketing bancario con Machine Learning</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Machine Learning</div>
+    <div class="quarto-category">scikit-learn</div>
+    <div class="quarto-category">Pipelines</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Modelo que predice qué clientes contratarán un depósito a plazo tras una campaña telefónica, construido con Pipelines de scikit-learn.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -204,127 +166,38 @@ window.Quarto = {
 </header>
 
 
-<p>Una selección de mis trabajos de Machine Learning, Deep Learning, IA generativa y MLOps. Cada proyecto incluye el problema, el enfoque, los resultados y el enlace al código.</p>
+<section id="el-problema" class="level2">
+<h2 class="anchored" data-anchor-id="el-problema">El problema</h2>
+<p>Un banco quiere dirigir su campaña telefónica solo a los clientes con más probabilidad de contratar un depósito a plazo, para no gastar llamadas (ni molestar) en los que no lo harán.</p>
+</section>
+<section id="los-datos" class="level2">
+<h2 class="anchored" data-anchor-id="los-datos">Los datos</h2>
+<p><a href="https://archive.ics.uci.edu/dataset/222/bank+marketing">Bank Marketing (UCI Machine Learning Repository)</a>, fichero <code>bank-full.csv</code>. Licencia CC BY 4.0.</p>
+<p>Referencia: S. Moro, P. Cortez y P. Rita (2014). <em>A Data-Driven Approach to Predict the Success of Bank Telemarketing</em>. Decision Support Systems.</p>
+</section>
+<section id="enfoque" class="level2">
+<h2 class="anchored" data-anchor-id="enfoque">Enfoque</h2>
+<ul>
+<li>[Describe el preprocesado: codificación de categóricas, escalado, etc.]</li>
+<li>Uso de <strong>Pipelines</strong> de scikit-learn para encadenar preprocesado y modelo y evitar fuga de datos.</li>
+<li>[Modelos comparados y cómo los evaluaste.]</li>
+</ul>
+</section>
+<section id="resultados" class="level2">
+<h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
+<p>[Métricas principales (recall, precisión, F1, ROC-AUC) y una conclusión en lenguaje de negocio: qué recomendarías al banco.]</p>
+</section>
+<section id="código" class="level2">
+<h2 class="anchored" data-anchor-id="código">Código</h2>
+<ul>
+<li><a href="../bank_marketing_pipe.html">Ver el notebook completo</a></li>
+<li><a href="https://github.com/juan1639/Portfolio_data_science">Repositorio en GitHub</a></li>
+</ul>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDc2Npa2l0LWxlYXJuJTJDUGlwZWxpbmVz" data-listing-file-modified-sort="1791651001761" data-listing-reading-time-sort="1" data-listing-word-count-sort="121">
-<a href="./proyectos/marketing-bancario.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Marketing bancario con Machine Learning
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWFjaGluZSUyMExlYXJuaW5n'); return false;">Machine Learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c2Npa2l0LWxlYXJu'); return false;">scikit-learn</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UGlwZWxpbmVz'); return false;">Pipelines</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Modelo que predice qué clientes contratarán un depósito a plazo tras una campaña telefónica, construido con Pipelines de scikit-learn.</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="VmlzdWFsaXphY2klQzMlQjNuJTIwZGUlMjBkYXRvcyUyQ1B5dGhvbg==" data-listing-file-modified-sort="1791651001780" data-listing-reading-time-sort="1" data-listing-word-count-sort="38">
-<a href="./proyectos/grand-slams.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Bar Chart Race: ganadores de Grand Slams
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VmlzdWFsaXphY2klQzMlQjNuJTIwZGUlMjBkYXRvcw=='); return false;">Visualización de datos</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Vídeo animado de 4 minutos con la evolución histórica de los tenistas ganadores de Grand Slam.</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="RGVlcCUyMExlYXJuaW5nJTJDVmlzaSVDMyVCM24lMjBwb3IlMjBjb21wdXRhZG9y" data-listing-file-modified-sort="1791651001755" data-listing-reading-time-sort="1" data-listing-word-count-sort="83">
-<a href="./proyectos/deep-learning-imagenes.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img loading='lazy' src="img\dl-matriz-confusion.png" alt="Matriz de confusión del modelo" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Deep Learning: reconocimiento de imágenes
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVlcCUyMExlYXJuaW5n'); return false;">Deep Learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VmlzaSVDMyVCM24lMjBwb3IlMjBjb21wdXRhZG9y'); return false;">Visión por computador</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Red neuronal que clasifica imágenes de [tema del dataset] con una precisión de [X %].</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="SUElMjBnZW5lcmF0aXZhJTJDQWdlbnRlcyUyQ1B5dGhvbg==" data-listing-file-modified-sort="1791651001767" data-listing-reading-time-sort="1" data-listing-word-count-sort="135">
-<a href="./proyectos/agente-ia.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Agente de IA que responde emails
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SUElMjBnZW5lcmF0aXZh'); return false;">IA generativa</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnRlcw=='); return false;">Agentes</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Agente en Python que lee el correo de una lista de remitentes autorizados y redacta las respuestas con un modelo de lenguaje.</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="TUxPcHMlMkNEb2NrZXIlMkNDSSUyRkNE" data-listing-file-modified-sort="1791651001774" data-listing-reading-time-sort="1" data-listing-word-count-sort="91">
-<a href="./proyectos/mlops.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-MLOps: del modelo a producción
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TUxPcHM='); return false;">MLOps</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RG9ja2Vy'); return false;">Docker</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q0klMkZDRA=='); return false;">CI/CD</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Pipeline que entrena, versiona y despliega un modelo de forma automática.</p>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

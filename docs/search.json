@@ -147,11 +147,95 @@
     "text": "Invocamos la función creada anteriormente:\n(Una vez por cada modelo que queramos entrenar)\n\nentrenar_modelo(\"DECISION TREE\", dt_model)\nentrenar_modelo(\"RANDOM FOREST\", rf_model)\n\n=======================================================\n--- MÉTRICAS DECISION TREE ---\n=======================================================\n              precision    recall  f1-score   support\n\n          no       0.93      0.93      0.93      7971\n         yes       0.47      0.47      0.47      1072\n\n    accuracy                           0.88      9043\n   macro avg       0.70      0.70      0.70      9043\nweighted avg       0.88      0.88      0.88      9043\n\n--- CONFUSION MATRIX (DECISION TREE) ---\n[[7411  560]\n [ 567  505]]\n\n\n=======================================================\n--- MÉTRICAS RANDOM FOREST ---\n=======================================================\n              precision    recall  f1-score   support\n\n          no       0.97      0.76      0.85      7971\n         yes       0.31      0.80      0.45      1072\n\n    accuracy                           0.77      9043\n   macro avg       0.64      0.78      0.65      9043\nweighted avg       0.89      0.77      0.81      9043\n\n--- CONFUSION MATRIX (RANDOM FOREST) ---\n[[6097 1874]\n [ 216  856]]\n\n\n\n\narray(['no', 'no', 'no', ..., 'yes', 'yes', 'no'], dtype=object)"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "proyectos/marketing-bancario.html",
+    "href": "proyectos/marketing-bancario.html",
+    "title": "Marketing bancario con Machine Learning",
     "section": "",
-    "text": "Soy un entusiasta del mundo de la programación. He aprendido de forma autodidacta y mediante formaciones especializadas a desplegar proyectos web con diversas tecnologías, principalmente en los entornos de spring/java y node.js.\nDomino varios lenguajes de programación como java, javascript, C# y sobre todo python, mediante el cual me he introducido en el Machine Learning, Deep Learning, agentes y automatizaciones IA, MLOps, etc.\nTambién como hobby me gusta programar pequeños videojuegos principalmente con el motor gráfico de uso profesional Unity."
+    "text": "Un banco quiere dirigir su campaña telefónica solo a los clientes con más probabilidad de contratar un depósito a plazo, para no gastar llamadas (ni molestar) en los que no lo harán."
+  },
+  {
+    "objectID": "proyectos/marketing-bancario.html#el-problema",
+    "href": "proyectos/marketing-bancario.html#el-problema",
+    "title": "Marketing bancario con Machine Learning",
+    "section": "",
+    "text": "Un banco quiere dirigir su campaña telefónica solo a los clientes con más probabilidad de contratar un depósito a plazo, para no gastar llamadas (ni molestar) en los que no lo harán."
+  },
+  {
+    "objectID": "proyectos/marketing-bancario.html#los-datos",
+    "href": "proyectos/marketing-bancario.html#los-datos",
+    "title": "Marketing bancario con Machine Learning",
+    "section": "Los datos",
+    "text": "Los datos\nBank Marketing (UCI Machine Learning Repository), fichero bank-full.csv. Licencia CC BY 4.0.\nReferencia: S. Moro, P. Cortez y P. Rita (2014). A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems."
+  },
+  {
+    "objectID": "proyectos/marketing-bancario.html#enfoque",
+    "href": "proyectos/marketing-bancario.html#enfoque",
+    "title": "Marketing bancario con Machine Learning",
+    "section": "Enfoque",
+    "text": "Enfoque\n\n[Describe el preprocesado: codificación de categóricas, escalado, etc.]\nUso de Pipelines de scikit-learn para encadenar preprocesado y modelo y evitar fuga de datos.\n[Modelos comparados y cómo los evaluaste.]"
+  },
+  {
+    "objectID": "proyectos/marketing-bancario.html#resultados",
+    "href": "proyectos/marketing-bancario.html#resultados",
+    "title": "Marketing bancario con Machine Learning",
+    "section": "Resultados",
+    "text": "Resultados\n[Métricas principales (recall, precisión, F1, ROC-AUC) y una conclusión en lenguaje de negocio: qué recomendarías al banco.]"
+  },
+  {
+    "objectID": "proyectos/marketing-bancario.html#código",
+    "href": "proyectos/marketing-bancario.html#código",
+    "title": "Marketing bancario con Machine Learning",
+    "section": "Código",
+    "text": "Código\n\nVer el notebook completo\nRepositorio en GitHub"
+  },
+  {
+    "objectID": "proyectos/deep-learning-imagenes.html",
+    "href": "proyectos/deep-learning-imagenes.html",
+    "title": "Deep Learning: reconocimiento de imágenes",
+    "section": "",
+    "text": "[Qué clasifica o detecta el modelo y por qué es útil.]"
+  },
+  {
+    "objectID": "proyectos/deep-learning-imagenes.html#el-problema",
+    "href": "proyectos/deep-learning-imagenes.html#el-problema",
+    "title": "Deep Learning: reconocimiento de imágenes",
+    "section": "",
+    "text": "[Qué clasifica o detecta el modelo y por qué es útil.]"
+  },
+  {
+    "objectID": "proyectos/deep-learning-imagenes.html#los-datos",
+    "href": "proyectos/deep-learning-imagenes.html#los-datos",
+    "title": "Deep Learning: reconocimiento de imágenes",
+    "section": "Los datos",
+    "text": "Los datos\n[Dataset, tamaño, clases y enlace a la fuente. No subas el dataset al repositorio: enlázalo.]"
+  },
+  {
+    "objectID": "proyectos/deep-learning-imagenes.html#el-modelo",
+    "href": "proyectos/deep-learning-imagenes.html#el-modelo",
+    "title": "Deep Learning: reconocimiento de imágenes",
+    "section": "El modelo",
+    "text": "El modelo\n\nArquitectura: [CNN desde cero / transfer learning con …].\nEntrenamiento: [épocas, optimizador, aumento de datos…]."
+  },
+  {
+    "objectID": "proyectos/deep-learning-imagenes.html#resultados",
+    "href": "proyectos/deep-learning-imagenes.html#resultados",
+    "title": "Deep Learning: reconocimiento de imágenes",
+    "section": "Resultados",
+    "text": "Resultados\n[Métrica final, curvas de entrenamiento, matriz de confusión y algunos ejemplos de predicciones, tanto aciertos como fallos. Una imagen aquí vale más que un párrafo.]\n\n\n\nMatriz de confusión"
+  },
+  {
+    "objectID": "proyectos/deep-learning-imagenes.html#código",
+    "href": "proyectos/deep-learning-imagenes.html#código",
+    "title": "Deep Learning: reconocimiento de imágenes",
+    "section": "Código",
+    "text": "Código\n\nVer el notebook completo\nRepositorio en GitHub"
+  },
+  {
+    "objectID": "proyectos.html",
+    "href": "proyectos.html",
+    "title": "Mis proyectos",
+    "section": "",
+    "text": "Una selección de mis trabajos de Machine Learning, Deep Learning, IA generativa y MLOps. Cada proyecto incluye el problema, el enfoque, los resultados y el enlace al código.\n\n\n\n\n\n\n\n\n\n\n\n\nMarketing bancario con Machine Learning\n\n\n\nMachine Learning\n\nscikit-learn\n\nPipelines\n\n\n\nModelo que predice qué clientes contratarán un depósito a plazo tras una campaña telefónica, construido con Pipelines de scikit-learn.\n\n\n\n\n\n\n\n\n\n\nBar Chart Race: ganadores de Grand Slams\n\n\n\nVisualización de datos\n\nPython\n\n\n\nVídeo animado de 4 minutos con la evolución histórica de los tenistas ganadores de Grand Slam.\n\n\n\n\n\n\n\n\n\n\nDeep Learning: reconocimiento de imágenes\n\n\n\nDeep Learning\n\nVisión por computador\n\n\n\nRed neuronal que clasifica imágenes de [tema del dataset] con una precisión de [X %].\n\n\n\n\n\n\n\n\n\n\nAgente de IA que responde emails\n\n\n\nIA generativa\n\nAgentes\n\nPython\n\n\n\nAgente en Python que lee el correo de una lista de remitentes autorizados y redacta las respuestas con un modelo de lenguaje.\n\n\n\n\n\n\n\n\n\n\nMLOps: del modelo a producción\n\n\n\nMLOps\n\nDocker\n\nCI/CD\n\n\n\nPipeline que entrena, versiona y despliega un modelo de forma automática.\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -182,17 +266,122 @@
     "text": "Contacto\n\nLinkedIn GitHub"
   },
   {
-    "objectID": "proyectos.html",
-    "href": "proyectos.html",
-    "title": "Mis proyectos más recientes",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "Aquí puedes explorar mis trabajos de Machine Learning:"
+    "text": "Soy un entusiasta del mundo de la programación. He aprendido de forma autodidacta y mediante formaciones especializadas a desplegar proyectos web con diversas tecnologías, principalmente en los entornos de spring/java y node.js.\nDomino varios lenguajes de programación como java, javascript, C# y sobre todo python, mediante el cual me he introducido en el Machine Learning, Deep Learning, agentes y automatizaciones IA, MLOps, etc.\nTambién como hobby me gusta programar pequeños videojuegos principalmente con el motor gráfico de uso profesional Unity."
   },
   {
-    "objectID": "proyectos.html#bar-chart-race-histórico-tenistas-ganadores-de-grand-slams",
-    "href": "proyectos.html#bar-chart-race-histórico-tenistas-ganadores-de-grand-slams",
-    "title": "Mis proyectos más recientes",
-    "section": "🎥 Bar Chart Race: Histórico tenistas ganadores de Grand Slams",
-    "text": "🎥 Bar Chart Race: Histórico tenistas ganadores de Grand Slams\nEn este proyecto realicé un “Bar Chart Race” de 4 minutos, procesando grandes volúmenes de datos históricos para mostrar su evolución animada."
+    "objectID": "proyectos/agente-ia.html",
+    "href": "proyectos/agente-ia.html",
+    "title": "Agente de IA que responde emails",
+    "section": "",
+    "text": "[Qué tarea automatiza el agente y qué tiempo o trabajo ahorra.]"
+  },
+  {
+    "objectID": "proyectos/agente-ia.html#el-problema",
+    "href": "proyectos/agente-ia.html#el-problema",
+    "title": "Agente de IA que responde emails",
+    "section": "",
+    "text": "[Qué tarea automatiza el agente y qué tiempo o trabajo ahorra.]"
+  },
+  {
+    "objectID": "proyectos/agente-ia.html#cómo-funciona",
+    "href": "proyectos/agente-ia.html#cómo-funciona",
+    "title": "Agente de IA que responde emails",
+    "section": "Cómo funciona",
+    "text": "Cómo funciona\n\n\n\n\n\nflowchart LR\n  A[Gmail IMAP] --&gt; B{¿Remitente autorizado?}\n  B -- sí --&gt; C[Agente LangGraph + modelo]\n  B -- no --&gt; X[Se ignora]\n  C --&gt; D[Redacta la respuesta]\n  D --&gt; E[Gmail SMTP]"
+  },
+  {
+    "objectID": "proyectos/agente-ia.html#stack",
+    "href": "proyectos/agente-ia.html#stack",
+    "title": "Agente de IA que responde emails",
+    "section": "Stack",
+    "text": "Stack\n\nPython, LangChain y LangGraph para el flujo del agente.\nModelo: [gpt-4o-mini u otro].\nCorreo: IMAP para leer y SMTP para responder."
+  },
+  {
+    "objectID": "proyectos/agente-ia.html#demo",
+    "href": "proyectos/agente-ia.html#demo",
+    "title": "Agente de IA que responde emails",
+    "section": "Demo",
+    "text": "Demo\n[Capturas o un vídeo corto (~60 s) con un ejemplo real: correo recibido y respuesta generada. Oculta datos personales.]"
+  },
+  {
+    "objectID": "proyectos/agente-ia.html#decisiones-y-límites",
+    "href": "proyectos/agente-ia.html#decisiones-y-límites",
+    "title": "Agente de IA que responde emails",
+    "section": "Decisiones y límites",
+    "text": "Decisiones y límites\n[Cómo evitas respuestas indebidas, qué pasa si el modelo falla, qué mejorarías.]"
+  },
+  {
+    "objectID": "proyectos/agente-ia.html#código",
+    "href": "proyectos/agente-ia.html#código",
+    "title": "Agente de IA que responde emails",
+    "section": "Código",
+    "text": "Código\nRepositorio en GitHub\n\n\n\n\n\n\nNote\n\n\n\nAntes de publicar el repositorio, comprueba que no hay claves de API ni credenciales en el código ni en el historial de git. Usa un archivo .env incluido en .gitignore."
+  },
+  {
+    "objectID": "proyectos/grand-slams.html",
+    "href": "proyectos/grand-slams.html",
+    "title": "Bar Chart Race: ganadores de Grand Slams",
+    "section": "",
+    "text": "Procesé un gran volumen de datos históricos para mostrar su evolución en un “Bar Chart Race” de 4 minutos."
+  },
+  {
+    "objectID": "proyectos/grand-slams.html#el-proyecto",
+    "href": "proyectos/grand-slams.html#el-proyecto",
+    "title": "Bar Chart Race: ganadores de Grand Slams",
+    "section": "",
+    "text": "Procesé un gran volumen de datos históricos para mostrar su evolución en un “Bar Chart Race” de 4 minutos."
+  },
+  {
+    "objectID": "proyectos/grand-slams.html#cómo-lo-hice",
+    "href": "proyectos/grand-slams.html#cómo-lo-hice",
+    "title": "Bar Chart Race: ganadores de Grand Slams",
+    "section": "Cómo lo hice",
+    "text": "Cómo lo hice\n\n[Fuente de los datos y limpieza.]\n[Librerías usadas y cómo generaste el vídeo.]"
+  },
+  {
+    "objectID": "proyectos/mlops.html",
+    "href": "proyectos/mlops.html",
+    "title": "MLOps: del modelo a producción",
+    "section": "",
+    "text": "[Qué modelo llevas a producción y qué se automatiza: reentrenamiento, pruebas, despliegue…]"
+  },
+  {
+    "objectID": "proyectos/mlops.html#el-problema",
+    "href": "proyectos/mlops.html#el-problema",
+    "title": "MLOps: del modelo a producción",
+    "section": "",
+    "text": "[Qué modelo llevas a producción y qué se automatiza: reentrenamiento, pruebas, despliegue…]"
+  },
+  {
+    "objectID": "proyectos/mlops.html#arquitectura",
+    "href": "proyectos/mlops.html#arquitectura",
+    "title": "MLOps: del modelo a producción",
+    "section": "Arquitectura",
+    "text": "Arquitectura\n\n\n\n\n\nflowchart LR\n  A[Datos] --&gt; B[Entrenamiento]\n  B --&gt; C[Registro del modelo]\n  C --&gt; D[API]\n  D --&gt; E[Contenedor Docker]\n  E --&gt; F[Despliegue]\n\n\n\n\n\n\nAjusta el diagrama a las piezas reales de tu proyecto."
+  },
+  {
+    "objectID": "proyectos/mlops.html#stack-y-decisiones",
+    "href": "proyectos/mlops.html#stack-y-decisiones",
+    "title": "MLOps: del modelo a producción",
+    "section": "Stack y decisiones",
+    "text": "Stack y decisiones\n[Herramientas usadas (por ejemplo MLflow, FastAPI, Docker, GitHub Actions…) y por qué las elegiste.]"
+  },
+  {
+    "objectID": "proyectos/mlops.html#resultados",
+    "href": "proyectos/mlops.html#resultados",
+    "title": "MLOps: del modelo a producción",
+    "section": "Resultados",
+    "text": "Resultados\n[Capturas: el pipeline funcionando, la documentación de la API, la ejecución de la integración continua, el registro del modelo…]"
+  },
+  {
+    "objectID": "proyectos/mlops.html#código",
+    "href": "proyectos/mlops.html#código",
+    "title": "MLOps: del modelo a producción",
+    "section": "Código",
+    "text": "Código\nRepositorio en GitHub con un README que explique cómo ejecutarlo."
   }
 ]

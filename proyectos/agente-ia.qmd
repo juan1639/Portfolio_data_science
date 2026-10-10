@@ -1,0 +1,44 @@
+---
+title: "Agente de IA que responde emails"
+description: "Agente en Python que lee el correo de una lista de remitentes autorizados y redacta las respuestas con un modelo de lenguaje."
+categories: [IA generativa, Agentes, Python]
+order: 4
+# image: ../img/agente-ia.png
+---
+
+## El problema
+
+[Qué tarea automatiza el agente y qué tiempo o trabajo ahorra.]
+
+## Cómo funciona
+
+```{mermaid}
+flowchart LR
+  A[Gmail IMAP] --> B{¿Remitente autorizado?}
+  B -- sí --> C[Agente LangGraph + modelo]
+  B -- no --> X[Se ignora]
+  C --> D[Redacta la respuesta]
+  D --> E[Gmail SMTP]
+```
+
+## Stack
+
+- Python, LangChain y LangGraph para el flujo del agente.
+- Modelo: [gpt-4o-mini u otro].
+- Correo: IMAP para leer y SMTP para responder.
+
+## Demo
+
+[Capturas o un vídeo corto (~60 s) con un ejemplo real: correo recibido y respuesta generada. Oculta datos personales.]
+
+## Decisiones y límites
+
+[Cómo evitas respuestas indebidas, qué pasa si el modelo falla, qué mejorarías.]
+
+## Código
+
+[Repositorio en GitHub](https://github.com/juan1639/...)
+
+::: {.callout-note}
+Antes de publicar el repositorio, comprueba que no hay claves de API ni credenciales en el código ni en el historial de git. Usa un archivo `.env` incluido en `.gitignore`.
+:::

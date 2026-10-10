@@ -1,11 +1,13 @@
 project:
   type: website
-  output-dir: docs  # Esto cambia _site por docs
+  output-dir: docs
   render:
     - index.qmd
     - about.qmd
     - proyectos.qmd
+    - proyectos/*.qmd
     - bank_marketing_pipe.ipynb
+    # - dl_imagenes.ipynb   # descomenta/añade aquí el notebook de Deep Learning
 
 website:
   title: "Juan Eguía Abad"
@@ -17,13 +19,14 @@ website:
       - href: about.qmd
         icon: person
         text: About
-      - text: "Proyectos"
+      - href: proyectos.qmd
         icon: cpu
-        menu:
-          - text: "📊 Marketing Bancario" # Nombre elegante en lugar del archivo
-            href: bank_marketing_pipe.ipynb
-          - text: "🏆 Histórico ganadores Grand Slams" # Añade una línea separadora si tienes varios
-            href: https://www.youtube.com/watch?v=UpP2fRecgTw
+        text: Proyectos
+    tools:
+      - icon: github
+        href: https://github.com/juan1639
+      - icon: linkedin
+        href: https://www.linkedin.com/in/juan-egu%C3%ADa-638878b7/
 
 format:
   html:
@@ -32,6 +35,3 @@ format:
       - brand
     css: styles.css
     toc: true
-
-
-

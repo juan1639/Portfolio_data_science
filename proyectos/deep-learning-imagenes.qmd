@@ -1,0 +1,31 @@
+---
+title: "Deep Learning: reconocimiento de imágenes"
+description: "Red neuronal que clasifica imágenes de [tema del dataset] con una precisión de [X %]."
+categories: [Deep Learning, Visión por computador]
+order: 3
+# image: ../img/dl-imagenes.png
+---
+
+## El problema
+
+[Qué clasifica o detecta el modelo y por qué es útil.]
+
+## Los datos
+
+[Dataset, tamaño, clases y enlace a la fuente. No subas el dataset al repositorio: enlázalo.]
+
+## El modelo
+
+- Arquitectura: [CNN desde cero / transfer learning con ...].
+- Entrenamiento: [épocas, optimizador, aumento de datos...].
+
+## Resultados
+
+[Métrica final, curvas de entrenamiento, matriz de confusión y algunos ejemplos de predicciones, tanto aciertos como fallos. Una imagen aquí vale más que un párrafo.]
+
+![Matriz de confusión](../img/dl-matriz-confusion.png){fig-alt="Matriz de confusión del modelo"}
+
+## Código
+
+- [Ver el notebook completo](../dl_imagenes.ipynb)
+- [Repositorio en GitHub](https://github.com/juan1639/...)

@@ -1,0 +1,36 @@
+---
+title: "MLOps: del modelo a producción"
+description: "Pipeline que entrena, versiona y despliega un modelo de forma automática."
+categories: [MLOps, Docker, CI/CD]
+order: 5
+# image: ../img/mlops.png
+---
+
+## El problema
+
+[Qué modelo llevas a producción y qué se automatiza: reentrenamiento, pruebas, despliegue...]
+
+## Arquitectura
+
+```{mermaid}
+flowchart LR
+  A[Datos] --> B[Entrenamiento]
+  B --> C[Registro del modelo]
+  C --> D[API]
+  D --> E[Contenedor Docker]
+  E --> F[Despliegue]
+```
+
+Ajusta el diagrama a las piezas reales de tu proyecto.
+
+## Stack y decisiones
+
+[Herramientas usadas (por ejemplo MLflow, FastAPI, Docker, GitHub Actions...) y por qué las elegiste.]
+
+## Resultados
+
+[Capturas: el pipeline funcionando, la documentación de la API, la ejecución de la integración continua, el registro del modelo...]
+
+## Código
+
+[Repositorio en GitHub](https://github.com/juan1639/...) con un `README` que explique cómo ejecutarlo.

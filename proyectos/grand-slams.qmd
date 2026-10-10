@@ -1,0 +1,18 @@
+---
+title: "Bar Chart Race: ganadores de Grand Slams"
+description: "Vídeo animado de 4 minutos con la evolución histórica de los tenistas ganadores de Grand Slam."
+categories: [Visualización de datos, Python]
+order: 2
+# image: ../img/grand-slams.png
+---
+
+## El proyecto
+
+Procesé un gran volumen de datos históricos para mostrar su evolución en un "Bar Chart Race" de 4 minutos.
+
+{{< video https://www.youtube.com/watch?v=UpP2fRecgTw >}}
+
+## Cómo lo hice
+
+- [Fuente de los datos y limpieza.]
+- [Librerías usadas y cómo generaste el vídeo.]
