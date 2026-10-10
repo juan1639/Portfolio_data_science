@@ -186,18 +186,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#aplicamos-minmaxscaler-solo-a-las-features-numéricas" id="toc-aplicamos-minmaxscaler-solo-a-las-features-numéricas" class="nav-link" data-scroll-target="#aplicamos-minmaxscaler-solo-a-las-features-numéricas">Aplicamos <strong>MinMaxScaler</strong> <strong>SOLO</strong> a las features numéricas:</a></li>
   <li><a href="#opcional" id="toc-opcional" class="nav-link" data-scroll-target="#opcional"><strong>Opcional:</strong></a></li>
-  <li><a href="#corte-vertical-separamos-la-variable-objetivotarget-almacenándola-en-y" id="toc-corte-vertical-separamos-la-variable-objetivotarget-almacenándola-en-y" class="nav-link" data-scroll-target="#corte-vertical-separamos-la-variable-objetivotarget-almacenándola-en-y">1. Corte Vertical (separamos la variable objetivo/target almacenándola en ‘y’):</a></li>
-  <li><a href="#división-entre-datos-de-train-80-y-test-20-corte-horizontal" id="toc-división-entre-datos-de-train-80-y-test-20-corte-horizontal" class="nav-link" data-scroll-target="#división-entre-datos-de-train-80-y-test-20-corte-horizontal">2. División entre datos de Train 80% y Test 20% (corte horizontal):</a></li>
-  <li><a href="#instanciamos-un-decision-tree-classifier-con-parámetros" id="toc-instanciamos-un-decision-tree-classifier-con-parámetros" class="nav-link" data-scroll-target="#instanciamos-un-decision-tree-classifier-con-parámetros">3. Instanciamos un Decision Tree Classifier con parámetros:</a></li>
-  <li><a href="#instanciamos-un-randomforestclassifier-con-parámetros" id="toc-instanciamos-un-randomforestclassifier-con-parámetros" class="nav-link" data-scroll-target="#instanciamos-un-randomforestclassifier-con-parámetros">4. Instanciamos un RandomForestClassifier con parámetros:</a></li>
-  <li><a href="#creamos-una-lista-con-lo-necesario-para-cada-modelo" id="toc-creamos-una-lista-con-lo-necesario-para-cada-modelo" class="nav-link" data-scroll-target="#creamos-una-lista-con-lo-necesario-para-cada-modelo">5. Creamos una lista con lo necesario para cada modelo:</a></li>
-  <li><a href="#creamos-unas-listas-vacias-para-almacenar-predicciones-reportes-etc." id="toc-creamos-unas-listas-vacias-para-almacenar-predicciones-reportes-etc." class="nav-link" data-scroll-target="#creamos-unas-listas-vacias-para-almacenar-predicciones-reportes-etc.">6. Creamos unas listas vacias para almacenar predicciones, reportes, etc.</a></li>
-  <li><a href="#iteramos-cada-modelo-con-bucle-for" id="toc-iteramos-cada-modelo-con-bucle-for" class="nav-link" data-scroll-target="#iteramos-cada-modelo-con-bucle-for">7. Iteramos cada modelo con bucle for:</a></li>
+  <li><a href="#corte-vertical" id="toc-corte-vertical" class="nav-link" data-scroll-target="#corte-vertical"><strong>1. Corte Vertical</strong></a></li>
+  <li><a href="#separamos-la-variable-objetivotarget-almacenándola-en-y" id="toc-separamos-la-variable-objetivotarget-almacenándola-en-y" class="nav-link" data-scroll-target="#separamos-la-variable-objetivotarget-almacenándola-en-y">(separamos la variable objetivo/target almacenándola en ‘y’)</a></li>
+  <li><a href="#división-entre-datos-de-train-80-y-test-20-corte-horizontal" id="toc-división-entre-datos-de-train-80-y-test-20-corte-horizontal" class="nav-link" data-scroll-target="#división-entre-datos-de-train-80-y-test-20-corte-horizontal"><strong>2. División entre datos de Train 80% y Test 20% (corte horizontal):</strong></a></li>
+  <li><a href="#instanciamos-un-decision-tree-classifier-con-parámetros" id="toc-instanciamos-un-decision-tree-classifier-con-parámetros" class="nav-link" data-scroll-target="#instanciamos-un-decision-tree-classifier-con-parámetros"><strong>3. Instanciamos un Decision Tree Classifier con parámetros:</strong></a></li>
+  <li><a href="#instanciamos-un-randomforestclassifier-con-parámetros" id="toc-instanciamos-un-randomforestclassifier-con-parámetros" class="nav-link" data-scroll-target="#instanciamos-un-randomforestclassifier-con-parámetros"><strong>4. Instanciamos un RandomForestClassifier con parámetros:</strong></a></li>
+  <li><a href="#creamos-una-lista-con-lo-necesario-para-cada-modelo" id="toc-creamos-una-lista-con-lo-necesario-para-cada-modelo" class="nav-link" data-scroll-target="#creamos-una-lista-con-lo-necesario-para-cada-modelo"><strong>5. Creamos una lista con lo necesario para cada modelo:</strong></a></li>
+  <li><a href="#creamos-unas-listas-vacias-para-almacenar-predicciones-reportes-etc." id="toc-creamos-unas-listas-vacias-para-almacenar-predicciones-reportes-etc." class="nav-link" data-scroll-target="#creamos-unas-listas-vacias-para-almacenar-predicciones-reportes-etc."><strong>6. Creamos unas listas vacias para almacenar predicciones, reportes, etc.</strong></a></li>
+  <li><a href="#iteramos-cada-modelo-con-bucle-for" id="toc-iteramos-cada-modelo-con-bucle-for" class="nav-link" data-scroll-target="#iteramos-cada-modelo-con-bucle-for"><strong>7. Iteramos cada modelo con bucle for:</strong></a></li>
   </ul></li>
-  <li><a href="#conclusion-decision-tree" id="toc-conclusion-decision-tree" class="nav-link" data-scroll-target="#conclusion-decision-tree">Conclusion Decision-Tree:</a></li>
-  <li><a href="#conclusion-random-forest" id="toc-conclusion-random-forest" class="nav-link" data-scroll-target="#conclusion-random-forest">Conclusion Random-Forest:</a>
+  <li><a href="#conclusion-decision-tree" id="toc-conclusion-decision-tree" class="nav-link" data-scroll-target="#conclusion-decision-tree"><strong>Conclusion Decision-Tree:</strong></a></li>
+  <li><a href="#conclusion-random-forest" id="toc-conclusion-random-forest" class="nav-link" data-scroll-target="#conclusion-random-forest"><strong>Conclusion Random-Forest:</strong></a>
   <ul class="collapse">
-  <li><a href="#gráfico-de-barras-mostrando-las-features-más-influyentes-random-forest" id="toc-gráfico-de-barras-mostrando-las-features-más-influyentes-random-forest" class="nav-link" data-scroll-target="#gráfico-de-barras-mostrando-las-features-más-influyentes-random-forest"><strong>Gráfico de barras</strong> mostrando las features más influyentes (Random forest)</a></li>
+  <li><a href="#gráfico-de-barras" id="toc-gráfico-de-barras" class="nav-link" data-scroll-target="#gráfico-de-barras"><strong>Gráfico de barras</strong></a></li>
+  <li><a href="#mostrando-las-features-más-influyentes-random-forest" id="toc-mostrando-las-features-más-influyentes-random-forest" class="nav-link" data-scroll-target="#mostrando-las-features-más-influyentes-random-forest">Mostrando las features más influyentes (Random forest)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1127,8 +1129,11 @@ Columna: y
 </div>
 </div>
 </section>
-<section id="corte-vertical-separamos-la-variable-objetivotarget-almacenándola-en-y" class="level2">
-<h2 class="anchored" data-anchor-id="corte-vertical-separamos-la-variable-objetivotarget-almacenándola-en-y">1. Corte Vertical (separamos la variable objetivo/target almacenándola en ‘y’):</h2>
+<section id="corte-vertical" class="level2">
+<h2 class="anchored" data-anchor-id="corte-vertical"><strong>1. Corte Vertical</strong></h2>
+</section>
+<section id="separamos-la-variable-objetivotarget-almacenándola-en-y" class="level2">
+<h2 class="anchored" data-anchor-id="separamos-la-variable-objetivotarget-almacenándola-en-y">(separamos la variable objetivo/target almacenándola en ‘y’)</h2>
 <p>Separación de variables (corte vertical) (X= inputs, y= target) ‘y’= nombre la columna objetivo (target)</p>
 <div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:241}}" data-outputid="56e38bb2-ee12-49ee-a795-66788bc7e125" data-execution_count="54">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">'y'</span>, axis<span class="op">=</span><span class="dv">1</span>)    <span class="co"># axis=1 indicamos que es columna (0 seria fila)</span></span>
@@ -1175,7 +1180,7 @@ Columna: y
 </div>
 </section>
 <section id="división-entre-datos-de-train-80-y-test-20-corte-horizontal" class="level2">
-<h2 class="anchored" data-anchor-id="división-entre-datos-de-train-80-y-test-20-corte-horizontal">2. División entre datos de Train 80% y Test 20% (corte horizontal):</h2>
+<h2 class="anchored" data-anchor-id="división-entre-datos-de-train-80-y-test-20-corte-horizontal"><strong>2. División entre datos de Train 80% y Test 20% (corte horizontal):</strong></h2>
 <ul>
 <li>(El método también nos hace el shuffle):</li>
 <li>El param test_size=0.2 es el que determina que el 20% sea para test</li>
@@ -1186,7 +1191,7 @@ Columna: y
 </div>
 </section>
 <section id="instanciamos-un-decision-tree-classifier-con-parámetros" class="level2">
-<h2 class="anchored" data-anchor-id="instanciamos-un-decision-tree-classifier-con-parámetros">3. Instanciamos un Decision Tree Classifier con parámetros:</h2>
+<h2 class="anchored" data-anchor-id="instanciamos-un-decision-tree-classifier-con-parámetros"><strong>3. Instanciamos un Decision Tree Classifier con parámetros:</strong></h2>
 <ul>
 <li><strong>param 1</strong>: Aplicamos el parámetro clave: class_weight=“balanced” para manejar el desbalanceo</li>
 <li><strong>param 2</strong>: random_state=22 (para que el aleatorio sea siempre igual en cada ejecucion)</li>
@@ -1196,7 +1201,7 @@ Columna: y
 </div>
 </section>
 <section id="instanciamos-un-randomforestclassifier-con-parámetros" class="level2">
-<h2 class="anchored" data-anchor-id="instanciamos-un-randomforestclassifier-con-parámetros">4. Instanciamos un RandomForestClassifier con parámetros:</h2>
+<h2 class="anchored" data-anchor-id="instanciamos-un-randomforestclassifier-con-parámetros"><strong>4. Instanciamos un RandomForestClassifier con parámetros:</strong></h2>
 <ul>
 <li><strong>param 1</strong>: n_estimators entre 100-200 (suficientes para un buen resultado)</li>
 <li><strong>param 2</strong> : entre 0.2-0.5</li>
@@ -1208,7 +1213,7 @@ Columna: y
 </div>
 </section>
 <section id="creamos-una-lista-con-lo-necesario-para-cada-modelo" class="level2">
-<h2 class="anchored" data-anchor-id="creamos-una-lista-con-lo-necesario-para-cada-modelo">5. Creamos una lista con lo necesario para cada modelo:</h2>
+<h2 class="anchored" data-anchor-id="creamos-una-lista-con-lo-necesario-para-cada-modelo"><strong>5. Creamos una lista con lo necesario para cada modelo:</strong></h2>
 <ul>
 <li>(vamos a iterar los modelos en un bucle, en este caso sólo son 2):</li>
 </ul>
@@ -1224,7 +1229,7 @@ Columna: y
 </div>
 </section>
 <section id="creamos-unas-listas-vacias-para-almacenar-predicciones-reportes-etc." class="level2">
-<h2 class="anchored" data-anchor-id="creamos-unas-listas-vacias-para-almacenar-predicciones-reportes-etc.">6. Creamos unas listas vacias para almacenar predicciones, reportes, etc.</h2>
+<h2 class="anchored" data-anchor-id="creamos-unas-listas-vacias-para-almacenar-predicciones-reportes-etc."><strong>6. Creamos unas listas vacias para almacenar predicciones, reportes, etc.</strong></h2>
 <ul>
 <li><strong>predictions</strong>: almacena los resultados de los métodos predict</li>
 <li><strong>reportes</strong>: almacena los resultados de los reportes</li>
@@ -1241,7 +1246,7 @@ Columna: y
 </div>
 </section>
 <section id="iteramos-cada-modelo-con-bucle-for" class="level2">
-<h2 class="anchored" data-anchor-id="iteramos-cada-modelo-con-bucle-for">7. Iteramos cada modelo con bucle for:</h2>
+<h2 class="anchored" data-anchor-id="iteramos-cada-modelo-con-bucle-for"><strong>7. Iteramos cada modelo con bucle for:</strong></h2>
 <div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b30ddd3b-fd6b-4798-b7af-385c40059586" data-execution_count="60">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(models)):</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Entrenamos el model correspondiente a la iteración:</span></span>
@@ -1307,17 +1312,20 @@ weighted avg       0.88      0.71      0.76      9043
 </section>
 </section>
 <section id="conclusion-decision-tree" class="level1">
-<h1>Conclusion Decision-Tree:</h1>
+<h1><strong>Conclusion Decision-Tree:</strong></h1>
 <p>Aún con el parametro class_weight=balanced al modelo le cuesta distinguir patrones de contratación. (con un f1-score de un 46%)</p>
 <p>Sólo tiene <strong>buen resultado</strong> en patrones de <strong>no contratación</strong> al tener muchos mas ejemplos para aprender de ellos. (Aquí el f1-score llega hasta el 93%)</p>
 <p>En cuanto a la matriz de confusión sólo consiguió encontrar a 491 dejando “escapar” a 581</p>
 </section>
 <section id="conclusion-random-forest" class="level1">
-<h1>Conclusion Random-Forest:</h1>
+<h1><strong>Conclusion Random-Forest:</strong></h1>
 <p>Aunque el Decision Tree tiene mejor Accuracy y F1-Score, para una campaña de marketing el <strong>modelo más útil es el Random Forest</strong>, ya que su Recall del 82% nos asegura que el banco captará a la gran mayoría de clientes interesados, aunque a costa de hacer más llamadas a clientes que finalmente no contratarán.</p>
 <p>En este modelo la matriz de confusión muestra que logró captar a 881 dejando “escapar” sólo a 191, mejorando muchísimo al otro modelo. Parece que este modelo es mejor para este ejercicio.</p>
-<section id="gráfico-de-barras-mostrando-las-features-más-influyentes-random-forest" class="level2">
-<h2 class="anchored" data-anchor-id="gráfico-de-barras-mostrando-las-features-más-influyentes-random-forest"><strong>Gráfico de barras</strong> mostrando las features más influyentes (Random forest)</h2>
+<section id="gráfico-de-barras" class="level2">
+<h2 class="anchored" data-anchor-id="gráfico-de-barras"><strong>Gráfico de barras</strong></h2>
+</section>
+<section id="mostrando-las-features-más-influyentes-random-forest" class="level2">
+<h2 class="anchored" data-anchor-id="mostrando-las-features-más-influyentes-random-forest">Mostrando las features más influyentes (Random forest)</h2>
 <ul>
 <li>Creamos un pequeño dataframe</li>
 </ul>

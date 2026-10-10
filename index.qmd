@@ -7,7 +7,6 @@ title: "Juan Eguía Abad · IA y Data Science"
 ![](img/fotoJuan.jpg){.profile-photo fig-alt="Foto de Juan Eguía Abad"}
 :::
 
-<br>
 
 Soy desarrollador y estoy dando un paso estratégico en mi carrera hacia la **implementación de IA en la empresa**. Busco incorporarme a un proyecto donde pueda aportar tanto mi base de desarrollo como lo que estoy aprendiendo en IA.
 
