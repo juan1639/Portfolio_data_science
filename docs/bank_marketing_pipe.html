@@ -177,8 +177,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#importamos-todas-las-librerías-que-vamos-a-necesitar" id="toc-importamos-todas-las-librerías-que-vamos-a-necesitar" class="nav-link" data-scroll-target="#importamos-todas-las-librerías-que-vamos-a-necesitar">Importamos todas las librerías que vamos a necesitar:</a></li>
   <li><a href="#cargar-los-datos" id="toc-cargar-los-datos" class="nav-link" data-scroll-target="#cargar-los-datos">Cargar los datos:</a></li>
   <li><a href="#visualizacion-en-consola-de-una-muestra-de-los-datos" id="toc-visualizacion-en-consola-de-una-muestra-de-los-datos" class="nav-link" data-scroll-target="#visualizacion-en-consola-de-una-muestra-de-los-datos">Visualizacion en consola de una muestra de los datos:</a></li>
-  <li><a href="#mostramos-los-tipos-de-datos-de-las-features-del-df-y-las-dimensiones-filas-x-columnas" id="toc-mostramos-los-tipos-de-datos-de-las-features-del-df-y-las-dimensiones-filas-x-columnas" class="nav-link" data-scroll-target="#mostramos-los-tipos-de-datos-de-las-features-del-df-y-las-dimensiones-filas-x-columnas">Mostramos los tipos de datos de las features del df y las dimensiones (filas x columnas)</a></li>
-  <li><a href="#mostramos-las-columnas-features-incluída-la-columna-objetivo-y" id="toc-mostramos-las-columnas-features-incluída-la-columna-objetivo-y" class="nav-link" data-scroll-target="#mostramos-las-columnas-features-incluída-la-columna-objetivo-y">Mostramos las columnas (features) incluída la columna objetivo ‘y’:</a></li>
+  <li><a href="#filas-y-columnas-de-dataframe" id="toc-filas-y-columnas-de-dataframe" class="nav-link" data-scroll-target="#filas-y-columnas-de-dataframe">Filas y Columnas de dataframe</a></li>
+  <li><a href="#mostramos-tb-los-tipos-de-datos" id="toc-mostramos-tb-los-tipos-de-datos" class="nav-link" data-scroll-target="#mostramos-tb-los-tipos-de-datos">Mostramos tb los tipos de datos</a></li>
+  <li><a href="#mostramos-las-columnas-features" id="toc-mostramos-las-columnas-features" class="nav-link" data-scroll-target="#mostramos-las-columnas-features">Mostramos las columnas (features)</a></li>
   <li><a href="#mostramos-info-del-dataframe" id="toc-mostramos-info-del-dataframe" class="nav-link" data-scroll-target="#mostramos-info-del-dataframe">Mostramos info del dataframe:</a></li>
   <li><a href="#valores-generales-de-dataframe-describe" id="toc-valores-generales-de-dataframe-describe" class="nav-link" data-scroll-target="#valores-generales-de-dataframe-describe">Valores generales de dataframe (describe):</a></li>
   <li><a href="#checkeamos-si-hay-datos-corruptos-vacíos-nan" id="toc-checkeamos-si-hay-datos-corruptos-vacíos-nan" class="nav-link" data-scroll-target="#checkeamos-si-hay-datos-corruptos-vacíos-nan">Checkeamos si hay datos corruptos (vacíos / NaN)…</a></li>
@@ -191,7 +192,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#transformación-numéricas-y-categóricas" id="toc-transformación-numéricas-y-categóricas" class="nav-link" data-scroll-target="#transformación-numéricas-y-categóricas">Transformación <strong>(numéricas y categóricas)</strong></a></li>
   <li><a href="#creamos-el-model-decision-tree-asignándo-estos-hiperparámetros" id="toc-creamos-el-model-decision-tree-asignándo-estos-hiperparámetros" class="nav-link" data-scroll-target="#creamos-el-model-decision-tree-asignándo-estos-hiperparámetros">Creamos el model <strong>Decision Tree</strong>, asignándo estos hiperparámetros:</a></li>
   <li><a href="#creamos-el-model-random-forest-asignando-estos-hiperparámetros" id="toc-creamos-el-model-random-forest-asignando-estos-hiperparámetros" class="nav-link" data-scroll-target="#creamos-el-model-random-forest-asignando-estos-hiperparámetros">Creamos el model <strong>Random Forest</strong>, asignando estos hiperparámetros:</a></li>
-  <li><a href="#creamos-una-función-para-entrenar-los-diferentes-modelos" id="toc-creamos-una-función-para-entrenar-los-diferentes-modelos" class="nav-link" data-scroll-target="#creamos-una-función-para-entrenar-los-diferentes-modelos"><strong>Creamos una función</strong> para entrenar los diferentes modelos:</a></li>
+  <li><a href="#creamos-una-función" id="toc-creamos-una-función" class="nav-link" data-scroll-target="#creamos-una-función"><strong>Creamos una función</strong></a></li>
+  <li><a href="#para-entrenar-los-diferentes-modelos" id="toc-para-entrenar-los-diferentes-modelos" class="nav-link" data-scroll-target="#para-entrenar-los-diferentes-modelos">Para entrenar los diferentes modelos</a></li>
   <li><a href="#invocamos-la-función-creada-anteriormente" id="toc-invocamos-la-función-creada-anteriormente" class="nav-link" data-scroll-target="#invocamos-la-función-creada-anteriormente">Invocamos la función creada anteriormente:</a></li>
   <li><a href="#conclusión-decision-tree" id="toc-conclusión-decision-tree" class="nav-link" data-scroll-target="#conclusión-decision-tree"><strong>Conclusión Decision-Tree:</strong></a></li>
   <li><a href="#conclusión-random-forest" id="toc-conclusión-random-forest" class="nav-link" data-scroll-target="#conclusión-random-forest"><strong>Conclusión Random-Forest:</strong></a></li>
@@ -470,8 +472,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="mostramos-los-tipos-de-datos-de-las-features-del-df-y-las-dimensiones-filas-x-columnas" class="level2">
-<h2 class="anchored" data-anchor-id="mostramos-los-tipos-de-datos-de-las-features-del-df-y-las-dimensiones-filas-x-columnas">Mostramos los tipos de datos de las features del df y las dimensiones (filas x columnas)</h2>
+<section id="filas-y-columnas-de-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="filas-y-columnas-de-dataframe">Filas y Columnas de dataframe</h2>
+</section>
+<section id="mostramos-tb-los-tipos-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="mostramos-tb-los-tipos-de-datos">Mostramos tb los tipos de datos</h2>
 <div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="63be9d73-e9ce-4e88-ac57-e8965be15f94" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"numero de filas: "</span>, df.shape[<span class="dv">0</span>]) <span class="co"># tb vale len(df)</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"numero de columnas: "</span>, df.shape[<span class="dv">1</span>])</span>
@@ -508,8 +513,9 @@ dtype: object
 </div>
 </div>
 </section>
-<section id="mostramos-las-columnas-features-incluída-la-columna-objetivo-y" class="level2">
-<h2 class="anchored" data-anchor-id="mostramos-las-columnas-features-incluída-la-columna-objetivo-y">Mostramos las columnas (features) incluída la columna objetivo ‘y’:</h2>
+<section id="mostramos-las-columnas-features" class="level2">
+<h2 class="anchored" data-anchor-id="mostramos-las-columnas-features">Mostramos las columnas (features)</h2>
+<p>( incluída la columna objetivo ‘y’ )</p>
 <div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="4b7d5b87-bdbf-4761-9320-09dd7eb62c82" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"df_columns:</span><span class="ch">\n</span><span class="st"> "</span>, df.columns)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -772,10 +778,10 @@ Suma de valores NaN o vacio?  0
 <li><strong>X</strong> Features</li>
 <li><strong>y</strong> Target</li>
 </ul>
-<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:458}}" data-outputid="912fcfde-352c-4b27-d806-857b31a7910a" data-execution_count="12">
+<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:458}}" data-outputid="912fcfde-352c-4b27-d806-857b31a7910a">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">"y"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">"y"</span>]</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>y.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 
@@ -922,8 +928,11 @@ Cat_features:
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="creamos-una-función-para-entrenar-los-diferentes-modelos" class="level2">
-<h2 class="anchored" data-anchor-id="creamos-una-función-para-entrenar-los-diferentes-modelos"><strong>Creamos una función</strong> para entrenar los diferentes modelos:</h2>
+<section id="creamos-una-función" class="level2">
+<h2 class="anchored" data-anchor-id="creamos-una-función"><strong>Creamos una función</strong></h2>
+</section>
+<section id="para-entrenar-los-diferentes-modelos" class="level2">
+<h2 class="anchored" data-anchor-id="para-entrenar-los-diferentes-modelos">Para entrenar los diferentes modelos</h2>
 <p>entrenar_modelo()</p>
 <div id="cell-38" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> entrenar_modelo(name, model):</span>
@@ -955,7 +964,7 @@ Cat_features:
 </section>
 <section id="invocamos-la-función-creada-anteriormente" class="level2">
 <h2 class="anchored" data-anchor-id="invocamos-la-función-creada-anteriormente">Invocamos la función creada anteriormente:</h2>
-<p>(Una vez por cada modelo que queramos entrenar)</p>
+<p>(<em>Una vez por cada modelo que queramos entrenar</em>)</p>
 <div id="cell-40" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="3f35a68d-5a17-45bc-af03-99f675a70581" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>entrenar_modelo(<span class="st">"DECISION TREE"</span>, dt_model)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>entrenar_modelo(<span class="st">"RANDOM FOREST"</span>, rf_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1002,14 +1011,14 @@ weighted avg       0.89      0.77      0.81      9043
 </section>
 <section id="conclusión-decision-tree" class="level1">
 <h1><strong>Conclusión Decision-Tree:</strong></h1>
-<p>Aún con el parametro class_weight=balanced al modelo le cuesta distinguir patrones de contratación. (con un f1-score de un 46%)</p>
+<p>Aún con el parametro class_weight=balanced al modelo le cuesta distinguir patrones de contratación. (con un f1-score de un 47%)</p>
 <p>Sólo tiene <strong>buen resultado</strong> en patrones de <strong>no contratación</strong> al tener muchos mas ejemplos para aprender de ellos. (Aquí el f1-score llega hasta el 93%)</p>
-<p>En cuanto a la matriz de confusión sólo consiguió encontrar a 491 dejando “escapar” a 581</p>
+<p>En cuanto a la matriz de confusión sólo consiguió encontrar a 505 dejando “escapar” a 567</p>
 </section>
 <section id="conclusión-random-forest" class="level1">
 <h1><strong>Conclusión Random-Forest:</strong></h1>
-<p>Aunque el Decision Tree tiene mejor Accuracy y F1-Score, para una campaña de marketing el <strong>modelo más útil es el Random Forest</strong>, ya que su Recall del 82% nos asegura que el banco captará a la gran mayoría de clientes interesados, aunque a costa de hacer más llamadas a clientes que finalmente no contratarán.</p>
-<p>En este modelo la matriz de confusión muestra que logró captar a 881 dejando “escapar” sólo a 191, mejorando muchísimo al otro modelo. Parece que este modelo es mejor para este ejercicio.</p>
+<p>Aunque el Decision Tree tiene mejor Accuracy y F1-Score, para una campaña de marketing el <strong>modelo más útil es el Random Forest</strong>, ya que su Recall del 80% nos asegura que el banco captará a la gran mayoría de clientes interesados, aunque a costa de hacer más llamadas a clientes que finalmente no contratarán.</p>
+<p>En este modelo la matriz de confusión muestra que logró captar a 856 dejando “escapar” sólo a 216, mejorando muchísimo al otro modelo. Parece que este modelo es mejor para este ejercicio.</p>
 
 
 </section>

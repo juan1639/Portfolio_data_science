@@ -63,18 +63,25 @@
     "text": "Visualizacion en consola de una muestra de los datos:\n\n#print(\"dataframe_head:\\n\", df.head())\n#print(\"\\n\")\ndf.head()\n\n\n    \n\n\n\n\n\n\nage\njob\nmarital\neducation\ndefault\nbalance\nhousing\nloan\ncontact\nday\nmonth\nduration\ncampaign\npdays\nprevious\npoutcome\ny\n\n\n\n\n0\n58\nmanagement\nmarried\ntertiary\nno\n2143\nyes\nno\nunknown\n5\nmay\n261\n1\n-1\n0\nunknown\nno\n\n\n1\n44\ntechnician\nsingle\nsecondary\nno\n29\nyes\nno\nunknown\n5\nmay\n151\n1\n-1\n0\nunknown\nno\n\n\n2\n33\nentrepreneur\nmarried\nsecondary\nno\n2\nyes\nyes\nunknown\n5\nmay\n76\n1\n-1\n0\nunknown\nno\n\n\n3\n47\nblue-collar\nmarried\nunknown\nno\n1506\nyes\nno\nunknown\n5\nmay\n92\n1\n-1\n0\nunknown\nno\n\n\n4\n33\nunknown\nsingle\nunknown\nno\n1\nno\nno\nunknown\n5\nmay\n198\n1\n-1\n0\nunknown\nno"
   },
   {
-    "objectID": "bank_marketing_pipe.html#mostramos-los-tipos-de-datos-de-las-features-del-df-y-las-dimensiones-filas-x-columnas",
-    "href": "bank_marketing_pipe.html#mostramos-los-tipos-de-datos-de-las-features-del-df-y-las-dimensiones-filas-x-columnas",
+    "objectID": "bank_marketing_pipe.html#filas-y-columnas-de-dataframe",
+    "href": "bank_marketing_pipe.html#filas-y-columnas-de-dataframe",
     "title": "Proyecto de marketing bancario",
-    "section": "Mostramos los tipos de datos de las features del df y las dimensiones (filas x columnas)",
-    "text": "Mostramos los tipos de datos de las features del df y las dimensiones (filas x columnas)\n\nprint(\"numero de filas: \", df.shape[0]) # tb vale len(df)\nprint(\"numero de columnas: \", df.shape[1])\nprint(\"\\n\")\n\nprint(\"df_types:\\n\", df.dtypes)\nprint(\"\\n\")\n\nnumero de filas:  45211\nnumero de columnas:  17\n\n\ndf_types:\n age           int64\njob          object\nmarital      object\neducation    object\ndefault      object\nbalance       int64\nhousing      object\nloan         object\ncontact      object\nday           int64\nmonth        object\nduration      int64\ncampaign      int64\npdays         int64\nprevious      int64\npoutcome     object\ny            object\ndtype: object"
+    "section": "Filas y Columnas de dataframe",
+    "text": "Filas y Columnas de dataframe"
   },
   {
-    "objectID": "bank_marketing_pipe.html#mostramos-las-columnas-features-incluída-la-columna-objetivo-y",
-    "href": "bank_marketing_pipe.html#mostramos-las-columnas-features-incluída-la-columna-objetivo-y",
+    "objectID": "bank_marketing_pipe.html#mostramos-tb-los-tipos-de-datos",
+    "href": "bank_marketing_pipe.html#mostramos-tb-los-tipos-de-datos",
     "title": "Proyecto de marketing bancario",
-    "section": "Mostramos las columnas (features) incluída la columna objetivo ‘y’:",
-    "text": "Mostramos las columnas (features) incluída la columna objetivo ‘y’:\n\nprint(\"df_columns:\\n \", df.columns)\nprint(\"\\n\")\n\ndf_columns:\n  Index(['age', 'job', 'marital', 'education', 'default', 'balance', 'housing',\n       'loan', 'contact', 'day', 'month', 'duration', 'campaign', 'pdays',\n       'previous', 'poutcome', 'y'],\n      dtype='object')"
+    "section": "Mostramos tb los tipos de datos",
+    "text": "Mostramos tb los tipos de datos\n\nprint(\"numero de filas: \", df.shape[0]) # tb vale len(df)\nprint(\"numero de columnas: \", df.shape[1])\nprint(\"\\n\")\n\nprint(\"df_types:\\n\", df.dtypes)\nprint(\"\\n\")\n\nnumero de filas:  45211\nnumero de columnas:  17\n\n\ndf_types:\n age           int64\njob          object\nmarital      object\neducation    object\ndefault      object\nbalance       int64\nhousing      object\nloan         object\ncontact      object\nday           int64\nmonth        object\nduration      int64\ncampaign      int64\npdays         int64\nprevious      int64\npoutcome     object\ny            object\ndtype: object"
+  },
+  {
+    "objectID": "bank_marketing_pipe.html#mostramos-las-columnas-features",
+    "href": "bank_marketing_pipe.html#mostramos-las-columnas-features",
+    "title": "Proyecto de marketing bancario",
+    "section": "Mostramos las columnas (features)",
+    "text": "Mostramos las columnas (features)\n( incluída la columna objetivo ‘y’ )\n\nprint(\"df_columns:\\n \", df.columns)\nprint(\"\\n\")\n\ndf_columns:\n  Index(['age', 'job', 'marital', 'education', 'default', 'balance', 'housing',\n       'loan', 'contact', 'day', 'month', 'duration', 'campaign', 'pdays',\n       'previous', 'poutcome', 'y'],\n      dtype='object')"
   },
   {
     "objectID": "bank_marketing_pipe.html#mostramos-info-del-dataframe",
@@ -109,7 +116,7 @@
     "href": "bank_marketing_pipe.html#separación-de-variables",
     "title": "Proyecto de marketing bancario",
     "section": "Separación de variables:",
-    "text": "Separación de variables:\n\nX Features\ny Target\n\n\nX = df.drop(\"y\", axis=1)\ny = df[\"y\"]\ny\n\n\n\n\n\n\n\n\ny\n\n\n\n\n0\nno\n\n\n1\nno\n\n\n2\nno\n\n\n3\nno\n\n\n4\nno\n\n\n...\n...\n\n\n45206\nyes\n\n\n45207\nyes\n\n\n45208\nyes\n\n\n45209\nno\n\n\n45210\nno\n\n\n\n\n45211 rows × 1 columns\ndtype: object"
+    "text": "Separación de variables:\n\nX Features\ny Target\n\n\nX = df.drop(\"y\", axis=1)\ny = df[\"y\"]\ny.head()\n\n\n\n\n\n\n\n\ny\n\n\n\n\n0\nno\n\n\n1\nno\n\n\n2\nno\n\n\n3\nno\n\n\n4\nno\n\n\n...\n...\n\n\n45206\nyes\n\n\n45207\nyes\n\n\n45208\nyes\n\n\n45209\nno\n\n\n45210\nno\n\n\n\n\n45211 rows × 1 columns\ndtype: object"
   },
   {
     "objectID": "bank_marketing_pipe.html#separar-columnas",
@@ -161,11 +168,18 @@
     "text": "Creamos el model Random Forest, asignando estos hiperparámetros:\n\nparam 1: n_estimators entre 100-200 (suficientes para un buen resultado)\nparam 2 : entre 0.2-0.5\nparam 3: Aplicamos balanced para manejar el desbalanceo\nparam 4: Random_state 22 para que NO cambie el aleatorio en cada ejecucion\n\n\nrf_model = Pipeline([\n    (\"prep\", preprocessor),\n    (\"classifier\", RandomForestClassifier(n_estimators=150, min_samples_split=0.3, class_weight=\"balanced\", random_state=22))\n])"
   },
   {
-    "objectID": "bank_marketing_pipe.html#creamos-una-función-para-entrenar-los-diferentes-modelos",
-    "href": "bank_marketing_pipe.html#creamos-una-función-para-entrenar-los-diferentes-modelos",
+    "objectID": "bank_marketing_pipe.html#creamos-una-función",
+    "href": "bank_marketing_pipe.html#creamos-una-función",
     "title": "Proyecto de marketing bancario",
-    "section": "Creamos una función para entrenar los diferentes modelos:",
-    "text": "Creamos una función para entrenar los diferentes modelos:\nentrenar_modelo()\n\ndef entrenar_modelo(name, model):\n  \"\"\"\n  Función para entrenar los diferentes modelos:\n  - Recibe como parametros: una descripción del modelo y el propio modelo\n  - Devuelve: una variable con las predicciones 'y_pred'\n  \"\"\"\n  # Entrenar modelo:\n  model.fit(X_train, y_train)\n\n  # Predicciones:\n  y_pred = model.predict(X_test)\n\n  # Metricas (clasification_report):\n  print(\"=\" * 55)\n  print(f\"--- MÉTRICAS {name} ---\")\n  print(\"=\" * 55)\n  print(classification_report(y_test, y_pred))\n\n  # Metricas (confusion-matrix):\n  print(f\"--- CONFUSION MATRIX ({name}) ---\")\n  print(confusion_matrix(y_test, y_pred))\n  print(\"\\n\")\n\n  return y_pred"
+    "section": "Creamos una función",
+    "text": "Creamos una función"
+  },
+  {
+    "objectID": "bank_marketing_pipe.html#para-entrenar-los-diferentes-modelos",
+    "href": "bank_marketing_pipe.html#para-entrenar-los-diferentes-modelos",
+    "title": "Proyecto de marketing bancario",
+    "section": "Para entrenar los diferentes modelos",
+    "text": "Para entrenar los diferentes modelos\nentrenar_modelo()\n\ndef entrenar_modelo(name, model):\n  \"\"\"\n  Función para entrenar los diferentes modelos:\n  - Recibe como parametros: una descripción del modelo y el propio modelo\n  - Devuelve: una variable con las predicciones 'y_pred'\n  \"\"\"\n  # Entrenar modelo:\n  model.fit(X_train, y_train)\n\n  # Predicciones:\n  y_pred = model.predict(X_test)\n\n  # Metricas (clasification_report):\n  print(\"=\" * 55)\n  print(f\"--- MÉTRICAS {name} ---\")\n  print(\"=\" * 55)\n  print(classification_report(y_test, y_pred))\n\n  # Metricas (confusion-matrix):\n  print(f\"--- CONFUSION MATRIX ({name}) ---\")\n  print(confusion_matrix(y_test, y_pred))\n  print(\"\\n\")\n\n  return y_pred"
   },
   {
     "objectID": "bank_marketing_pipe.html#invocamos-la-función-creada-anteriormente",
