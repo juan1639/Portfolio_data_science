@@ -103,5 +103,17 @@ ul li a {
     color: #2c3e50;
 }
 
+/* Tarjetas de la galería de proyectos */
+.quarto-grid-item .listing-title {
+  font-size: 1.05rem;
+}
 
+.quarto-grid-item .listing-description {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.quarto-grid-item .listing-categories .listing-category {
+  font-size: 0.7rem;
+}
 
