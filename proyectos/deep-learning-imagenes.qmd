@@ -3,7 +3,7 @@ title: "Deep Learning: reconocimiento de imágenes"
 description: "Red neuronal que clasifica imágenes de [tema del dataset] con una precisión de [X %]."
 categories: [Deep Learning, Visión por computador]
 order: 3
-image: ../img/img-project-computer-vision.png
+image: ../img/img-project-computer-vision.jpg
 ---
 
 ## El problema

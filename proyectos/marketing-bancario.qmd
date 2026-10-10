@@ -3,7 +3,7 @@ title: "Marketing bancario con Machine Learning"
 description: "Modelo que predice qué clientes contratarán un depósito a plazo tras una campaña telefónica, construido con Pipelines de scikit-learn."
 categories: [Machine Learning, scikit-learn, Pipelines]
 order: 1
-image: ../img/img-project-bank-marketing.png   # miniatura de la tarjeta (descomenta cuando tengas la imagen)
+image: ../img/img-project-bank-marketing.jpg   # miniatura de la tarjeta (descomenta cuando tengas la imagen)
 ---
 
 ## El problema
