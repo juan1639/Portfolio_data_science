@@ -1,6 +1,11 @@
 project:
   type: website
   output-dir: docs  # Esto cambia _site por docs
+  render:
+    - index.qmd
+    - about.qmd
+    - proyectos.qmd
+    - bank_marketing_pipe.ipynb
 
 website:
   title: "Juan Eguía Abad"
@@ -16,7 +21,7 @@ website:
         icon: cpu
         menu:
           - text: "📊 Marketing Bancario" # Nombre elegante en lugar del archivo
-            href: final_project_bf_juan_eguia_v2.ipynb
+            href: bank_marketing_pipe.ipynb
           - text: "🏆 Histórico ganadores Grand Slams" # Añade una línea separadora si tienes varios
             href: https://www.youtube.com/watch?v=UpP2fRecgTw
 

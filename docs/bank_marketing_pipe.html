@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-proyectos">    
         <li>
-    <a class="dropdown-item" href="./final_project_bf_juan_eguia_v2.html">
+    <a class="dropdown-item" href="./bank_marketing_pipe.html">
  <span class="dropdown-text">📊 Marketing Bancario</span></a>
   </li>  
         <li>
@@ -240,19 +240,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p><strong>Fuente de datos:</strong> <a href="https://archive.ics.uci.edu/dataset/222/bank+marketing">Bank Marketing (UCI Machine Learning Repository)</a>, fichero <code>bank-full.csv</code> (dentro de <code>bank.zip</code>). Licencia CC BY 4.0.</p>
+<p>Referencia: S. Moro, P. Cortez y P. Rita (2014). <em>A Data-Driven Approach to Predict the Success of Bank Telemarketing</em>. Decision Support Systems.</p>
+<p><strong>En caso de querer ejecutar vd. mismo el notebook, basta con agregar el fichero ‘bank-full.csv’ junto al notebook</strong></p>
 </section>
 <section id="cargar-los-datos" class="level2">
 <h2 class="anchored" data-anchor-id="cargar-los-datos">Cargar los datos:</h2>
 <ul>
 <li>Indicamos que los datos vienen separados por ; (no por , como suele ser habitual)</li>
 </ul>
-<div id="cell-5" class="cell" data-execution_count="4">
+<div id="cell-6" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"bank-full.csv"</span>, sep<span class="op">=</span><span class="st">";"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="visualizacion-en-consola-de-una-muestra-de-los-datos" class="level2">
 <h2 class="anchored" data-anchor-id="visualizacion-en-consola-de-una-muestra-de-los-datos">Visualizacion en consola de una muestra de los datos:</h2>
-<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:206}}" data-outputid="ca779fd2-695c-4f3b-b4b2-c270eaeae803" data-execution_count="5">
+<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:206}}" data-outputid="ca779fd2-695c-4f3b-b4b2-c270eaeae803" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#print("dataframe_head:\n", df.head())</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#print("\n")</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -477,7 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="mostramos-tb-los-tipos-de-datos" class="level2">
 <h2 class="anchored" data-anchor-id="mostramos-tb-los-tipos-de-datos">Mostramos tb los tipos de datos</h2>
-<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="63be9d73-e9ce-4e88-ac57-e8965be15f94" data-execution_count="6">
+<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="63be9d73-e9ce-4e88-ac57-e8965be15f94" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"numero de filas: "</span>, df.shape[<span class="dv">0</span>]) <span class="co"># tb vale len(df)</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"numero de columnas: "</span>, df.shape[<span class="dv">1</span>])</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
@@ -516,7 +519,7 @@ dtype: object
 <section id="mostramos-las-columnas-features" class="level2">
 <h2 class="anchored" data-anchor-id="mostramos-las-columnas-features">Mostramos las columnas (features)</h2>
 <p>( incluída la columna objetivo ‘y’ )</p>
-<div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="4b7d5b87-bdbf-4761-9320-09dd7eb62c82" data-execution_count="7">
+<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="4b7d5b87-bdbf-4761-9320-09dd7eb62c82" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"df_columns:</span><span class="ch">\n</span><span class="st"> "</span>, df.columns)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -532,7 +535,7 @@ dtype: object
 </section>
 <section id="mostramos-info-del-dataframe" class="level2">
 <h2 class="anchored" data-anchor-id="mostramos-info-del-dataframe">Mostramos info del dataframe:</h2>
-<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b1daf525-760c-4d4d-d586-de3e581d3518" data-execution_count="8">
+<div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b1daf525-760c-4d4d-d586-de3e581d3518" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -564,7 +567,7 @@ memory usage: 5.9+ MB</code></pre>
 </section>
 <section id="valores-generales-de-dataframe-describe" class="level2">
 <h2 class="anchored" data-anchor-id="valores-generales-de-dataframe-describe">Valores generales de dataframe (describe):</h2>
-<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:300}}" data-outputid="419a65f9-f2b6-4a8a-dd97-9c5d179a761f" data-execution_count="9">
+<div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:300}}" data-outputid="419a65f9-f2b6-4a8a-dd97-9c5d179a761f" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div id="df-0068e1dc-0283-4aa9-80a3-8f0dfe1efe22" class="colab-df-container">
@@ -754,7 +757,7 @@ memory usage: 5.9+ MB</code></pre>
 </section>
 <section id="checkeamos-si-hay-datos-corruptos-vacíos-nan" class="level2">
 <h2 class="anchored" data-anchor-id="checkeamos-si-hay-datos-corruptos-vacíos-nan">Checkeamos si hay datos corruptos (vacíos / NaN)…</h2>
-<div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="1b585972-c16f-436e-ac8d-8fba82f93aae" data-execution_count="10">
+<div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="1b585972-c16f-436e-ac8d-8fba82f93aae" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Algun valor NaN o vacio? "</span>, df.isnull().values.<span class="bu">any</span>())</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Suma de valores NaN o vacio? "</span>, df.isnull().values.<span class="bu">sum</span>())</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -768,7 +771,7 @@ Suma de valores NaN o vacio?  0
 </section>
 <section id="asignamos-algunas-constates" class="level2">
 <h2 class="anchored" data-anchor-id="asignamos-algunas-constates">Asignamos algunas constates:</h2>
-<div id="cell-19" class="cell" data-execution_count="11">
+<div id="cell-20" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>RANDOM_STATE <span class="op">=</span> <span class="dv">22</span> <span class="co"># Fijada semilla aleatoria</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -778,7 +781,7 @@ Suma de valores NaN o vacio?  0
 <li><strong>X</strong> Features</li>
 <li><strong>y</strong> Target</li>
 </ul>
-<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:458}}" data-outputid="912fcfde-352c-4b27-d806-857b31a7910a">
+<div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:458}}" data-outputid="912fcfde-352c-4b27-d806-857b31a7910a">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">"y"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">"y"</span>]</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>y.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -852,7 +855,7 @@ Suma de valores NaN o vacio?  0
 <li><strong>numeric_features</strong> columnas de tipo numérico</li>
 <li><strong>categorical_features</strong> columnas de tipo categórico</li>
 </ul>
-<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7d85cc15-98ed-4829-9f23-5f1353534e36" data-execution_count="13">
+<div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7d85cc15-98ed-4829-9f23-5f1353534e36" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>numeric_features <span class="op">=</span> X.select_dtypes(include<span class="op">=</span>[<span class="st">"int64"</span>, <span class="st">"float64"</span>]).columns</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>categorical_features <span class="op">=</span> X.select_dtypes(include<span class="op">=</span>[<span class="st">"object"</span>, <span class="st">"string"</span>]).columns</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -870,13 +873,13 @@ Cat_features:
 </section>
 <section id="separación-de-los-datos-en-train-test" class="level2">
 <h2 class="anchored" data-anchor-id="separación-de-los-datos-en-train-test">Separación de los datos en: <strong>Train / Test</strong></h2>
-<div id="cell-26" class="cell" data-execution_count="14">
+<div id="cell-27" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span>RANDOM_STATE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="preprocesamiento-numéricas" class="level2">
 <h2 class="anchored" data-anchor-id="preprocesamiento-numéricas">Preprocesamiento <strong>(numéricas)</strong></h2>
-<div id="cell-28" class="cell" data-execution_count="15">
+<div id="cell-29" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>numeric_transformer <span class="op">=</span> Pipeline([</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"scaler"</span>, MinMaxScaler())</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -884,7 +887,7 @@ Cat_features:
 </section>
 <section id="preprocesamiento-categóricas" class="level2">
 <h2 class="anchored" data-anchor-id="preprocesamiento-categóricas">Preprocesamiento <strong>(categóricas)</strong></h2>
-<div id="cell-30" class="cell" data-execution_count="16">
+<div id="cell-31" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>categorical_transformer <span class="op">=</span> Pipeline([</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"imputer"</span>, SimpleImputer(strategy<span class="op">=</span><span class="st">"most_frequent"</span>)),</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"one_hot_encoder"</span>, OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">"ignore"</span>))</span>
@@ -893,7 +896,7 @@ Cat_features:
 </section>
 <section id="transformación-numéricas-y-categóricas" class="level2">
 <h2 class="anchored" data-anchor-id="transformación-numéricas-y-categóricas">Transformación <strong>(numéricas y categóricas)</strong></h2>
-<div id="cell-32" class="cell" data-execution_count="17">
+<div id="cell-33" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer([</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"num"</span>, numeric_transformer, numeric_features),</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"cat"</span>, categorical_transformer, categorical_features)</span>
@@ -906,7 +909,7 @@ Cat_features:
 <li><strong>param 1</strong>: Aplicamos el parámetro clave: class_weight=“balanced” para manejar el desbalanceo</li>
 <li><strong>param 2</strong>: random_state=22 (para que el aleatorio sea siempre igual en cada ejecucion)</li>
 </ul>
-<div id="cell-34" class="cell" data-execution_count="18">
+<div id="cell-35" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dt_model <span class="op">=</span> Pipeline([</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"prep"</span>, preprocessor),</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"classifier"</span>, DecisionTreeClassifier(class_weight<span class="op">=</span><span class="st">"balanced"</span>, random_state<span class="op">=</span><span class="dv">22</span>))</span>
@@ -921,7 +924,7 @@ Cat_features:
 <li><strong>param 3</strong>: Aplicamos balanced para manejar el desbalanceo</li>
 <li><strong>param 4</strong>: Random_state 22 para que NO cambie el aleatorio en cada ejecucion</li>
 </ul>
-<div id="cell-36" class="cell" data-execution_count="19">
+<div id="cell-37" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>rf_model <span class="op">=</span> Pipeline([</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"prep"</span>, preprocessor),</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"classifier"</span>, RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">150</span>, min_samples_split<span class="op">=</span><span class="fl">0.3</span>, class_weight<span class="op">=</span><span class="st">"balanced"</span>, random_state<span class="op">=</span><span class="dv">22</span>))</span>
@@ -934,7 +937,7 @@ Cat_features:
 <section id="para-entrenar-los-diferentes-modelos" class="level2">
 <h2 class="anchored" data-anchor-id="para-entrenar-los-diferentes-modelos">Para entrenar los diferentes modelos</h2>
 <p>entrenar_modelo()</p>
-<div id="cell-38" class="cell" data-execution_count="20">
+<div id="cell-39" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> entrenar_modelo(name, model):</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">  Función para entrenar los diferentes modelos:</span></span>
@@ -965,7 +968,7 @@ Cat_features:
 <section id="invocamos-la-función-creada-anteriormente" class="level2">
 <h2 class="anchored" data-anchor-id="invocamos-la-función-creada-anteriormente">Invocamos la función creada anteriormente:</h2>
 <p>(<em>Una vez por cada modelo que queramos entrenar</em>)</p>
-<div id="cell-40" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="3f35a68d-5a17-45bc-af03-99f675a70581" data-execution_count="21">
+<div id="cell-41" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="3f35a68d-5a17-45bc-af03-99f675a70581" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>entrenar_modelo(<span class="st">"DECISION TREE"</span>, dt_model)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>entrenar_modelo(<span class="st">"RANDOM FOREST"</span>, rf_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">

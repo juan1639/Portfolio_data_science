@@ -6,7 +6,7 @@ Aquí puedes explorar mis trabajos de Machine Learning:
 
 <br>
 
-*   [Marketing Bancario](bank_marketing_pipe.ipynb)
+*   [Marketing Bancario (Machine Learning)](bank_marketing_pipe.ipynb)
 *   [Histórico ganadores Grand Slams (vídeo)](#bar-chart-race-histórico-tenistas-ganadores-de-grand-slams)
 
 <br>
