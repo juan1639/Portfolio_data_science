@@ -103,20 +103,10 @@ ul li a {
     color: #2c3e50;
 }
 
-.quarto-grid-item:hover {
-    background-color: rgba(205,207,209,0.5);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
 /* Tarjetas de la galería de proyectos */
 .quarto-grid-item .listing-title {
   font-size: 1.05rem;
 }
-
-/* .quarto-grid-item .listing-description {
-  font-size: 0.85rem !important;
-  line-height: 1.4;
-} */
 
 .quarto-grid-item .listing-description,
 .quarto-grid-item .listing-description * {
@@ -126,5 +116,10 @@ ul li a {
 
 .quarto-grid-item .listing-categories .listing-category {
   font-size: 0.7rem;
+}
+
+.quarto-grid-item:hover {
+    background-color: rgba(205,207,209,0.6);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 

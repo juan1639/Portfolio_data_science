@@ -2,7 +2,7 @@
 title: "MLOps: del modelo a producción"
 description: "Pipeline que entrena, versiona y despliega un modelo de forma automática."
 categories: [MLOps, Docker, CI/CD]
-order: 5
+order: 4
 image: ../img/img-project-mlops.jpg
 ---
 

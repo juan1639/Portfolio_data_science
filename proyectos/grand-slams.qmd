@@ -2,7 +2,7 @@
 title: "Bar Chart Race: ganadores de Grand Slams"
 description: "Vídeo animado de 4 minutos con la evolución histórica de los tenistas ganadores de Grand Slam."
 categories: [Visualización de datos, Python]
-order: 2
+order: 5
 image: ../img/img-project-grandslams.jpg
 ---
 
