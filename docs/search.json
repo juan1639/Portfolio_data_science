@@ -319,7 +319,7 @@
     "href": "proyectos/agente-ia.html#código",
     "title": "Agente de IA que responde emails",
     "section": "Código",
-    "text": "Código\nRepositorio en GitHub\n\n\n\n\n\n\nNote\n\n\n\nAntes de publicar el repositorio, comprueba que no hay claves de API ni credenciales en el código ni en el historial de git. Usa un archivo .env incluido en .gitignore."
+    "text": "Código\n\nRepositorio en GitHub"
   },
   {
     "objectID": "proyectos/grand-slams.html",
@@ -382,6 +382,6 @@
     "href": "proyectos/mlops.html#código",
     "title": "MLOps: del modelo a producción",
     "section": "Código",
-    "text": "Código\nRepositorio en GitHub con un README que explique cómo ejecutarlo."
+    "text": "Código\n\nRepositorio en GitHub"
   }
 ]

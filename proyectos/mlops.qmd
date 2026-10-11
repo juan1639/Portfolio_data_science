@@ -33,4 +33,4 @@ Ajusta el diagrama a las piezas reales de tu proyecto.
 
 ## Código
 
-[Repositorio en GitHub](https://github.com/juan1639/...) con un `README` que explique cómo ejecutarlo.
+- [Repositorio en GitHub](https://github.com/juan1639/final-project-MLOps-Juan-Eguia)
