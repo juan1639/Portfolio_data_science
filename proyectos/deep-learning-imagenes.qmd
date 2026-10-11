@@ -28,4 +28,4 @@ image: ../img/img-project-computer-vision.jpg
 ## Código
 
 - [Ver el notebook completo](../dl_imagenes.ipynb)
-- [Repositorio en GitHub](https://github.com/juan1639/...)
+- [Repositorio en GitHub](https://github.com/juan1639/...){target="_blank" rel="noopener"}

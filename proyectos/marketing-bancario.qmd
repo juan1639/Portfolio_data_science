@@ -29,4 +29,4 @@ Referencia: S. Moro, P. Cortez y P. Rita (2014). *A Data-Driven Approach to Pred
 ## Código
 
 - [Ver el notebook completo](../bank_marketing_pipe.ipynb)
-- [Repositorio en GitHub](https://github.com/juan1639/Portfolio_data_science)
+- [Repositorio en GitHub](https://github.com/juan1639/Portfolio_data_science){target="_blank" rel="noopener"}

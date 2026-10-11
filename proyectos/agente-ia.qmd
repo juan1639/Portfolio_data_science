@@ -37,7 +37,7 @@ flowchart LR
 
 ## Código
 
-- [Repositorio en GitHub](https://github.com/juan1639/...)
+- [Repositorio en GitHub](https://github.com/juan1639/...){target="_blank" rel="noopener"}
 
 <!-- ::: {.callout-note}
 Antes de publicar el repositorio, comprueba que no hay claves de API ni credenciales en el código ni en el historial de git. Usa un archivo `.env` incluido en `.gitignore`.
