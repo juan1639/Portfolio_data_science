@@ -4,7 +4,7 @@ title: "About"
 
 ::: {.column-margin}
 <!-- <div style="text-align: center;"> -->
-![](img/img-juan-ai.png){.profile-photo}
+![](img/img-juan-ai.jpg){.profile-photo}
 <!-- <div> -->
 :::
 

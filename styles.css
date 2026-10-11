@@ -103,6 +103,11 @@ ul li a {
     color: #2c3e50;
 }
 
+.quarto-grid-item:hover {
+    background-color: rgba(220,222,224,0.5);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
 /* Tarjetas de la galería de proyectos */
 .quarto-grid-item .listing-title {
   font-size: 1.05rem;
