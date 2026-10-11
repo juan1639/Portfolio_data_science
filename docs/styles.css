@@ -104,7 +104,7 @@ ul li a {
 }
 
 .quarto-grid-item:hover {
-    background-color: rgba(220,222,224,0.5);
+    background-color: rgba(205,207,209,0.5);
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
