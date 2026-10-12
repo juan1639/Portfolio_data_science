@@ -175,13 +175,6 @@
     "text": "Enfoque\n\n[Describe el preprocesado: codificación de categóricas, escalado, etc.]\nUso de Pipelines de scikit-learn para encadenar preprocesado y modelo y evitar fuga de datos.\n[Modelos comparados y cómo los evaluaste.]"
   },
   {
-    "objectID": "proyectos/marketing-bancario.html#resultados",
-    "href": "proyectos/marketing-bancario.html#resultados",
-    "title": "Marketing bancario con Machine Learning",
-    "section": "Resultados",
-    "text": "Resultados\n[Métricas principales (recall, precisión, F1, ROC-AUC) y una conclusión en lenguaje de negocio: qué recomendarías al banco.]"
-  },
-  {
     "objectID": "proyectos/marketing-bancario.html#código",
     "href": "proyectos/marketing-bancario.html#código",
     "title": "Marketing bancario con Machine Learning",
@@ -301,20 +294,6 @@
     "text": "Stack\n\nPython, LangChain y LangGraph para el flujo del agente.\nModelo: [gpt-4o-mini u otro].\nCorreo: IMAP para leer y SMTP para responder."
   },
   {
-    "objectID": "proyectos/agente-ia.html#demo",
-    "href": "proyectos/agente-ia.html#demo",
-    "title": "Agente de IA que responde emails",
-    "section": "Demo",
-    "text": "Demo\n[Capturas o un vídeo corto (~60 s) con un ejemplo real: correo recibido y respuesta generada. Oculta datos personales.]"
-  },
-  {
-    "objectID": "proyectos/agente-ia.html#decisiones-y-límites",
-    "href": "proyectos/agente-ia.html#decisiones-y-límites",
-    "title": "Agente de IA que responde emails",
-    "section": "Decisiones y límites",
-    "text": "Decisiones y límites\n[Cómo evitas respuestas indebidas, qué pasa si el modelo falla, qué mejorarías.]"
-  },
-  {
     "objectID": "proyectos/agente-ia.html#código",
     "href": "proyectos/agente-ia.html#código",
     "title": "Agente de IA que responde emails",
@@ -336,13 +315,6 @@
     "text": "Procesé un gran volumen de datos históricos para mostrar su evolución en un “Bar Chart Race” de 4 minutos."
   },
   {
-    "objectID": "proyectos/grand-slams.html#cómo-lo-hice",
-    "href": "proyectos/grand-slams.html#cómo-lo-hice",
-    "title": "Bar Chart Race: ganadores de Grand Slams",
-    "section": "Cómo lo hice",
-    "text": "Cómo lo hice\n\n[Fuente de los datos y limpieza.]\n[Librerías usadas y cómo generaste el vídeo.]"
-  },
-  {
     "objectID": "proyectos/mlops.html",
     "href": "proyectos/mlops.html",
     "title": "MLOps: del modelo a producción",
@@ -362,20 +334,6 @@
     "title": "MLOps: del modelo a producción",
     "section": "Arquitectura",
     "text": "Arquitectura\n\n\n\n\n\nflowchart LR\n  A[Datos] --&gt; B[Entrenamiento]\n  B --&gt; C[Registro del modelo]\n  C --&gt; D[API]\n  D --&gt; E[Contenedor Docker]\n  E --&gt; F[Despliegue]\n\n\n\n\n\n\nAjusta el diagrama a las piezas reales de tu proyecto."
-  },
-  {
-    "objectID": "proyectos/mlops.html#stack-y-decisiones",
-    "href": "proyectos/mlops.html#stack-y-decisiones",
-    "title": "MLOps: del modelo a producción",
-    "section": "Stack y decisiones",
-    "text": "Stack y decisiones\n[Herramientas usadas (por ejemplo MLflow, FastAPI, Docker, GitHub Actions…) y por qué las elegiste.]"
-  },
-  {
-    "objectID": "proyectos/mlops.html#resultados",
-    "href": "proyectos/mlops.html#resultados",
-    "title": "MLOps: del modelo a producción",
-    "section": "Resultados",
-    "text": "Resultados\n[Capturas: el pipeline funcionando, la documentación de la API, la ejecución de la integración continua, el registro del modelo…]"
   },
   {
     "objectID": "proyectos/mlops.html#código",
