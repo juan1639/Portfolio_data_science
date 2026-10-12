@@ -23,13 +23,13 @@ flowchart LR
 
 Ajusta el diagrama a las piezas reales de tu proyecto.
 
-## Stack y decisiones
+<!-- ## Stack y decisiones -->
 
-[Herramientas usadas (por ejemplo MLflow, FastAPI, Docker, GitHub Actions...) y por qué las elegiste.]
+<!-- [Herramientas usadas (por ejemplo MLflow, FastAPI, Docker, GitHub Actions...) y por qué las elegiste.] -->
 
-## Resultados
+<!-- ## Resultados -->
 
-[Capturas: el pipeline funcionando, la documentación de la API, la ejecución de la integración continua, el registro del modelo...]
+<!-- [Capturas: el pipeline funcionando, la documentación de la API, la ejecución de la integración continua, el registro del modelo...] -->
 
 ## Código
 

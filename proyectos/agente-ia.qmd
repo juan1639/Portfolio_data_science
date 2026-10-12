@@ -27,13 +27,13 @@ flowchart LR
 - Modelo: [gpt-4o-mini u otro].
 - Correo: IMAP para leer y SMTP para responder.
 
-## Demo
+<!-- ## Demo -->
 
-[Capturas o un vídeo corto (~60 s) con un ejemplo real: correo recibido y respuesta generada. Oculta datos personales.]
+<!-- [Capturas o un vídeo corto (~60 s) con un ejemplo real: correo recibido y respuesta generada. Oculta datos personales.] -->
 
-## Decisiones y límites
+<!-- ## Decisiones y límites -->
 
-[Cómo evitas respuestas indebidas, qué pasa si el modelo falla, qué mejorarías.]
+<!-- [Cómo evitas respuestas indebidas, qué pasa si el modelo falla, qué mejorarías.] -->
 
 ## Código
 

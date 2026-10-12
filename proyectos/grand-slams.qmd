@@ -12,7 +12,7 @@ Procesé un gran volumen de datos históricos para mostrar su evolución en un "
 
 {{< video https://www.youtube.com/watch?v=UpP2fRecgTw >}}
 
-## Cómo lo hice
+<!-- ## Cómo lo hice -->
 
-- [Fuente de los datos y limpieza.]
-- [Librerías usadas y cómo generaste el vídeo.]
+<!-- - [Fuente de los datos y limpieza.] -->
+<!-- - [Librerías usadas y cómo generaste el vídeo.] -->

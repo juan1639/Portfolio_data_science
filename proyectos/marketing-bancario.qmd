@@ -22,9 +22,9 @@ Referencia: S. Moro, P. Cortez y P. Rita (2014). *A Data-Driven Approach to Pred
 - Uso de **Pipelines** de scikit-learn para encadenar preprocesado y modelo y evitar fuga de datos.
 - [Modelos comparados y cómo los evaluaste.]
 
-## Resultados
+<!-- ## Resultados -->
 
-[Métricas principales (recall, precisión, F1, ROC-AUC) y una conclusión en lenguaje de negocio: qué recomendarías al banco.]
+<!-- [Métricas principales (recall, precisión, F1, ROC-AUC) y una conclusión en lenguaje de negocio: qué recomendarías al banco.] -->
 
 ## Código
 
