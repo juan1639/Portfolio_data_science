@@ -6,9 +6,13 @@ order: 4
 image: ../img/img-project-agent-ai.jpg
 ---
 
+<br>
+
 ## El problema
 
 [Qué tarea automatiza el agente y qué tiempo o trabajo ahorra.]
+
+<br>
 
 ## Cómo funciona
 
@@ -20,6 +24,8 @@ flowchart LR
   C --> D[Redacta la respuesta]
   D --> E[Gmail SMTP]
 ```
+
+<br>
 
 ## Stack
 
@@ -34,6 +40,8 @@ flowchart LR
 <!-- ## Decisiones y límites -->
 
 <!-- [Cómo evitas respuestas indebidas, qué pasa si el modelo falla, qué mejorarías.] -->
+
+<br>
 
 ## Código
 

@@ -1,10 +1,12 @@
 ---
 title: "MLOps: del modelo a producción"
-description: "Pipeline que entrena, versiona y despliega un modelo de forma automática."
+description: "Pipeline que entrena, versiona y despliega un modelo de forma automática con entrenamiento continuo CI y despliegue continuo CD"
 categories: [MLOps, Docker, CI/CD]
 order: 3
 image: ../img/img-project-mlops.jpg
 ---
+
+<br>
 
 ## El problema
 
@@ -32,6 +34,7 @@ del modelo**, sin intervención manual:
 - **Despliegue**: **Render** descarga la nueva imagen y actualiza la API en
   producción automáticamente.
 
+<br>
 
 ## Arquitectura
 
@@ -53,13 +56,14 @@ flowchart LR
 | **CI** (entrenamiento continuo) | Datos → entrenamiento → registro → evaluación |
 | **CD** (despliegue continuo) | Imagen Docker → GHCR → deploy hook de Render |
 
-
-::: {.callout-note}
-La API está en el plan gratuito de Render: si lleva un rato sin recibir
-visitas, la primera petición puede tardar alrededor de un minuto en responder.
-:::
+<br>
 
 ## Código
 
 - [Live API](https://mlops-diabetes-latest.onrender.com/docs){target="_blank" rel="noopener"}
 - [Repositorio en GitHub](https://github.com/juan1639/MLOps_diabetes){target="_blank" rel="noopener"}
+
+::: {.callout-note}
+La API está en el plan gratuito de Render: si lleva un rato sin recibir
+visitas, la primera petición puede tardar alrededor de un minuto en responder.
+:::

@@ -6,24 +6,34 @@ order: 2
 image: ../img/img-project-computer-vision.jpg
 ---
 
+<br>
+
 ## El problema
 
 [Qué clasifica o detecta el modelo y por qué es útil.]
 
+<br>
+
 ## Los datos
 
 [Dataset, tamaño, clases y enlace a la fuente. No subas el dataset al repositorio: enlázalo.]
+
+<br>
 
 ## El modelo
 
 - Arquitectura: [CNN desde cero / transfer learning con ...].
 - Entrenamiento: [épocas, optimizador, aumento de datos...].
 
+<br>
+
 ## Resultados
 
 [Métrica final, curvas de entrenamiento, matriz de confusión y algunos ejemplos de predicciones, tanto aciertos como fallos. Una imagen aquí vale más que un párrafo.]
 
 ![Matriz de confusión](../img/dl-matriz-confusion.png){fig-alt="Matriz de confusión del modelo"}
+
+<br>
 
 ## Código
 

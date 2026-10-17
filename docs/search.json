@@ -147,18 +147,11 @@
     "text": "Invocamos la función creada anteriormente:\n(Una vez por cada modelo que queramos entrenar)\n\nentrenar_modelo(\"DECISION TREE\", dt_model)\nentrenar_modelo(\"RANDOM FOREST\", rf_model)\n\n=======================================================\n--- MÉTRICAS DECISION TREE ---\n=======================================================\n              precision    recall  f1-score   support\n\n          no       0.93      0.93      0.93      7971\n         yes       0.47      0.47      0.47      1072\n\n    accuracy                           0.88      9043\n   macro avg       0.70      0.70      0.70      9043\nweighted avg       0.88      0.88      0.88      9043\n\n--- CONFUSION MATRIX (DECISION TREE) ---\n[[7411  560]\n [ 567  505]]\n\n\n=======================================================\n--- MÉTRICAS RANDOM FOREST ---\n=======================================================\n              precision    recall  f1-score   support\n\n          no       0.97      0.76      0.85      7971\n         yes       0.31      0.80      0.45      1072\n\n    accuracy                           0.77      9043\n   macro avg       0.64      0.78      0.65      9043\nweighted avg       0.89      0.77      0.81      9043\n\n--- CONFUSION MATRIX (RANDOM FOREST) ---\n[[6097 1874]\n [ 216  856]]\n\n\n\n\narray(['no', 'no', 'no', ..., 'yes', 'yes', 'no'], dtype=object)"
   },
   {
-    "objectID": "proyectos/marketing-bancario.html",
-    "href": "proyectos/marketing-bancario.html",
-    "title": "Marketing bancario con Machine Learning",
-    "section": "",
-    "text": "Un banco quiere dirigir su campaña telefónica solo a los clientes con más probabilidad de contratar un depósito a plazo, para no gastar llamadas (ni molestar) en los que no lo harán."
-  },
-  {
     "objectID": "proyectos/marketing-bancario.html#el-problema",
     "href": "proyectos/marketing-bancario.html#el-problema",
     "title": "Marketing bancario con Machine Learning",
-    "section": "",
-    "text": "Un banco quiere dirigir su campaña telefónica solo a los clientes con más probabilidad de contratar un depósito a plazo, para no gastar llamadas (ni molestar) en los que no lo harán."
+    "section": "El problema",
+    "text": "El problema\nUn banco quiere dirigir su campaña telefónica solo a los clientes con más probabilidad de contratar un depósito a plazo, para no gastar llamadas (ni molestar) en los que no lo harán."
   },
   {
     "objectID": "proyectos/marketing-bancario.html#los-datos",
@@ -182,18 +175,11 @@
     "text": "Código\n\nVer el notebook completo\nRepositorio en GitHub"
   },
   {
-    "objectID": "proyectos/deep-learning-imagenes.html",
-    "href": "proyectos/deep-learning-imagenes.html",
-    "title": "Deep Learning: reconocimiento de imágenes",
-    "section": "",
-    "text": "[Qué clasifica o detecta el modelo y por qué es útil.]"
-  },
-  {
     "objectID": "proyectos/deep-learning-imagenes.html#el-problema",
     "href": "proyectos/deep-learning-imagenes.html#el-problema",
     "title": "Deep Learning: reconocimiento de imágenes",
-    "section": "",
-    "text": "[Qué clasifica o detecta el modelo y por qué es útil.]"
+    "section": "El problema",
+    "text": "El problema\n[Qué clasifica o detecta el modelo y por qué es útil.]"
   },
   {
     "objectID": "proyectos/deep-learning-imagenes.html#los-datos",
@@ -228,7 +214,7 @@
     "href": "proyectos.html",
     "title": "Mis proyectos",
     "section": "",
-    "text": "Una selección de mis trabajos de Machine Learning, Deep Learning, IA generativa y MLOps. Cada proyecto incluye el problema, el enfoque, los resultados y el enlace al código.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMarketing bancario con Machine Learning\n\n\n\nMachine Learning\n\nscikit-learn\n\nPipelines\n\n\n\nModelo que predice qué clientes contratarán un depósito a plazo tras una campaña telefónica, construido con Pipelines de scikit-learn.\n\n\n\n\n\n\n\n\n\n\n\n\nDeep Learning: reconocimiento de imágenes\n\n\n\nDeep Learning\n\nVisión por computador\n\n\n\nRed neuronal que clasifica imágenes de [tema del dataset] con una precisión de [X %].\n\n\n\n\n\n\n\n\n\n\n\n\nMLOps: del modelo a producción\n\n\n\nMLOps\n\nDocker\n\nCI/CD\n\n\n\nPipeline que entrena, versiona y despliega un modelo de forma automática.\n\n\n\n\n\n\n\n\n\n\n\n\nAgente de IA que responde emails\n\n\n\nIA generativa\n\nAgentes\n\nPython\n\n\n\nAgente en Python que lee el correo de una lista de remitentes autorizados y redacta las respuestas con un modelo de lenguaje.\n\n\n\n\n\n\n\n\n\n\n\n\nBar Chart Race: ganadores de Grand Slams\n\n\n\nVisualización de datos\n\nPython\n\n\n\nVídeo animado de 4 minutos con la evolución histórica de los tenistas ganadores de Grand Slam.\n\n\n\n\n\nNo matching items"
+    "text": "Una selección de mis trabajos de Machine Learning, Deep Learning, IA generativa y MLOps. Cada proyecto incluye el problema, el enfoque, los resultados y el enlace al código.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMarketing bancario con Machine Learning\n\n\n\nMachine Learning\n\nscikit-learn\n\nPipelines\n\n\n\nModelo que predice qué clientes contratarán un depósito a plazo tras una campaña telefónica, construido con Pipelines de scikit-learn.\n\n\n\n\n\n\n\n\n\n\n\n\nDeep Learning: reconocimiento de imágenes\n\n\n\nDeep Learning\n\nVisión por computador\n\n\n\nRed neuronal que clasifica imágenes de [tema del dataset] con una precisión de [X %].\n\n\n\n\n\n\n\n\n\n\n\n\nMLOps: del modelo a producción\n\n\n\nMLOps\n\nDocker\n\nCI/CD\n\n\n\nPipeline que entrena, versiona y despliega un modelo de forma automática con entrenamiento continuo CI y despliegue continuo CD\n\n\n\n\n\n\n\n\n\n\n\n\nAgente de IA que responde emails\n\n\n\nIA generativa\n\nAgentes\n\nPython\n\n\n\nAgente en Python que lee el correo de una lista de remitentes autorizados y redacta las respuestas con un modelo de lenguaje.\n\n\n\n\n\n\n\n\n\n\n\n\nBar Chart Race: ganadores de Grand Slams\n\n\n\nVisualización de datos\n\nPython\n\n\n\nVídeo animado de 4 minutos con la evolución histórica de los tenistas ganadores de Grand Slam.\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -266,18 +252,11 @@
     "text": "Soy un entusiasta del mundo de la programación. He aprendido de forma autodidacta y mediante formaciones especializadas a desplegar proyectos web con diversas tecnologías, principalmente en los entornos de spring/java y node.js.\nDomino varios lenguajes de programación como java, javascript, C# y sobre todo python, mediante el cual me he introducido en el Machine Learning, Deep Learning, agentes y automatizaciones IA, MLOps, etc.\nTambién como hobby me gusta programar pequeños videojuegos principalmente con el motor gráfico de uso profesional Unity."
   },
   {
-    "objectID": "proyectos/agente-ia.html",
-    "href": "proyectos/agente-ia.html",
-    "title": "Agente de IA que responde emails",
-    "section": "",
-    "text": "[Qué tarea automatiza el agente y qué tiempo o trabajo ahorra.]"
-  },
-  {
     "objectID": "proyectos/agente-ia.html#el-problema",
     "href": "proyectos/agente-ia.html#el-problema",
     "title": "Agente de IA que responde emails",
-    "section": "",
-    "text": "[Qué tarea automatiza el agente y qué tiempo o trabajo ahorra.]"
+    "section": "El problema",
+    "text": "El problema\n[Qué tarea automatiza el agente y qué tiempo o trabajo ahorra.]"
   },
   {
     "objectID": "proyectos/agente-ia.html#cómo-funciona",
@@ -315,31 +294,24 @@
     "text": "Procesé un gran volumen de datos históricos para mostrar su evolución en un “Bar Chart Race” de 4 minutos."
   },
   {
-    "objectID": "proyectos/mlops.html",
-    "href": "proyectos/mlops.html",
-    "title": "MLOps: del modelo a producción",
-    "section": "",
-    "text": "Entrenar un modelo en un notebook es solo la mitad del trabajo: para que sea útil tiene que estar disponible para otras aplicaciones, y debe poder actualizarse sin pasos manuales que introduzcan errores.\nEn este proyecto llevo a producción un modelo de regresión que predice la progresión de la diabetes a partir de 10 variables clínicas (edad, sexo, IMC, presión arterial y seis mediciones de suero sanguíneo), usando el dataset diabetes de scikit-learn.\nEl objetivo es que un simple git push ponga en marcha todo el ciclo de vida del modelo, sin intervención manual:\n\nDatos: carga, validación y preprocesado.\nEntrenamiento: se comparan tres modelos (Linear Regression, Random Forest y Gradient Boosting) y cada experimento queda registrado en MLflow con sus parámetros y métricas.\nRegistro y evaluación: el mejor modelo se registra en el Model Registry y pasa un quality gate (RMSE &lt; 60 y R² &gt; 0.44). Solo si lo supera recibe el alias champion; si no, el pipeline se detiene y no se despliega nada.\nEmpaquetado: el modelo champion y una API FastAPI se empaquetan en una imagen Docker, que se publica en GitHub Container Registry.\nDespliegue: Render descarga la nueva imagen y actualiza la API en producción automáticamente."
-  },
-  {
     "objectID": "proyectos/mlops.html#el-problema",
     "href": "proyectos/mlops.html#el-problema",
     "title": "MLOps: del modelo a producción",
-    "section": "",
-    "text": "Entrenar un modelo en un notebook es solo la mitad del trabajo: para que sea útil tiene que estar disponible para otras aplicaciones, y debe poder actualizarse sin pasos manuales que introduzcan errores.\nEn este proyecto llevo a producción un modelo de regresión que predice la progresión de la diabetes a partir de 10 variables clínicas (edad, sexo, IMC, presión arterial y seis mediciones de suero sanguíneo), usando el dataset diabetes de scikit-learn.\nEl objetivo es que un simple git push ponga en marcha todo el ciclo de vida del modelo, sin intervención manual:\n\nDatos: carga, validación y preprocesado.\nEntrenamiento: se comparan tres modelos (Linear Regression, Random Forest y Gradient Boosting) y cada experimento queda registrado en MLflow con sus parámetros y métricas.\nRegistro y evaluación: el mejor modelo se registra en el Model Registry y pasa un quality gate (RMSE &lt; 60 y R² &gt; 0.44). Solo si lo supera recibe el alias champion; si no, el pipeline se detiene y no se despliega nada.\nEmpaquetado: el modelo champion y una API FastAPI se empaquetan en una imagen Docker, que se publica en GitHub Container Registry.\nDespliegue: Render descarga la nueva imagen y actualiza la API en producción automáticamente."
+    "section": "El problema",
+    "text": "El problema\nEntrenar un modelo en un notebook es solo la mitad del trabajo: para que sea útil tiene que estar disponible para otras aplicaciones, y debe poder actualizarse sin pasos manuales que introduzcan errores.\nEn este proyecto llevo a producción un modelo de regresión que predice la progresión de la diabetes a partir de 10 variables clínicas (edad, sexo, IMC, presión arterial y seis mediciones de suero sanguíneo), usando el dataset diabetes de scikit-learn.\nEl objetivo es que un simple git push ponga en marcha todo el ciclo de vida del modelo, sin intervención manual:\n\nDatos: carga, validación y preprocesado.\nEntrenamiento: se comparan tres modelos (Linear Regression, Random Forest y Gradient Boosting) y cada experimento queda registrado en MLflow con sus parámetros y métricas.\nRegistro y evaluación: el mejor modelo se registra en el Model Registry y pasa un quality gate (RMSE &lt; 60 y R² &gt; 0.44). Solo si lo supera recibe el alias champion; si no, el pipeline se detiene y no se despliega nada.\nEmpaquetado: el modelo champion y una API FastAPI se empaquetan en una imagen Docker, que se publica en GitHub Container Registry.\nDespliegue: Render descarga la nueva imagen y actualiza la API en producción automáticamente."
   },
   {
     "objectID": "proyectos/mlops.html#arquitectura",
     "href": "proyectos/mlops.html#arquitectura",
     "title": "MLOps: del modelo a producción",
     "section": "Arquitectura",
-    "text": "Arquitectura\n\n\n\n\n\nflowchart LR\n    A[\"git push\"] --&gt; B[\"Datos&lt;br/&gt;carga · validación · preprocesado\"]\n    B --&gt; C[\"Entrenamiento&lt;br/&gt;3 modelos · MLflow\"]\n    C --&gt; D[\"Registro&lt;br/&gt;Model Registry\"]\n    D --&gt; E{\"Quality gate&lt;br/&gt;RMSE · R²\"}\n    E -- \"no pasa\" --&gt; X[\"Pipeline detenido\"]\n    E -- \"pasa: champion\" --&gt; F[\"Imagen Docker&lt;br/&gt;FastAPI + modelo\"]\n    F --&gt; G[\"GHCR\"]\n    G --&gt; H[\"Render&lt;br/&gt;API en producción\"]\n\n\n\n\n\n\n\n\n\n\n\n\n\nFase\nQué hace\n\n\n\n\nCI (entrenamiento continuo)\nDatos → entrenamiento → registro → evaluación\n\n\nCD (despliegue continuo)\nImagen Docker → GHCR → deploy hook de Render\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLa API está en el plan gratuito de Render: si lleva un rato sin recibir visitas, la primera petición puede tardar alrededor de un minuto en responder."
+    "text": "Arquitectura\n\n\n\n\n\nflowchart LR\n    A[\"git push\"] --&gt; B[\"Datos&lt;br/&gt;carga · validación · preprocesado\"]\n    B --&gt; C[\"Entrenamiento&lt;br/&gt;3 modelos · MLflow\"]\n    C --&gt; D[\"Registro&lt;br/&gt;Model Registry\"]\n    D --&gt; E{\"Quality gate&lt;br/&gt;RMSE · R²\"}\n    E -- \"no pasa\" --&gt; X[\"Pipeline detenido\"]\n    E -- \"pasa: champion\" --&gt; F[\"Imagen Docker&lt;br/&gt;FastAPI + modelo\"]\n    F --&gt; G[\"GHCR\"]\n    G --&gt; H[\"Render&lt;br/&gt;API en producción\"]\n\n\n\n\n\n\n\n\n\n\n\n\n\nFase\nQué hace\n\n\n\n\nCI (entrenamiento continuo)\nDatos → entrenamiento → registro → evaluación\n\n\nCD (despliegue continuo)\nImagen Docker → GHCR → deploy hook de Render"
   },
   {
     "objectID": "proyectos/mlops.html#código",
     "href": "proyectos/mlops.html#código",
     "title": "MLOps: del modelo a producción",
     "section": "Código",
-    "text": "Código\n\nLive API\nRepositorio en GitHub"
+    "text": "Código\n\nLive API\nRepositorio en GitHub\n\n\n\n\n\n\n\nNote\n\n\n\nLa API está en el plan gratuito de Render: si lleva un rato sin recibir visitas, la primera petición puede tardar alrededor de un minuto en responder."
   }
 ]

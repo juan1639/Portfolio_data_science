@@ -6,15 +6,21 @@ order: 1
 image: ../img/img-project-bank-marketing.jpg   # miniatura de la tarjeta (descomenta cuando tengas la imagen)
 ---
 
+<br>
+
 ## El problema
 
 Un banco quiere dirigir su campaña telefónica solo a los clientes con más probabilidad de contratar un depósito a plazo, para no gastar llamadas (ni molestar) en los que no lo harán.
+
+<br>
 
 ## Los datos
 
 [Bank Marketing (UCI Machine Learning Repository)](https://archive.ics.uci.edu/dataset/222/bank+marketing), fichero `bank-full.csv`. Licencia CC BY 4.0.
 
 Referencia: S. Moro, P. Cortez y P. Rita (2014). *A Data-Driven Approach to Predict the Success of Bank Telemarketing*. Decision Support Systems.
+
+<br>
 
 ## Enfoque
 
@@ -25,6 +31,8 @@ Referencia: S. Moro, P. Cortez y P. Rita (2014). *A Data-Driven Approach to Pred
 <!-- ## Resultados -->
 
 <!-- [Métricas principales (recall, precisión, F1, ROC-AUC) y una conclusión en lenguaje de negocio: qué recomendarías al banco.] -->
+
+<br>
 
 ## Código
 

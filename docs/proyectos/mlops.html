@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Pipeline que entrena, versiona y despliega un modelo de forma automática.">
+<meta name="description" content="Pipeline que entrena, versiona y despliega un modelo de forma automática con entrenamiento continuo CI y despliegue continuo CD">
 
 <title>MLOps: del modelo a producción – Juan Eguía Abad</title>
 <style>
@@ -150,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    Pipeline que entrena, versiona y despliega un modelo de forma automática.
+    Pipeline que entrena, versiona y despliega un modelo de forma automática con entrenamiento continuo CI y despliegue continuo CD
   </div>
 </div>
 
@@ -167,6 +167,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p><br></p>
 <section id="el-problema" class="level2">
 <h2 class="anchored" data-anchor-id="el-problema">El problema</h2>
 <p>Entrenar un modelo en un notebook es solo la mitad del trabajo: para que sea útil tiene que estar disponible para otras aplicaciones, y debe poder actualizarse sin pasos manuales que introduzcan errores.</p>
@@ -179,6 +180,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Empaquetado</strong>: el modelo <em>champion</em> y una API <strong>FastAPI</strong> se empaquetan en una imagen <strong>Docker</strong>, que se publica en GitHub Container Registry.</li>
 <li><strong>Despliegue</strong>: <strong>Render</strong> descarga la nueva imagen y actualiza la API en producción automáticamente.</li>
 </ul>
+<p><br></p>
 </section>
 <section id="arquitectura" class="level2">
 <h2 class="anchored" data-anchor-id="arquitectura">Arquitectura</h2>
@@ -224,6 +226,14 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+<p><br></p>
+</section>
+<section id="código" class="level2">
+<h2 class="anchored" data-anchor-id="código">Código</h2>
+<ul>
+<li><a href="https://mlops-diabetes-latest.onrender.com/docs" target="_blank" rel="noopener">Live API</a></li>
+<li><a href="https://github.com/juan1639/MLOps_diabetes" target="_blank" rel="noopener">Repositorio en GitHub</a></li>
+</ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -237,13 +247,6 @@ Note
 <p>La API está en el plan gratuito de Render: si lleva un rato sin recibir visitas, la primera petición puede tardar alrededor de un minuto en responder.</p>
 </div>
 </div>
-</section>
-<section id="código" class="level2">
-<h2 class="anchored" data-anchor-id="código">Código</h2>
-<ul>
-<li><a href="https://mlops-diabetes-latest.onrender.com/docs" target="_blank" rel="noopener">Live API</a></li>
-<li><a href="https://github.com/juan1639/MLOps_diabetes" target="_blank" rel="noopener">Repositorio en GitHub</a></li>
-</ul>
 
 
 </section>
