@@ -40,21 +40,14 @@ del modelo**, sin intervención manual:
 
 ```{mermaid}
 flowchart TD
-    A["git push a master"] --> B
-
-    subgraph CI ["CI · Entrenamiento continuo"]
-        B["Datos<br/>carga · validación · preprocesado"] --> C["Entrenamiento<br/>3 modelos · MLflow"]
-        C --> D["Registro<br/>Model Registry"]
-        D --> E{"Quality gate<br/>RMSE < 60 · R² > 0.44"}
-    end
-
-    E -- "no pasa" --> X["Pipeline detenido<br/>no se despliega"]
-    E -- "pasa: alias champion" --> F
-
-    subgraph CD ["CD · Despliegue continuo"]
-        F["Imagen Docker<br/>FastAPI + modelo"] --> G["GitHub Container Registry"]
-        G --> H["Render<br/>API en producción"]
-    end
+    A["git push<br/>a master"] --> B["Datos<br/>carga · validación · preprocesado"]
+    B --> C["Entrenamiento<br/>3 modelos registrados en MLflow"]
+    C --> D["Model Registry<br/>se registra el mejor modelo"]
+    D --> E{"¿Supera el<br/>quality gate?"}
+    E -- "no" --> X["Pipeline detenido<br/>(no se despliega)"]
+    E -- "sí: alias champion" --> F["Imagen Docker<br/>FastAPI + modelo"]
+    F --> G["GitHub Container Registry"]
+    G --> H["Render<br/>API en producción"]
 ```
 
 | Fase | Qué hace |

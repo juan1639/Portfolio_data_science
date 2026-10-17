@@ -190,21 +190,14 @@ ul.task-list li input[type="checkbox"] {
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
-    A["git push a master"] --&gt; B
-
-    subgraph CI ["CI · Entrenamiento continuo"]
-        B["Datos&lt;br/&gt;carga · validación · preprocesado"] --&gt; C["Entrenamiento&lt;br/&gt;3 modelos · MLflow"]
-        C --&gt; D["Registro&lt;br/&gt;Model Registry"]
-        D --&gt; E{"Quality gate&lt;br/&gt;RMSE &lt; 60 · R² &gt; 0.44"}
-    end
-
-    E -- "no pasa" --&gt; X["Pipeline detenido&lt;br/&gt;no se despliega"]
-    E -- "pasa: alias champion" --&gt; F
-
-    subgraph CD ["CD · Despliegue continuo"]
-        F["Imagen Docker&lt;br/&gt;FastAPI + modelo"] --&gt; G["GitHub Container Registry"]
-        G --&gt; H["Render&lt;br/&gt;API en producción"]
-    end
+    A["git push&lt;br/&gt;a master"] --&gt; B["Datos&lt;br/&gt;carga · validación · preprocesado"]
+    B --&gt; C["Entrenamiento&lt;br/&gt;3 modelos registrados en MLflow"]
+    C --&gt; D["Model Registry&lt;br/&gt;se registra el mejor modelo"]
+    D --&gt; E{"¿Supera el&lt;br/&gt;quality gate?"}
+    E -- "no" --&gt; X["Pipeline detenido&lt;br/&gt;(no se despliega)"]
+    E -- "sí: alias champion" --&gt; F["Imagen Docker&lt;br/&gt;FastAPI + modelo"]
+    F --&gt; G["GitHub Container Registry"]
+    G --&gt; H["Render&lt;br/&gt;API en producción"]
 </pre>
 </div>
 <p></p></figure><p></p>
