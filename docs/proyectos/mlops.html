@@ -169,7 +169,16 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="el-problema" class="level2">
 <h2 class="anchored" data-anchor-id="el-problema">El problema</h2>
-<p>[Qué modelo llevas a producción y qué se automatiza: reentrenamiento, pruebas, despliegue…]</p>
+<p>Entrenar un modelo en un notebook es solo la mitad del trabajo: para que sea útil tiene que estar disponible para otras aplicaciones, y debe poder actualizarse sin pasos manuales que introduzcan errores.</p>
+<p>En este proyecto llevo a producción un modelo de <strong>regresión</strong> que predice la progresión de la diabetes a partir de 10 variables clínicas (edad, sexo, IMC, presión arterial y seis mediciones de suero sanguíneo), usando el dataset <em>diabetes</em> de scikit-learn.</p>
+<p>El objetivo es que <strong>un simple <code>git push</code> ponga en marcha todo el ciclo de vida del modelo</strong>, sin intervención manual:</p>
+<ul>
+<li><strong>Datos</strong>: carga, validación y preprocesado.</li>
+<li><strong>Entrenamiento</strong>: se comparan tres modelos (Linear Regression, Random Forest y Gradient Boosting) y cada experimento queda registrado en <strong>MLflow</strong> con sus parámetros y métricas.</li>
+<li><strong>Registro y evaluación</strong>: el mejor modelo se registra en el <em>Model Registry</em> y pasa un <strong>quality gate</strong> (RMSE &lt; 60 y R² &gt; 0.44). Solo si lo supera recibe el alias <code>champion</code>; si no, el pipeline se detiene y <strong>no se despliega nada</strong>.</li>
+<li><strong>Empaquetado</strong>: el modelo <em>champion</em> y una API <strong>FastAPI</strong> se empaquetan en una imagen <strong>Docker</strong>, que se publica en GitHub Container Registry.</li>
+<li><strong>Despliegue</strong>: <strong>Render</strong> descarga la nueva imagen y actualiza la API en producción automáticamente.</li>
+</ul>
 </section>
 <section id="arquitectura" class="level2">
 <h2 class="anchored" data-anchor-id="arquitectura">Arquitectura</h2>
@@ -179,27 +188,61 @@ ul.task-list li input[type="checkbox"] {
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
-  A[Datos] --&gt; B[Entrenamiento]
-  B --&gt; C[Registro del modelo]
-  C --&gt; D[API]
-  D --&gt; E[Contenedor Docker]
-  E --&gt; F[Despliegue]
+    A["git push"] --&gt; B["Datos&lt;br/&gt;carga · validación · preprocesado"]
+    B --&gt; C["Entrenamiento&lt;br/&gt;3 modelos · MLflow"]
+    C --&gt; D["Registro&lt;br/&gt;Model Registry"]
+    D --&gt; E{"Quality gate&lt;br/&gt;RMSE · R²"}
+    E -- "no pasa" --&gt; X["Pipeline detenido"]
+    E -- "pasa: champion" --&gt; F["Imagen Docker&lt;br/&gt;FastAPI + modelo"]
+    F --&gt; G["GHCR"]
+    G --&gt; H["Render&lt;br/&gt;API en producción"]
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>Ajusta el diagrama a las piezas reales de tu proyecto.</p>
-<!-- ## Stack y decisiones -->
-<!-- [Herramientas usadas (por ejemplo MLflow, FastAPI, Docker, GitHub Actions...) y por qué las elegiste.] -->
-<!-- ## Resultados -->
-<!-- [Capturas: el pipeline funcionando, la documentación de la API, la ejecución de la integración continua, el registro del modelo...] -->
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fase</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CI</strong> (entrenamiento continuo)</td>
+<td>Datos → entrenamiento → registro → evaluación</td>
+</tr>
+<tr class="even">
+<td><strong>CD</strong> (despliegue continuo)</td>
+<td>Imagen Docker → GHCR → deploy hook de Render</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La API está en el plan gratuito de Render: si lleva un rato sin recibir visitas, la primera petición puede tardar alrededor de un minuto en responder.</p>
+</div>
+</div>
 </section>
 <section id="código" class="level2">
 <h2 class="anchored" data-anchor-id="código">Código</h2>
 <ul>
-<li><a href="https://github.com/juan1639/final-project-MLOps-Juan-Eguia" target="_blank" rel="noopener">Repositorio en GitHub</a></li>
+<li><a href="https://mlops-diabetes-latest.onrender.com/docs" target="_blank" rel="noopener">Live API</a></li>
+<li><a href="https://github.com/juan1639/MLOps_diabetes" target="_blank" rel="noopener">Repositorio en GitHub</a></li>
 </ul>
 
 

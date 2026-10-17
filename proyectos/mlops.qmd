@@ -2,35 +2,64 @@
 title: "MLOps: del modelo a producción"
 description: "Pipeline que entrena, versiona y despliega un modelo de forma automática."
 categories: [MLOps, Docker, CI/CD]
-order: 4
+order: 3
 image: ../img/img-project-mlops.jpg
 ---
 
 ## El problema
 
-[Qué modelo llevas a producción y qué se automatiza: reentrenamiento, pruebas, despliegue...]
+Entrenar un modelo en un notebook es solo la mitad del trabajo: para que sea útil
+tiene que estar disponible para otras aplicaciones, y debe poder actualizarse sin
+pasos manuales que introduzcan errores.
+
+En este proyecto llevo a producción un modelo de **regresión** que predice la
+progresión de la diabetes a partir de 10 variables clínicas (edad, sexo, IMC,
+presión arterial y seis mediciones de suero sanguíneo), usando el dataset
+*diabetes* de scikit-learn.
+
+El objetivo es que **un simple `git push` ponga en marcha todo el ciclo de vida
+del modelo**, sin intervención manual:
+
+- **Datos**: carga, validación y preprocesado.
+- **Entrenamiento**: se comparan tres modelos (Linear Regression, Random Forest y
+  Gradient Boosting) y cada experimento queda registrado en **MLflow** con sus
+  parámetros y métricas.
+- **Registro y evaluación**: el mejor modelo se registra en el *Model Registry* y
+  pasa un **quality gate** (RMSE < 60 y R² > 0.44). Solo si lo supera recibe el
+  alias `champion`; si no, el pipeline se detiene y **no se despliega nada**.
+- **Empaquetado**: el modelo *champion* y una API **FastAPI** se empaquetan en una
+  imagen **Docker**, que se publica en GitHub Container Registry.
+- **Despliegue**: **Render** descarga la nueva imagen y actualiza la API en
+  producción automáticamente.
+
 
 ## Arquitectura
 
 ```{mermaid}
 flowchart LR
-  A[Datos] --> B[Entrenamiento]
-  B --> C[Registro del modelo]
-  C --> D[API]
-  D --> E[Contenedor Docker]
-  E --> F[Despliegue]
+    A["git push"] --> B["Datos<br/>carga · validación · preprocesado"]
+    B --> C["Entrenamiento<br/>3 modelos · MLflow"]
+    C --> D["Registro<br/>Model Registry"]
+    D --> E{"Quality gate<br/>RMSE · R²"}
+    E -- "no pasa" --> X["Pipeline detenido"]
+    E -- "pasa: champion" --> F["Imagen Docker<br/>FastAPI + modelo"]
+    F --> G["GHCR"]
+    G --> H["Render<br/>API en producción"]
 ```
 
-Ajusta el diagrama a las piezas reales de tu proyecto.
 
-<!-- ## Stack y decisiones -->
+| Fase | Qué hace |
+|---|---|
+| **CI** (entrenamiento continuo) | Datos → entrenamiento → registro → evaluación |
+| **CD** (despliegue continuo) | Imagen Docker → GHCR → deploy hook de Render |
 
-<!-- [Herramientas usadas (por ejemplo MLflow, FastAPI, Docker, GitHub Actions...) y por qué las elegiste.] -->
 
-<!-- ## Resultados -->
-
-<!-- [Capturas: el pipeline funcionando, la documentación de la API, la ejecución de la integración continua, el registro del modelo...] -->
+::: {.callout-note}
+La API está en el plan gratuito de Render: si lleva un rato sin recibir
+visitas, la primera petición puede tardar alrededor de un minuto en responder.
+:::
 
 ## Código
 
-- [Repositorio en GitHub](https://github.com/juan1639/final-project-MLOps-Juan-Eguia){target="_blank" rel="noopener"}
+- [Live API](https://mlops-diabetes-latest.onrender.com/docs){target="_blank" rel="noopener"}
+- [Repositorio en GitHub](https://github.com/juan1639/MLOps_diabetes){target="_blank" rel="noopener"}

@@ -2,7 +2,7 @@
 title: "Agente de IA que responde emails"
 description: "Agente en Python que lee el correo de una lista de remitentes autorizados y redacta las respuestas con un modelo de lenguaje."
 categories: [IA generativa, Agentes, Python]
-order: 3
+order: 4
 image: ../img/img-project-agent-ai.jpg
 ---
 
