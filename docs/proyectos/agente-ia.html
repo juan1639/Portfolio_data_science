@@ -171,7 +171,18 @@ ul.task-list li input[type="checkbox"] {
 <p><br></p>
 <section id="el-problema" class="level2">
 <h2 class="anchored" data-anchor-id="el-problema">El problema</h2>
-<p>[Qué tarea automatiza el agente y qué tiempo o trabajo ahorra.]</p>
+<p>Responder correos es una <strong>tarea repetitiva</strong> que consume mucho tiempo.</p>
+<p>Este proyecto es un <strong>agente de IA en Python</strong> que se conecta a una cuenta de Gmail, revisa los correos no leídos de una <strong>lista de remitentes autorizados</strong> y redacta una respuesta adaptada al contenido y al idioma de cada mensaje, usando un modelo de lenguaje (<strong>gpt-4o-mini</strong>).</p>
+<p>Automatizar el correo con IA tiene riesgos, así que el agente está diseñado para ser prudente:</p>
+<ul>
+<li><p><strong>Supervisión humana por defecto</strong>: las respuestas se guardan como <strong>borradores</strong> en Gmail para revisarlas antes de enviarlas. El envío automático es opcional.</p></li>
+<li><p><strong>Sabe cuándo no responder</strong>: si el mensaje trata un tema sensible (dinero, cuestiones legales, quejas, urgencias o salud) o le falta información, no redacta nada y lo deja sin leer para que lo atienda una persona.</p></li>
+<li><p><strong>No inventa</strong>: tiene instrucciones de no añadir datos, fechas, precios ni compromisos que no aparezcan en el correo original.</p></li>
+<li><p><strong>Resistente a manipulaciones</strong>: trata el contenido del correo solo como datos, así que ignora instrucciones escritas dentro del mensaje (<em>prompt injection</em>).</p></li>
+<li><p><strong>Filtra remitentes</strong>: ignora newsletters, listas de distribución y direcciones <em>no-reply</em>, y descarta correos que no superan la verificación DMARC (posibles remitentes falsificados).</p></li>
+<li><p><strong>No repite trabajo</strong>: registra los correos ya procesados para no gastar tokens dos veces en el mismo mensaje, y no marca nada como leído hasta haber respondido.</p></li>
+</ul>
+<p>El resultado es un asistente que se encarga de las respuestas rutinarias y deja en manos del usuario las que requieren criterio humano.</p>
 <p><br></p>
 </section>
 <section id="cómo-funciona" class="level2">
@@ -181,31 +192,97 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart LR
-  A[Gmail IMAP] --&gt; B{¿Remitente autorizado?}
-  B -- sí --&gt; C[Agente LangGraph + modelo]
-  B -- no --&gt; X[Se ignora]
-  C --&gt; D[Redacta la respuesta]
-  D --&gt; E[Gmail SMTP]
+<pre class="mermaid mermaid-js">flowchart TD
+    A["Gmail (IMAP)&lt;br/&gt;correos no leídos"] --&gt; B{"¿Remitente en la&lt;br/&gt;lista autorizada?"}
+    B -- "no" --&gt; Z["Se ignora"]
+    B -- "sí" --&gt; C{"¿Correo automático&lt;br/&gt;o no supera DMARC?"}
+    C -- "sí" --&gt; Z
+    C -- "no" --&gt; D["Modelo de lenguaje&lt;br/&gt;gpt-4o-mini"]
+    D --&gt; E{"¿Puede responder?"}
+    E -- "no: tema sensible&lt;br/&gt;o falta información" --&gt; R["Revisión humana&lt;br/&gt;(queda sin leer)"]
+    E -- "sí" --&gt; F{"Modo de respuesta"}
+    F -- "borrador" --&gt; G["Borrador en Gmail"]
+    F -- "enviar" --&gt; H["Envío por SMTP"]
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p><br></p>
+<ol type="1">
+<li><p><strong>Búsqueda</strong>: el agente se conecta a Gmail por IMAP y busca los correos <strong>no leídos</strong> de cada dirección de <code>direcciones_email.txt</code>. Los descarga sin marcarlos como leídos y descarta los que ya procesó en ejecuciones anteriores.</p></li>
+<li><p><strong>Filtrado</strong>: ignora newsletters, listas de distribución, direcciones <em>no-reply</em> y correos que no superan la verificación <strong>DMARC</strong>.</p></li>
+<li><p><strong>Decisión y redacción</strong>: envía el correo al modelo con unas instrucciones que le piden responder de forma profesional, en el mismo idioma, sin inventar datos y sin obedecer instrucciones escritas dentro del correo. El modelo devuelve una <strong>respuesta estructurada</strong> (validada con Pydantic):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Campo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>puede_responder</code></td>
+<td><code>True</code> / <code>False</code></td>
+</tr>
+<tr class="even">
+<td><code>motivo</code></td>
+<td>Por qué puede o no responder</td>
+</tr>
+<tr class="odd">
+<td><code>texto</code></td>
+<td>El cuerpo de la respuesta</td>
+</tr>
+</tbody>
+</table></li>
+<li><p><strong>Acción</strong>:</p>
+<ul>
+<li>Si <code>puede_responder</code> es <code>False</code>, no hace nada y deja el correo <strong>sin leer</strong> para que lo atienda una persona.</li>
+<li>Si es <code>True</code>, añade asunto (<code>Re: ...</code>), firma y las cabeceras que mantienen el hilo de la conversación, y según la configuración <strong>guarda un borrador</strong> (opción por defecto) o <strong>envía la respuesta</strong> por SMTP.</li>
+</ul></li>
+<li><p><strong>Registro</strong>: anota el identificador de cada correo procesado para no gastar tokens dos veces en el mismo mensaje. Si un correo da error, se reintenta en la siguiente ejecución sin detener los demás.</p></li>
+</ol>
 </section>
 <section id="stack" class="level2">
 <h2 class="anchored" data-anchor-id="stack">Stack</h2>
-<ul>
-<li>Python, LangChain y LangGraph para el flujo del agente.</li>
-<li>Modelo: [gpt-4o-mini u otro].</li>
-<li>Correo: IMAP para leer y SMTP para responder.</li>
-</ul>
-<!-- ## Demo -->
-<!-- [Capturas o un vídeo corto (~60 s) con un ejemplo real: correo recibido y respuesta generada. Oculta datos personales.] -->
-<!-- ## Decisiones y límites -->
-<!-- [Cómo evitas respuestas indebidas, qué pasa si el modelo falla, qué mejorarías.] -->
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Componente</th>
+<th>Tecnología</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lenguaje</td>
+<td>Python 3.10+</td>
+</tr>
+<tr class="even">
+<td>Modelo de lenguaje</td>
+<td>OpenAI <strong>gpt-4o-mini</strong> (temperatura 0.3) vía <code>langchain-openai</code></td>
+</tr>
+<tr class="odd">
+<td>Salida estructurada</td>
+<td><strong>Pydantic</strong> + <code>with_structured_output</code></td>
+</tr>
+<tr class="even">
+<td>Lectura de correo y borradores</td>
+<td><strong>IMAP</strong> (<code>imaplib</code>)</td>
+</tr>
+<tr class="odd">
+<td>Envío de correo</td>
+<td><strong>SMTP</strong> (<code>smtplib</code>)</td>
+</tr>
+<tr class="even">
+<td>Configuración</td>
+<td><code>python-dotenv</code> (credenciales en <code>.env</code>, fuera del código)</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 </section>
 <section id="código" class="level2">
