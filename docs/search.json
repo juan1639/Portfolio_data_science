@@ -175,39 +175,46 @@
     "text": "Código\n\nVer el notebook completo\nRepositorio en GitHub"
   },
   {
+    "objectID": "proyectos/deep-learning-imagenes.html#este-proyecto-está-en-construcción",
+    "href": "proyectos/deep-learning-imagenes.html#este-proyecto-está-en-construcción",
+    "title": "Deep Learning: reconocimiento de imágenes",
+    "section": "Este proyecto está en construcción",
+    "text": "Este proyecto está en construcción"
+  },
+  {
     "objectID": "proyectos/deep-learning-imagenes.html#el-problema",
     "href": "proyectos/deep-learning-imagenes.html#el-problema",
     "title": "Deep Learning: reconocimiento de imágenes",
     "section": "El problema",
-    "text": "El problema\n[Qué clasifica o detecta el modelo y por qué es útil.]"
+    "text": "El problema"
   },
   {
     "objectID": "proyectos/deep-learning-imagenes.html#los-datos",
     "href": "proyectos/deep-learning-imagenes.html#los-datos",
     "title": "Deep Learning: reconocimiento de imágenes",
     "section": "Los datos",
-    "text": "Los datos\n[Dataset, tamaño, clases y enlace a la fuente. No subas el dataset al repositorio: enlázalo.]"
+    "text": "Los datos"
   },
   {
     "objectID": "proyectos/deep-learning-imagenes.html#el-modelo",
     "href": "proyectos/deep-learning-imagenes.html#el-modelo",
     "title": "Deep Learning: reconocimiento de imágenes",
     "section": "El modelo",
-    "text": "El modelo\n\nArquitectura: [CNN desde cero / transfer learning con …].\nEntrenamiento: [épocas, optimizador, aumento de datos…]."
+    "text": "El modelo"
   },
   {
     "objectID": "proyectos/deep-learning-imagenes.html#resultados",
     "href": "proyectos/deep-learning-imagenes.html#resultados",
     "title": "Deep Learning: reconocimiento de imágenes",
     "section": "Resultados",
-    "text": "Resultados\n[Métrica final, curvas de entrenamiento, matriz de confusión y algunos ejemplos de predicciones, tanto aciertos como fallos. Una imagen aquí vale más que un párrafo.]\n\n\n\nMatriz de confusión"
+    "text": "Resultados\n\n\n\n\nMatriz de confusión"
   },
   {
     "objectID": "proyectos/deep-learning-imagenes.html#código",
     "href": "proyectos/deep-learning-imagenes.html#código",
     "title": "Deep Learning: reconocimiento de imágenes",
     "section": "Código",
-    "text": "Código\n\nVer el notebook completo\nRepositorio en GitHub"
+    "text": "Código"
   },
   {
     "objectID": "proyectos.html",
