@@ -219,7 +219,7 @@
   {
     "objectID": "proyectos.html",
     "href": "proyectos.html",
-    "title": "Mis proyectos",
+    "title": "Mis proyectos recientes",
     "section": "",
     "text": "Una selección de mis trabajos de Machine Learning, Deep Learning, IA generativa y MLOps. Cada proyecto incluye el problema, el enfoque, los resultados y el enlace al código.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMarketing bancario con Machine Learning\n\n\n\nMachine Learning\n\nscikit-learn\n\nPipelines\n\n\n\nModelo que predice qué clientes contratarán un depósito a plazo tras una campaña telefónica, construido con Pipelines de scikit-learn.\n\n\n\n\n\n\n\n\n\n\n\n\nAgente de IA que responde emails\n\n\n\nIA generativa\n\nAgentes\n\nPython\n\n\n\nAgente en Python que lee el correo de una lista de remitentes autorizados y redacta las respuestas con un modelo de lenguaje.\n\n\n\n\n\n\n\n\n\n\n\n\nMLOps: del modelo a producción\n\n\n\nMLOps\n\nDocker\n\nCI/CD\n\n\n\nPipeline que entrena, versiona y despliega un modelo de forma automática con entrenamiento continuo CI y despliegue continuo CD\n\n\n\n\n\n\n\n\n\n\n\n\nDeep Learning: reconocimiento de imágenes\n\n\n\nDeep Learning\n\nVisión por computador\n\n\n\nRed neuronal que clasifica imágenes de [tema del dataset] con una precisión de [X %].\n\n\n\n\n\n\n\n\n\n\n\n\nBar Chart Race: ganadores de Grand Slams\n\n\n\nVisualización de datos\n\nPython\n\n\n\nVídeo hecho a modo de entretenimiento de 4 minutos con la evolución histórica de los tenistas ganadores de Grand Slam.\n\n\n\n\n\nNo matching items"
   },
@@ -256,7 +256,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Soy un entusiasta del mundo de la programación. He aprendido de forma autodidacta y mediante formaciones especializadas a desplegar proyectos web con diversas tecnologías, principalmente en los entornos de spring/java y node.js.\nDomino varios lenguajes de programación como java, javascript, C# y sobre todo python, mediante el cual me he introducido en el Machine Learning, Deep Learning, agentes y automatizaciones IA, MLOps, etc.\nTambién como hobby me gusta programar pequeños videojuegos principalmente con el motor gráfico de uso profesional Unity."
+    "text": "Soy un entusiasta del mundo de la programación. He aprendido de forma autodidacta y mediante formaciones especializadas a desplegar proyectos web con diversas tecnologías, principalmente en los entornos de spring y node.js.\nDomino varios lenguajes de programación como java, javascript, C# y sobre todo python, mediante el cual me he introducido en el Machine Learning, Deep Learning, agentes y automatizaciones IA, MLOps, etc.\nTambién como hobby me gusta programar pequeños videojuegos principalmente con el motor gráfico de uso profesional Unity.\n\n\nMis juegos publicados en itchio.com"
   },
   {
     "objectID": "proyectos/agente-ia.html#el-problema",
@@ -319,6 +319,6 @@
     "href": "proyectos/mlops.html#código",
     "title": "MLOps: del modelo a producción",
     "section": "Código",
-    "text": "Código\n\nVer web\nLive API\nRepositorio en GitHub\n\n\n\n\n\n\n\nNote\n\n\n\nLa API está en el plan gratuito de Render: si lleva un rato sin recibir visitas, la primera petición puede tardar alrededor de un minuto en responder."
+    "text": "Código\n\nLive API\nVer web\nRepositorio en GitHub\n\n\n\n\n\n\n\nNote\n\n\n\nLa API está en el plan gratuito de Render: si lleva un rato sin recibir visitas, la primera petición puede tardar alrededor de un minuto en responder."
   }
 ]

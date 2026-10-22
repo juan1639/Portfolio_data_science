@@ -1,5 +1,5 @@
 ---
-title: "Mis proyectos"
+title: "Mis proyectos recientes"
 toc: false
 listing:
   contents: proyectos/*.qmd
