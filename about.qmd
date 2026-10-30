@@ -19,4 +19,4 @@ Agunos de ellos están publicados en sitios web como itch.io
 <br>
 
 - [Mis juegos publicados en itchio.com](https://juan1639.itch.io/){target="_blank" rel="noopener"}
-- [Un Pacman jugable online](https://juan1639.itch.io/PacClon-vite-phaser){target="_blank" rel="noopener"}
+- [Un Pacman jugable online](https://juan1639.github.io/PacClon-vite-phaser){target="_blank" rel="noopener"}
