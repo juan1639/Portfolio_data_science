@@ -12,7 +12,9 @@ Soy un entusiasta del mundo de la programación. He aprendido de forma autodidac
 
 Domino varios lenguajes de programación como java, javascript, C# y sobre todo **python**, mediante el cual me he introducido en el **Machine Learning**, **Deep Learning**, **agentes y automatizaciones IA**, **MLOps**, etc.
 
-También como hobby me gusta programar pequeños videojuegos principalmente con el motor gráfico de uso profesional Unity.
+También como hobby me gusta programar pequeños videojuegos, algunos con el motor gráfico de uso profesional Unity, otros en diferentes lenguajes como python, javascript, etc.
+
+Agunos de ellos están publicados en sitios web como itch.io
 
 <br>
 

@@ -37,7 +37,7 @@ Vengo del desarrollo web, con formación autodidacta y especializada, y eso me p
 
 ## Proyectos
 
-Un ejemplo es el análisis de **marketing bancario**: un modelo que predice qué clientes contratarán un servicio, con conclusiones pensadas para una campaña real.
+Aquí puedes ver algunos de mis proyectos recientes relacionados con la implementación de IA.
 
 [Ver mis proyectos](proyectos.qmd){.btn .btn-primary .btn-lg}
 
