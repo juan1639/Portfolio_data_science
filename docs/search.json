@@ -254,9 +254,9 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Sobre mí",
     "section": "",
-    "text": "Soy un entusiasta del mundo de la programación. He aprendido de forma autodidacta y mediante formaciones especializadas a desplegar proyectos web con diversas tecnologías, principalmente en los entornos de spring y node.js.\nDomino varios lenguajes de programación como java, javascript, C# y sobre todo python, mediante el cual me he introducido en el Machine Learning, Deep Learning, agentes y automatizaciones IA, MLOps, etc.\nTambién como hobby me gusta programar pequeños videojuegos, algunos de ellos con el motor gráfico de uso profesional Unity.\nAgunos de ellos están publicados en sitios web como itch.io\n\n\nMis juegos publicados en itchio.com\nUn Pacman jugable online"
+    "text": "Soy un entusiasta del mundo de la programación. He aprendido de forma autodidacta y mediante formaciones especializadas a desplegar proyectos web con diversas tecnologías, principalmente en los entornos de spring y node.js.\nDomino varios lenguajes de programación como java, javascript, C# y sobre todo python, mediante el cual me he introducido en el Machine Learning, Deep Learning, agentes y automatizaciones IA, MLOps, etc.\nTambién como hobby me gusta programar pequeños videojuegos, algunos de ellos con el motor gráfico de uso profesional Unity.\nAgunos de ellos están publicados en sitios web como itch.io\n\n\nUn Pacman jugable online\nMis juegos publicados en itchio.com"
   },
   {
     "objectID": "proyectos/agente-ia.html#el-problema",
