@@ -242,7 +242,7 @@
     "href": "index.html#proyectos",
     "title": "Juan Eguía Abad · IA y Data Science",
     "section": "Proyectos",
-    "text": "Proyectos\nAquí puedes ver algunos de mis proyectos recientes relacionados con la implementación de IA.\nVer mis proyectos"
+    "text": "Proyectos\nAquí se pueden ver algunos de mis proyectos recientes relacionados con la implementación de IA.\nVer mis proyectos"
   },
   {
     "objectID": "index.html#contacto",
@@ -256,7 +256,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Soy un entusiasta del mundo de la programación. He aprendido de forma autodidacta y mediante formaciones especializadas a desplegar proyectos web con diversas tecnologías, principalmente en los entornos de spring y node.js.\nDomino varios lenguajes de programación como java, javascript, C# y sobre todo python, mediante el cual me he introducido en el Machine Learning, Deep Learning, agentes y automatizaciones IA, MLOps, etc.\nTambién como hobby me gusta programar pequeños videojuegos, algunos con el motor gráfico de uso profesional Unity, otros en diferentes lenguajes como python, javascript, etc.\nAgunos de ellos están publicados en sitios web como itch.io\n\n\nMis juegos publicados en itchio.com"
+    "text": "Soy un entusiasta del mundo de la programación. He aprendido de forma autodidacta y mediante formaciones especializadas a desplegar proyectos web con diversas tecnologías, principalmente en los entornos de spring y node.js.\nDomino varios lenguajes de programación como java, javascript, C# y sobre todo python, mediante el cual me he introducido en el Machine Learning, Deep Learning, agentes y automatizaciones IA, MLOps, etc.\nTambién como hobby me gusta programar pequeños videojuegos, algunos de ellos con el motor gráfico de uso profesional Unity.\nAgunos de ellos están publicados en sitios web como itch.io\n\n\nMis juegos publicados en itchio.com\nUn Pacman jugable online"
   },
   {
     "objectID": "proyectos/agente-ia.html#el-problema",

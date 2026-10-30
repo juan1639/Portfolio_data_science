@@ -12,10 +12,11 @@ Soy un entusiasta del mundo de la programación. He aprendido de forma autodidac
 
 Domino varios lenguajes de programación como java, javascript, C# y sobre todo **python**, mediante el cual me he introducido en el **Machine Learning**, **Deep Learning**, **agentes y automatizaciones IA**, **MLOps**, etc.
 
-También como hobby me gusta programar pequeños videojuegos, algunos con el motor gráfico de uso profesional Unity, otros en diferentes lenguajes como python, javascript, etc.
+También como hobby me gusta programar pequeños videojuegos, algunos de ellos con el motor gráfico de uso profesional Unity.
 
 Agunos de ellos están publicados en sitios web como itch.io
 
 <br>
 
 - [Mis juegos publicados en itchio.com](https://juan1639.itch.io/){target="_blank" rel="noopener"}
+- [Un Pacman jugable online](https://juan1639.itch.io/PacClon-vite-phaser){target="_blank" rel="noopener"}
