@@ -26,7 +26,9 @@ Estoy finalizando la formación **Técnico especialista en IA** de *VASS Univers
 
 ## Base técnica
 
-Vengo del desarrollo web, con formación autodidacta y especializada, y eso me permite conectar los modelos con aplicaciones reales:
+Antes de formarme en IA, principalmente me interesé por el desarrollo web, con formaciones en Lanbide y también de forma autodidacta.
+
+Eso me permite conectar los modelos con aplicaciones reales:
 
 - **IA / datos:** Python, pandas, scikit-learn
 - **Backend:** Java y Spring Boot, Node.js, SQL
