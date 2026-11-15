@@ -1,0 +1,137 @@
+---
+title: "Predicción del rendimiento académico"
+description: "Aplicación web desplegada que estima la nota del examen de un estudiante a partir de sus hábitos (estudio, sueño, redes sociales...), con un modelo en producción mediante CI/CD."
+categories: [MLOps, React, Node.js, FastAPI]
+order: 6
+image: ../img/img-project-students.jpg
+---
+
+<br>
+
+## El problema
+
+¿Cuánto influyen los hábitos de un estudiante en su nota? Este proyecto es una
+**aplicación web completa y desplegada** en la que el usuario rellena un formulario
+con los datos de un estudiante y obtiene la **nota estimada del examen (0–100)**.
+
+El formulario pide 11 variables, agrupadas en:
+
+- **Datos personales**: edad y sexo.
+- **Hábitos**: horas de estudio, de sueño y en redes sociales al día, y horas de
+  ejercicio a la semana.
+- **En clase**: porcentaje de asistencia y de trabajos entregados.
+- **Situación**: acceso a internet, trabajo a tiempo parcial y nivel de estrés.
+
+El resultado se muestra como una nota y un nivel de **rendimiento bajo, medio o
+alto**, según los cuartiles de las notas del dataset. Cada predicción se guarda en
+un historial.
+
+El modelo se entrena con el dataset *Student lifestyle & academic performance* de
+Kaggle (1.500 estudiantes tras eliminar duplicados). Se descartan las columnas
+`cgpa` y `academic_performance`: son otras notas del estudiante y usarlas sería
+**data leakage**.
+
+::: {.callout-note}
+El dataset parece sintético: casi toda la nota la explican las horas de estudio,
+las redes sociales, la asistencia y los trabajos entregados. Es un proyecto para
+aprender a llevar un modelo a producción, no una evaluación real de estudiantes.
+:::
+
+<br>
+
+## Arquitectura
+
+El proyecto está formado por **tres servicios desplegados por separado**:
+
+```{mermaid}
+flowchart LR
+    A["Frontend<br/>React + Vite<br/>(Vercel)"] -- "POST /api/predicciones" --> B["Backend<br/>Node.js + Express<br/>(Render)"]
+    B -- "POST /predict" --> C["API del modelo<br/>FastAPI + MLflow<br/>(Render)"]
+    B --> D[("Historial<br/>SQLite")]
+```
+
+1. **Frontend (React)**: genera el formulario a partir de la definición de las
+   variables que le da el backend, muestra la nota con una escala de colores y el
+   historial de predicciones.
+2. **Backend (Node.js)**: actúa de **intermediario**. Valida los datos con los mismos
+   límites que la API del modelo (y devuelve los errores en español), avisa si un
+   valor está fuera del rango visto en el entrenamiento, reenvía la petición a la API
+   del modelo y guarda la entrada y la predicción en SQLite. El navegador nunca habla
+   directamente con el modelo.
+3. **API del modelo (FastAPI)**: sirve la versión del modelo marcada como
+   **champion** en el *Model Registry* de MLflow, y la reentrena y redespliega
+   automáticamente con un pipeline de CI/CD.
+
+<br>
+
+## El modelo y el pipeline MLOps
+
+Con cada `git push` en el repositorio del modelo, **GitHub Actions** ejecuta todo
+el ciclo de vida:
+
+```{mermaid}
+flowchart TD
+    A["git push"] --> B["ruff + pytest"]
+    B --> C["Datos<br/>carga · validación · preprocesado"]
+    C --> D["Entrenamiento<br/>3 modelos registrados en MLflow"]
+    D --> E["Model Registry<br/>mejor modelo → challenger"]
+    E --> F{"¿Supera el quality gate<br/>y no es peor que el champion?"}
+    F -- "no supera el gate" --> X["Pipeline detenido<br/>(sigue el modelo anterior)"]
+    F -- "sí" --> G["challenger → champion"]
+    G --> H["Imagen Docker → GHCR → Render"]
+```
+
+- **Preprocesado dentro del modelo**: cada modelo es un `Pipeline` de scikit-learn
+  que rellena los valores vacíos con la mediana y codifica las variables
+  categóricas. Así la API recibe valores reales (`"Female"`, `4.5` horas...) y el
+  modelo registrado es exactamente el que se usa al predecir.
+- **Champion vs challenger**: el nuevo modelo solo sustituye al de producción si
+  supera el *quality gate* (**RMSE < 10 y R² > 0.50**) y no es peor que el actual.
+- **Datos versionados**: cada entrenamiento guarda un hash del dataset y la división
+  train/test es estable, de modo que añadir datos nuevos no cambia la evaluación de
+  los anteriores y la comparación entre modelos es justa.
+- **Monitorización**: la API registra cada predicción y avisa cuando una entrada
+  está lejos de lo que el modelo vio al entrenar.
+
+<br>
+
+## Resultados
+
+Resultados en el conjunto de test (315 estudiantes):
+
+| Modelo | RMSE | MAE | R² |
+|---|---|---|---|
+| Linear Regression | 10.06 | 6.72 | 0.505 |
+| Random Forest | 8.29 | 6.69 | 0.663 |
+| **Gradient Boosting** | **8.02** | **6.46** | **0.685** |
+
+El modelo en producción es el **Gradient Boosting**, con un error típico de unos
+**±8 puntos** sobre 100. Como referencia, un modelo que predijera siempre la nota
+media tendría un RMSE de unos 14.4 y un R² de 0.
+
+<br>
+
+## Stack
+
+| Componente | Tecnología |
+|---|---|
+| Frontend | React 19 + Vite, desplegado en **Vercel** |
+| Backend | Node.js + Express + SQLite, desplegado en **Render** |
+| Modelo | Python, scikit-learn (Gradient Boosting) |
+| Seguimiento y registro de modelos | **MLflow** (Experiment Tracking + Model Registry) |
+| API del modelo | **FastAPI** + Pydantic |
+| CI/CD | **GitHub Actions** → Docker → GitHub Container Registry → **Render** |
+| Calidad | pytest + ruff |
+
+<br>
+
+## Código y demo
+
+- [Probar la aplicación](https://mi-web-vite-students.vercel.app/){target="_blank" rel="noopener"}
+- [Repositorio de la web (React + Node.js)](https://github.com/juan1639/mi-web-vite-students){target="_blank" rel="noopener"}
+- [Repositorio del modelo (MLOps)](https://github.com/juan1639/mi-web-fastapi-students){target="_blank" rel="noopener"}
+
+::: {.callout-tip}
+Los servicios usan el plan gratuito de Render, que se duerme tras un rato sin uso:
+la primera predicción puede tardar hasta un minuto.
+:::

@@ -147,32 +147,109 @@
     "text": "Invocamos la función creada anteriormente:\n(Una vez por cada modelo que queramos entrenar)\n\nentrenar_modelo(\"DECISION TREE\", dt_model)\nentrenar_modelo(\"RANDOM FOREST\", rf_model)\n\n=======================================================\n--- MÉTRICAS DECISION TREE ---\n=======================================================\n              precision    recall  f1-score   support\n\n          no       0.93      0.93      0.93      7971\n         yes       0.47      0.47      0.47      1072\n\n    accuracy                           0.88      9043\n   macro avg       0.70      0.70      0.70      9043\nweighted avg       0.88      0.88      0.88      9043\n\n--- CONFUSION MATRIX (DECISION TREE) ---\n[[7411  560]\n [ 567  505]]\n\n\n=======================================================\n--- MÉTRICAS RANDOM FOREST ---\n=======================================================\n              precision    recall  f1-score   support\n\n          no       0.97      0.76      0.85      7971\n         yes       0.31      0.80      0.45      1072\n\n    accuracy                           0.77      9043\n   macro avg       0.64      0.78      0.65      9043\nweighted avg       0.89      0.77      0.81      9043\n\n--- CONFUSION MATRIX (RANDOM FOREST) ---\n[[6097 1874]\n [ 216  856]]\n\n\n\n\narray(['no', 'no', 'no', ..., 'yes', 'yes', 'no'], dtype=object)"
   },
   {
-    "objectID": "proyectos/marketing-bancario.html#el-problema",
-    "href": "proyectos/marketing-bancario.html#el-problema",
-    "title": "Marketing bancario con Machine Learning",
+    "objectID": "proyectos/mlops.html#el-problema",
+    "href": "proyectos/mlops.html#el-problema",
+    "title": "MLOps: del modelo a producción",
     "section": "El problema",
-    "text": "El problema\nUn banco quiere dirigir su campaña telefónica solo a los clientes con más probabilidad de contratar un depósito a plazo, para no gastar llamadas (ni molestar) en los que no lo harán."
+    "text": "El problema\nEntrenar un modelo en un notebook es solo la mitad del trabajo: para que sea útil tiene que estar disponible para otras aplicaciones, y debe poder actualizarse sin pasos manuales que introduzcan errores.\nEn este proyecto llevo a producción un modelo de regresión que predice la progresión de la diabetes a partir de 10 variables clínicas (edad, sexo, IMC, presión arterial y seis mediciones de suero sanguíneo), usando el dataset diabetes de scikit-learn.\nEl objetivo es que un simple git push ponga en marcha todo el ciclo de vida del modelo, sin intervención manual:\n\nDatos: carga, validación y preprocesado.\nEntrenamiento: se comparan tres modelos (Linear Regression, Random Forest y Gradient Boosting) y cada experimento queda registrado en MLflow con sus parámetros y métricas.\nRegistro y evaluación: el mejor modelo se registra en el Model Registry y pasa un quality gate (RMSE &lt; 60 y R² &gt; 0.44). Solo si lo supera recibe el alias champion; si no, el pipeline se detiene y no se despliega nada.\nEmpaquetado: el modelo champion y una API FastAPI se empaquetan en una imagen Docker, que se publica en GitHub Container Registry.\nDespliegue: Render descarga la nueva imagen y actualiza la API en producción automáticamente."
   },
   {
-    "objectID": "proyectos/marketing-bancario.html#los-datos",
-    "href": "proyectos/marketing-bancario.html#los-datos",
-    "title": "Marketing bancario con Machine Learning",
-    "section": "Los datos",
-    "text": "Los datos\nBank Marketing (UCI Machine Learning Repository), fichero bank-full.csv. Licencia CC BY 4.0.\nReferencia: S. Moro, P. Cortez y P. Rita (2014). A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems."
+    "objectID": "proyectos/mlops.html#arquitectura",
+    "href": "proyectos/mlops.html#arquitectura",
+    "title": "MLOps: del modelo a producción",
+    "section": "Arquitectura",
+    "text": "Arquitectura\n\n\n\n\n\nflowchart TD\n    A[\"git push&lt;br/&gt;a master\"] --&gt; B[\"Datos&lt;br/&gt;carga · validación · preprocesado\"]\n    B --&gt; C[\"Entrenamiento&lt;br/&gt;3 modelos registrados en MLflow\"]\n    C --&gt; D[\"Model Registry&lt;br/&gt;se registra el mejor modelo\"]\n    D --&gt; E{\"¿Supera el&lt;br/&gt;quality gate?\"}\n    E -- \"no\" --&gt; X[\"Pipeline detenido&lt;br/&gt;(no se despliega)\"]\n    E -- \"sí: alias champion\" --&gt; F[\"Imagen Docker&lt;br/&gt;FastAPI + modelo\"]\n    F --&gt; G[\"GitHub Container Registry\"]\n    G --&gt; H[\"Render&lt;br/&gt;API en producción\"]\n\n\n\n\n\n\n\n\n\n\n\n\n\nFase\nQué hace\n\n\n\n\nCI (entrenamiento continuo)\nDatos → entrenamiento → registro → evaluación\n\n\nCD (despliegue continuo)\nImagen Docker → GHCR → deploy hook de Render"
   },
   {
-    "objectID": "proyectos/marketing-bancario.html#enfoque",
-    "href": "proyectos/marketing-bancario.html#enfoque",
-    "title": "Marketing bancario con Machine Learning",
-    "section": "Enfoque",
-    "text": "Enfoque\n\n[Describe el preprocesado: codificación de categóricas, escalado, etc.]\nUso de Pipelines de scikit-learn para encadenar preprocesado y modelo y evitar fuga de datos.\n[Modelos comparados y cómo los evaluaste.]"
-  },
-  {
-    "objectID": "proyectos/marketing-bancario.html#código",
-    "href": "proyectos/marketing-bancario.html#código",
-    "title": "Marketing bancario con Machine Learning",
+    "objectID": "proyectos/mlops.html#código",
+    "href": "proyectos/mlops.html#código",
+    "title": "MLOps: del modelo a producción",
     "section": "Código",
-    "text": "Código\n\nVer el notebook completo\nRepositorio en GitHub"
+    "text": "Código\n\nLive API\nVer web\nRepositorio en GitHub\n\n\n\n\n\n\n\nNote\n\n\n\nLa API está en el plan gratuito de Render: si lleva un rato sin recibir visitas, la primera petición puede tardar alrededor de un minuto en responder."
+  },
+  {
+    "objectID": "proyectos/grand-slams.html",
+    "href": "proyectos/grand-slams.html",
+    "title": "Bar Chart Race: ganadores de Grand Slams",
+    "section": "",
+    "text": "Procesé un gran volumen de datos históricos para mostrar su evolución en un “Bar Chart Race” de 4 minutos."
+  },
+  {
+    "objectID": "proyectos/grand-slams.html#el-proyecto",
+    "href": "proyectos/grand-slams.html#el-proyecto",
+    "title": "Bar Chart Race: ganadores de Grand Slams",
+    "section": "",
+    "text": "Procesé un gran volumen de datos históricos para mostrar su evolución en un “Bar Chart Race” de 4 minutos."
+  },
+  {
+    "objectID": "proyectos/agente-ia.html#el-problema",
+    "href": "proyectos/agente-ia.html#el-problema",
+    "title": "Agente de IA que responde emails",
+    "section": "El problema",
+    "text": "El problema\nResponder correos es una tarea repetitiva que consume mucho tiempo.\nEste proyecto es un agente de IA en Python que se conecta a una cuenta de Gmail, revisa los correos no leídos de una lista de remitentes autorizados y redacta una respuesta adaptada al contenido y al idioma de cada mensaje, usando un modelo de lenguaje (gpt-4o-mini).\nAutomatizar el correo con IA tiene riesgos, así que el agente está diseñado para ser prudente:\n\nSupervisión humana por defecto: las respuestas se guardan como borradores en Gmail para revisarlas antes de enviarlas. El envío automático es opcional.\nSabe cuándo no responder: si el mensaje trata un tema sensible (dinero, cuestiones legales, quejas, urgencias o salud) o le falta información, no redacta nada y lo deja sin leer para que lo atienda una persona.\nNo inventa: tiene instrucciones de no añadir datos, fechas, precios ni compromisos que no aparezcan en el correo original.\nResistente a manipulaciones: trata el contenido del correo solo como datos, así que ignora instrucciones escritas dentro del mensaje (prompt injection).\nFiltra remitentes: ignora newsletters, listas de distribución y direcciones no-reply, y descarta correos que no superan la verificación DMARC (posibles remitentes falsificados).\nNo repite trabajo: registra los correos ya procesados para no gastar tokens dos veces en el mismo mensaje, y no marca nada como leído hasta haber respondido.\n\nEl resultado es un asistente que se encarga de las respuestas rutinarias y deja en manos del usuario las que requieren criterio humano."
+  },
+  {
+    "objectID": "proyectos/agente-ia.html#cómo-funciona",
+    "href": "proyectos/agente-ia.html#cómo-funciona",
+    "title": "Agente de IA que responde emails",
+    "section": "Cómo funciona",
+    "text": "Cómo funciona\n\n\n\n\n\nflowchart TD\n    A[\"Gmail (IMAP)&lt;br/&gt;correos no leídos\"] --&gt; B{\"¿Remitente en la&lt;br/&gt;lista autorizada?\"}\n    B -- \"no\" --&gt; Z[\"Se ignora\"]\n    B -- \"sí\" --&gt; C{\"¿Correo automático&lt;br/&gt;o no supera DMARC?\"}\n    C -- \"sí\" --&gt; Z\n    C -- \"no\" --&gt; D[\"Modelo de lenguaje&lt;br/&gt;gpt-4o-mini\"]\n    D --&gt; E{\"¿Puede responder?\"}\n    E -- \"no: tema sensible&lt;br/&gt;o falta información\" --&gt; R[\"Revisión humana&lt;br/&gt;(queda sin leer)\"]\n    E -- \"sí\" --&gt; F{\"Modo de respuesta\"}\n    F -- \"borrador\" --&gt; G[\"Borrador en Gmail\"]\n    F -- \"enviar\" --&gt; H[\"Envío por SMTP\"]\n\n\n\n\n\n\n\nBúsqueda: el agente se conecta a Gmail por IMAP y busca los correos no leídos de cada dirección de direcciones_email.txt. Los descarga sin marcarlos como leídos y descarta los que ya procesó en ejecuciones anteriores.\nFiltrado: ignora newsletters, listas de distribución, direcciones no-reply y correos que no superan la verificación DMARC.\nDecisión y redacción: envía el correo al modelo con unas instrucciones que le piden responder de forma profesional, en el mismo idioma, sin inventar datos y sin obedecer instrucciones escritas dentro del correo. El modelo devuelve una respuesta estructurada (validada con Pydantic):\n\n\n\nCampo\nContenido\n\n\n\n\npuede_responder\nTrue / False\n\n\nmotivo\nPor qué puede o no responder\n\n\ntexto\nEl cuerpo de la respuesta\n\n\n\nAcción:\n\nSi puede_responder es False, no hace nada y deja el correo sin leer para que lo atienda una persona.\nSi es True, añade asunto (Re: ...), firma y las cabeceras que mantienen el hilo de la conversación, y según la configuración guarda un borrador (opción por defecto) o envía la respuesta por SMTP.\n\nRegistro: anota el identificador de cada correo procesado para no gastar tokens dos veces en el mismo mensaje. Si un correo da error, se reintenta en la siguiente ejecución sin detener los demás."
+  },
+  {
+    "objectID": "proyectos/agente-ia.html#stack",
+    "href": "proyectos/agente-ia.html#stack",
+    "title": "Agente de IA que responde emails",
+    "section": "Stack",
+    "text": "Stack\n\n\n\n\n\n\n\nComponente\nTecnología\n\n\n\n\nLenguaje\nPython 3.10+\n\n\nModelo de lenguaje\nOpenAI gpt-4o-mini (temperatura 0.3) vía langchain-openai\n\n\nSalida estructurada\nPydantic + with_structured_output\n\n\nLectura de correo y borradores\nIMAP (imaplib)\n\n\nEnvío de correo\nSMTP (smtplib)\n\n\nConfiguración\npython-dotenv (credenciales en .env, fuera del código)"
+  },
+  {
+    "objectID": "proyectos/agente-ia.html#código",
+    "href": "proyectos/agente-ia.html#código",
+    "title": "Agente de IA que responde emails",
+    "section": "Código",
+    "text": "Código\n\nRepositorio en GitHub"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Sobre mí",
+    "section": "",
+    "text": "Soy un entusiasta del mundo de la programación. He aprendido de forma autodidacta y mediante formaciones especializadas a desplegar proyectos web con diversas tecnologías, principalmente en los entornos de spring y node.js.\nDomino varios lenguajes de programación como java, javascript, C# y sobre todo python, mediante el cual me he introducido en el Machine Learning, Deep Learning, agentes y automatizaciones IA, MLOps, etc.\nTambién como hobby me gusta programar pequeños videojuegos, algunos de ellos con el motor gráfico de uso profesional Unity.\nAgunos de ellos están publicados en sitios web como itch.io\n\n\nUn Pacman jugable online\nMis juegos publicados en itchio.com"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Juan Eguía Abad · IA y Data Science",
+    "section": "",
+    "text": "Estoy dando un paso estratégico en mi carrera hacia la implementación de IA en la empresa. Busco incorporarme a un proyecto donde pueda aportar tanto mi base de desarrollo como lo que estoy aprendiendo en IA, así como mis aptitudes adquiridas a lo largo de los años.\nMi experiencia profesional no tiene que ver con el mundo tecnológico, estuve trabajando como dependiente de comercio durante 11 años donde adquirí diferentes aptitudes que pueden extrapolarse a cualquier otro ámbito profesional, como son la atención al público (muchas veces bajo presión debido a un gran volumen de público en poco tiempo, etc.), atención a proveedores, gestión de devolución de no vendidos, reposición de productos en lineales, neveras, etc.\nEstoy finalizando la formación Técnico especialista en IA de VASS University, donde he trabajado:"
+  },
+  {
+    "objectID": "index.html#base-técnica",
+    "href": "index.html#base-técnica",
+    "title": "Juan Eguía Abad · IA y Data Science",
+    "section": "Base técnica",
+    "text": "Base técnica\nAntes de formarme en IA, principalmente me interesé por el desarrollo web, con formaciones en Lanbide y también de forma autodidacta.\nEso me permite conectar los modelos con aplicaciones reales:\n\nIA / datos: Python, pandas, scikit-learn\nBackend: Java y Spring Boot, Node.js, SQL\nFrontend: HTML, CSS, JavaScript y React\nHobby: pequeños videojuegos con Unity (C#)"
+  },
+  {
+    "objectID": "index.html#proyectos",
+    "href": "index.html#proyectos",
+    "title": "Juan Eguía Abad · IA y Data Science",
+    "section": "Proyectos",
+    "text": "Proyectos\nAquí se pueden ver algunos de mis proyectos recientes relacionados con la implementación de IA.\nVer mis proyectos"
+  },
+  {
+    "objectID": "index.html#contacto",
+    "href": "index.html#contacto",
+    "title": "Juan Eguía Abad · IA y Data Science",
+    "section": "Contacto",
+    "text": "Contacto\n\nLinkedIn GitHub"
+  },
+  {
+    "objectID": "proyectos.html",
+    "href": "proyectos.html",
+    "title": "Mis proyectos recientes",
+    "section": "",
+    "text": "Una selección de mis trabajos de Machine Learning, Deep Learning, IA generativa y MLOps. Cada proyecto incluye el problema, el enfoque, los resultados y el enlace al código.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMarketing bancario con Machine Learning\n\n\n\nMachine Learning\n\nscikit-learn\n\nPipelines\n\n\n\nModelo que predice qué clientes contratarán un depósito a plazo tras una campaña telefónica, construido con Pipelines de scikit-learn.\n\n\n\n\n\n\n\n\n\n\n\n\nAgente de IA que responde emails\n\n\n\nIA generativa\n\nAgentes\n\nPython\n\n\n\nAgente en Python que lee el correo de una lista de remitentes autorizados y redacta las respuestas con un modelo de lenguaje.\n\n\n\n\n\n\n\n\n\n\n\n\nMLOps: del modelo a producción\n\n\n\nMLOps\n\nDocker\n\nCI/CD\n\n\n\nPipeline que entrena, versiona y despliega un modelo de forma automática con entrenamiento continuo CI y despliegue continuo CD\n\n\n\n\n\n\n\n\n\n\n\n\nDeep Learning: reconocimiento de imágenes\n\n\n\nDeep Learning\n\nVisión por computador\n\n\n\nRed neuronal que clasifica imágenes de [tema del dataset] con una precisión de [X %].\n\n\n\n\n\n\n\n\n\n\n\n\nBar Chart Race: ganadores de Grand Slams\n\n\n\nVisualización de datos\n\nPython\n\n\n\nVídeo hecho a modo de entretenimiento de 4 minutos con la evolución histórica de los tenistas ganadores de Grand Slam.\n\n\n\n\n\n\n\n\n\n\n\n\nPredicción del rendimiento académico\n\n\n\nMLOps\n\nReact\n\nNode.js\n\nFastAPI\n\n\n\nAplicación web desplegada que estima la nota del examen de un estudiante a partir de sus hábitos (estudio, sueño, redes sociales…), con un modelo en producción mediante…\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "proyectos/deep-learning-imagenes.html#este-proyecto-está-en-construcción",
@@ -217,108 +294,73 @@
     "text": "Código"
   },
   {
-    "objectID": "proyectos.html",
-    "href": "proyectos.html",
-    "title": "Mis proyectos recientes",
-    "section": "",
-    "text": "Una selección de mis trabajos de Machine Learning, Deep Learning, IA generativa y MLOps. Cada proyecto incluye el problema, el enfoque, los resultados y el enlace al código.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMarketing bancario con Machine Learning\n\n\n\nMachine Learning\n\nscikit-learn\n\nPipelines\n\n\n\nModelo que predice qué clientes contratarán un depósito a plazo tras una campaña telefónica, construido con Pipelines de scikit-learn.\n\n\n\n\n\n\n\n\n\n\n\n\nAgente de IA que responde emails\n\n\n\nIA generativa\n\nAgentes\n\nPython\n\n\n\nAgente en Python que lee el correo de una lista de remitentes autorizados y redacta las respuestas con un modelo de lenguaje.\n\n\n\n\n\n\n\n\n\n\n\n\nMLOps: del modelo a producción\n\n\n\nMLOps\n\nDocker\n\nCI/CD\n\n\n\nPipeline que entrena, versiona y despliega un modelo de forma automática con entrenamiento continuo CI y despliegue continuo CD\n\n\n\n\n\n\n\n\n\n\n\n\nDeep Learning: reconocimiento de imágenes\n\n\n\nDeep Learning\n\nVisión por computador\n\n\n\nRed neuronal que clasifica imágenes de [tema del dataset] con una precisión de [X %].\n\n\n\n\n\n\n\n\n\n\n\n\nBar Chart Race: ganadores de Grand Slams\n\n\n\nVisualización de datos\n\nPython\n\n\n\nVídeo hecho a modo de entretenimiento de 4 minutos con la evolución histórica de los tenistas ganadores de Grand Slam.\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Juan Eguía Abad · IA y Data Science",
-    "section": "",
-    "text": "Estoy dando un paso estratégico en mi carrera hacia la implementación de IA en la empresa. Busco incorporarme a un proyecto donde pueda aportar tanto mi base de desarrollo como lo que estoy aprendiendo en IA, así como mis aptitudes adquiridas a lo largo de los años.\nMi experiencia profesional no tiene que ver con el mundo tecnológico, estuve trabajando como dependiente de comercio durante 11 años donde adquirí diferentes aptitudes que pueden extrapolarse a cualquier otro ámbito profesional, como son la atención al público (muchas veces bajo presión debido a un gran volumen de público en poco tiempo, etc.), atención a proveedores, gestión de devolución de no vendidos, reposición de productos en lineales, neveras, etc.\nEstoy finalizando la formación Técnico especialista en IA de VASS University, donde he trabajado:"
-  },
-  {
-    "objectID": "index.html#base-técnica",
-    "href": "index.html#base-técnica",
-    "title": "Juan Eguía Abad · IA y Data Science",
-    "section": "Base técnica",
-    "text": "Base técnica\nAntes de formarme en IA, principalmente me interesé por el desarrollo web, con formaciones en Lanbide y también de forma autodidacta.\nEso me permite conectar los modelos con aplicaciones reales:\n\nIA / datos: Python, pandas, scikit-learn\nBackend: Java y Spring Boot, Node.js, SQL\nFrontend: HTML, CSS, JavaScript y React\nHobby: pequeños videojuegos con Unity (C#)"
-  },
-  {
-    "objectID": "index.html#proyectos",
-    "href": "index.html#proyectos",
-    "title": "Juan Eguía Abad · IA y Data Science",
-    "section": "Proyectos",
-    "text": "Proyectos\nAquí se pueden ver algunos de mis proyectos recientes relacionados con la implementación de IA.\nVer mis proyectos"
-  },
-  {
-    "objectID": "index.html#contacto",
-    "href": "index.html#contacto",
-    "title": "Juan Eguía Abad · IA y Data Science",
-    "section": "Contacto",
-    "text": "Contacto\n\nLinkedIn GitHub"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Sobre mí",
-    "section": "",
-    "text": "Soy un entusiasta del mundo de la programación. He aprendido de forma autodidacta y mediante formaciones especializadas a desplegar proyectos web con diversas tecnologías, principalmente en los entornos de spring y node.js.\nDomino varios lenguajes de programación como java, javascript, C# y sobre todo python, mediante el cual me he introducido en el Machine Learning, Deep Learning, agentes y automatizaciones IA, MLOps, etc.\nTambién como hobby me gusta programar pequeños videojuegos, algunos de ellos con el motor gráfico de uso profesional Unity.\nAgunos de ellos están publicados en sitios web como itch.io\n\n\nUn Pacman jugable online\nMis juegos publicados en itchio.com"
-  },
-  {
-    "objectID": "proyectos/agente-ia.html#el-problema",
-    "href": "proyectos/agente-ia.html#el-problema",
-    "title": "Agente de IA que responde emails",
+    "objectID": "proyectos/marketing-bancario.html#el-problema",
+    "href": "proyectos/marketing-bancario.html#el-problema",
+    "title": "Marketing bancario con Machine Learning",
     "section": "El problema",
-    "text": "El problema\nResponder correos es una tarea repetitiva que consume mucho tiempo.\nEste proyecto es un agente de IA en Python que se conecta a una cuenta de Gmail, revisa los correos no leídos de una lista de remitentes autorizados y redacta una respuesta adaptada al contenido y al idioma de cada mensaje, usando un modelo de lenguaje (gpt-4o-mini).\nAutomatizar el correo con IA tiene riesgos, así que el agente está diseñado para ser prudente:\n\nSupervisión humana por defecto: las respuestas se guardan como borradores en Gmail para revisarlas antes de enviarlas. El envío automático es opcional.\nSabe cuándo no responder: si el mensaje trata un tema sensible (dinero, cuestiones legales, quejas, urgencias o salud) o le falta información, no redacta nada y lo deja sin leer para que lo atienda una persona.\nNo inventa: tiene instrucciones de no añadir datos, fechas, precios ni compromisos que no aparezcan en el correo original.\nResistente a manipulaciones: trata el contenido del correo solo como datos, así que ignora instrucciones escritas dentro del mensaje (prompt injection).\nFiltra remitentes: ignora newsletters, listas de distribución y direcciones no-reply, y descarta correos que no superan la verificación DMARC (posibles remitentes falsificados).\nNo repite trabajo: registra los correos ya procesados para no gastar tokens dos veces en el mismo mensaje, y no marca nada como leído hasta haber respondido.\n\nEl resultado es un asistente que se encarga de las respuestas rutinarias y deja en manos del usuario las que requieren criterio humano."
+    "text": "El problema\nUn banco quiere dirigir su campaña telefónica solo a los clientes con más probabilidad de contratar un depósito a plazo, para no gastar llamadas (ni molestar) en los que no lo harán."
   },
   {
-    "objectID": "proyectos/agente-ia.html#cómo-funciona",
-    "href": "proyectos/agente-ia.html#cómo-funciona",
-    "title": "Agente de IA que responde emails",
-    "section": "Cómo funciona",
-    "text": "Cómo funciona\n\n\n\n\n\nflowchart TD\n    A[\"Gmail (IMAP)&lt;br/&gt;correos no leídos\"] --&gt; B{\"¿Remitente en la&lt;br/&gt;lista autorizada?\"}\n    B -- \"no\" --&gt; Z[\"Se ignora\"]\n    B -- \"sí\" --&gt; C{\"¿Correo automático&lt;br/&gt;o no supera DMARC?\"}\n    C -- \"sí\" --&gt; Z\n    C -- \"no\" --&gt; D[\"Modelo de lenguaje&lt;br/&gt;gpt-4o-mini\"]\n    D --&gt; E{\"¿Puede responder?\"}\n    E -- \"no: tema sensible&lt;br/&gt;o falta información\" --&gt; R[\"Revisión humana&lt;br/&gt;(queda sin leer)\"]\n    E -- \"sí\" --&gt; F{\"Modo de respuesta\"}\n    F -- \"borrador\" --&gt; G[\"Borrador en Gmail\"]\n    F -- \"enviar\" --&gt; H[\"Envío por SMTP\"]\n\n\n\n\n\n\n\nBúsqueda: el agente se conecta a Gmail por IMAP y busca los correos no leídos de cada dirección de direcciones_email.txt. Los descarga sin marcarlos como leídos y descarta los que ya procesó en ejecuciones anteriores.\nFiltrado: ignora newsletters, listas de distribución, direcciones no-reply y correos que no superan la verificación DMARC.\nDecisión y redacción: envía el correo al modelo con unas instrucciones que le piden responder de forma profesional, en el mismo idioma, sin inventar datos y sin obedecer instrucciones escritas dentro del correo. El modelo devuelve una respuesta estructurada (validada con Pydantic):\n\n\n\nCampo\nContenido\n\n\n\n\npuede_responder\nTrue / False\n\n\nmotivo\nPor qué puede o no responder\n\n\ntexto\nEl cuerpo de la respuesta\n\n\n\nAcción:\n\nSi puede_responder es False, no hace nada y deja el correo sin leer para que lo atienda una persona.\nSi es True, añade asunto (Re: ...), firma y las cabeceras que mantienen el hilo de la conversación, y según la configuración guarda un borrador (opción por defecto) o envía la respuesta por SMTP.\n\nRegistro: anota el identificador de cada correo procesado para no gastar tokens dos veces en el mismo mensaje. Si un correo da error, se reintenta en la siguiente ejecución sin detener los demás."
+    "objectID": "proyectos/marketing-bancario.html#los-datos",
+    "href": "proyectos/marketing-bancario.html#los-datos",
+    "title": "Marketing bancario con Machine Learning",
+    "section": "Los datos",
+    "text": "Los datos\nBank Marketing (UCI Machine Learning Repository), fichero bank-full.csv. Licencia CC BY 4.0.\nReferencia: S. Moro, P. Cortez y P. Rita (2014). A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems."
   },
   {
-    "objectID": "proyectos/agente-ia.html#stack",
-    "href": "proyectos/agente-ia.html#stack",
-    "title": "Agente de IA que responde emails",
-    "section": "Stack",
-    "text": "Stack\n\n\n\n\n\n\n\nComponente\nTecnología\n\n\n\n\nLenguaje\nPython 3.10+\n\n\nModelo de lenguaje\nOpenAI gpt-4o-mini (temperatura 0.3) vía langchain-openai\n\n\nSalida estructurada\nPydantic + with_structured_output\n\n\nLectura de correo y borradores\nIMAP (imaplib)\n\n\nEnvío de correo\nSMTP (smtplib)\n\n\nConfiguración\npython-dotenv (credenciales en .env, fuera del código)"
+    "objectID": "proyectos/marketing-bancario.html#enfoque",
+    "href": "proyectos/marketing-bancario.html#enfoque",
+    "title": "Marketing bancario con Machine Learning",
+    "section": "Enfoque",
+    "text": "Enfoque\n\n[Describe el preprocesado: codificación de categóricas, escalado, etc.]\nUso de Pipelines de scikit-learn para encadenar preprocesado y modelo y evitar fuga de datos.\n[Modelos comparados y cómo los evaluaste.]"
   },
   {
-    "objectID": "proyectos/agente-ia.html#código",
-    "href": "proyectos/agente-ia.html#código",
-    "title": "Agente de IA que responde emails",
+    "objectID": "proyectos/marketing-bancario.html#código",
+    "href": "proyectos/marketing-bancario.html#código",
+    "title": "Marketing bancario con Machine Learning",
     "section": "Código",
-    "text": "Código\n\nRepositorio en GitHub"
+    "text": "Código\n\nVer el notebook completo\nRepositorio en GitHub"
   },
   {
-    "objectID": "proyectos/grand-slams.html",
-    "href": "proyectos/grand-slams.html",
-    "title": "Bar Chart Race: ganadores de Grand Slams",
-    "section": "",
-    "text": "Procesé un gran volumen de datos históricos para mostrar su evolución en un “Bar Chart Race” de 4 minutos."
-  },
-  {
-    "objectID": "proyectos/grand-slams.html#el-proyecto",
-    "href": "proyectos/grand-slams.html#el-proyecto",
-    "title": "Bar Chart Race: ganadores de Grand Slams",
-    "section": "",
-    "text": "Procesé un gran volumen de datos históricos para mostrar su evolución en un “Bar Chart Race” de 4 minutos."
-  },
-  {
-    "objectID": "proyectos/mlops.html#el-problema",
-    "href": "proyectos/mlops.html#el-problema",
-    "title": "MLOps: del modelo a producción",
+    "objectID": "proyectos/rendimiento-academico.html#el-problema",
+    "href": "proyectos/rendimiento-academico.html#el-problema",
+    "title": "Predicción del rendimiento académico",
     "section": "El problema",
-    "text": "El problema\nEntrenar un modelo en un notebook es solo la mitad del trabajo: para que sea útil tiene que estar disponible para otras aplicaciones, y debe poder actualizarse sin pasos manuales que introduzcan errores.\nEn este proyecto llevo a producción un modelo de regresión que predice la progresión de la diabetes a partir de 10 variables clínicas (edad, sexo, IMC, presión arterial y seis mediciones de suero sanguíneo), usando el dataset diabetes de scikit-learn.\nEl objetivo es que un simple git push ponga en marcha todo el ciclo de vida del modelo, sin intervención manual:\n\nDatos: carga, validación y preprocesado.\nEntrenamiento: se comparan tres modelos (Linear Regression, Random Forest y Gradient Boosting) y cada experimento queda registrado en MLflow con sus parámetros y métricas.\nRegistro y evaluación: el mejor modelo se registra en el Model Registry y pasa un quality gate (RMSE &lt; 60 y R² &gt; 0.44). Solo si lo supera recibe el alias champion; si no, el pipeline se detiene y no se despliega nada.\nEmpaquetado: el modelo champion y una API FastAPI se empaquetan en una imagen Docker, que se publica en GitHub Container Registry.\nDespliegue: Render descarga la nueva imagen y actualiza la API en producción automáticamente."
+    "text": "El problema\n¿Cuánto influyen los hábitos de un estudiante en su nota? Este proyecto es una aplicación web completa y desplegada en la que el usuario rellena un formulario con los datos de un estudiante y obtiene la nota estimada del examen (0–100).\nEl formulario pide 11 variables, agrupadas en:\n\nDatos personales: edad y sexo.\nHábitos: horas de estudio, de sueño y en redes sociales al día, y horas de ejercicio a la semana.\nEn clase: porcentaje de asistencia y de trabajos entregados.\nSituación: acceso a internet, trabajo a tiempo parcial y nivel de estrés.\n\nEl resultado se muestra como una nota y un nivel de rendimiento bajo, medio o alto, según los cuartiles de las notas del dataset. Cada predicción se guarda en un historial.\nEl modelo se entrena con el dataset Student lifestyle & academic performance de Kaggle (1.500 estudiantes tras eliminar duplicados). Se descartan las columnas cgpa y academic_performance: son otras notas del estudiante y usarlas sería data leakage.\n\n\n\n\n\n\nNote\n\n\n\nEl dataset parece sintético: casi toda la nota la explican las horas de estudio, las redes sociales, la asistencia y los trabajos entregados. Es un proyecto para aprender a llevar un modelo a producción, no una evaluación real de estudiantes."
   },
   {
-    "objectID": "proyectos/mlops.html#arquitectura",
-    "href": "proyectos/mlops.html#arquitectura",
-    "title": "MLOps: del modelo a producción",
+    "objectID": "proyectos/rendimiento-academico.html#arquitectura",
+    "href": "proyectos/rendimiento-academico.html#arquitectura",
+    "title": "Predicción del rendimiento académico",
     "section": "Arquitectura",
-    "text": "Arquitectura\n\n\n\n\n\nflowchart TD\n    A[\"git push&lt;br/&gt;a master\"] --&gt; B[\"Datos&lt;br/&gt;carga · validación · preprocesado\"]\n    B --&gt; C[\"Entrenamiento&lt;br/&gt;3 modelos registrados en MLflow\"]\n    C --&gt; D[\"Model Registry&lt;br/&gt;se registra el mejor modelo\"]\n    D --&gt; E{\"¿Supera el&lt;br/&gt;quality gate?\"}\n    E -- \"no\" --&gt; X[\"Pipeline detenido&lt;br/&gt;(no se despliega)\"]\n    E -- \"sí: alias champion\" --&gt; F[\"Imagen Docker&lt;br/&gt;FastAPI + modelo\"]\n    F --&gt; G[\"GitHub Container Registry\"]\n    G --&gt; H[\"Render&lt;br/&gt;API en producción\"]\n\n\n\n\n\n\n\n\n\n\n\n\n\nFase\nQué hace\n\n\n\n\nCI (entrenamiento continuo)\nDatos → entrenamiento → registro → evaluación\n\n\nCD (despliegue continuo)\nImagen Docker → GHCR → deploy hook de Render"
+    "text": "Arquitectura\nEl proyecto está formado por tres servicios desplegados por separado:\n\n\n\n\n\nflowchart LR\n    A[\"Frontend&lt;br/&gt;React + Vite&lt;br/&gt;(Vercel)\"] -- \"POST /api/predicciones\" --&gt; B[\"Backend&lt;br/&gt;Node.js + Express&lt;br/&gt;(Render)\"]\n    B -- \"POST /predict\" --&gt; C[\"API del modelo&lt;br/&gt;FastAPI + MLflow&lt;br/&gt;(Render)\"]\n    B --&gt; D[(\"Historial&lt;br/&gt;SQLite\")]\n\n\n\n\n\n\n\nFrontend (React): genera el formulario a partir de la definición de las variables que le da el backend, muestra la nota con una escala de colores y el historial de predicciones.\nBackend (Node.js): actúa de intermediario. Valida los datos con los mismos límites que la API del modelo (y devuelve los errores en español), avisa si un valor está fuera del rango visto en el entrenamiento, reenvía la petición a la API del modelo y guarda la entrada y la predicción en SQLite. El navegador nunca habla directamente con el modelo.\nAPI del modelo (FastAPI): sirve la versión del modelo marcada como champion en el Model Registry de MLflow, y la reentrena y redespliega automáticamente con un pipeline de CI/CD."
   },
   {
-    "objectID": "proyectos/mlops.html#código",
-    "href": "proyectos/mlops.html#código",
-    "title": "MLOps: del modelo a producción",
-    "section": "Código",
-    "text": "Código\n\nLive API\nVer web\nRepositorio en GitHub\n\n\n\n\n\n\n\nNote\n\n\n\nLa API está en el plan gratuito de Render: si lleva un rato sin recibir visitas, la primera petición puede tardar alrededor de un minuto en responder."
+    "objectID": "proyectos/rendimiento-academico.html#el-modelo-y-el-pipeline-mlops",
+    "href": "proyectos/rendimiento-academico.html#el-modelo-y-el-pipeline-mlops",
+    "title": "Predicción del rendimiento académico",
+    "section": "El modelo y el pipeline MLOps",
+    "text": "El modelo y el pipeline MLOps\nCon cada git push en el repositorio del modelo, GitHub Actions ejecuta todo el ciclo de vida:\n\n\n\n\n\nflowchart TD\n    A[\"git push\"] --&gt; B[\"ruff + pytest\"]\n    B --&gt; C[\"Datos&lt;br/&gt;carga · validación · preprocesado\"]\n    C --&gt; D[\"Entrenamiento&lt;br/&gt;3 modelos registrados en MLflow\"]\n    D --&gt; E[\"Model Registry&lt;br/&gt;mejor modelo → challenger\"]\n    E --&gt; F{\"¿Supera el quality gate&lt;br/&gt;y no es peor que el champion?\"}\n    F -- \"no supera el gate\" --&gt; X[\"Pipeline detenido&lt;br/&gt;(sigue el modelo anterior)\"]\n    F -- \"sí\" --&gt; G[\"challenger → champion\"]\n    G --&gt; H[\"Imagen Docker → GHCR → Render\"]\n\n\n\n\n\n\n\nPreprocesado dentro del modelo: cada modelo es un Pipeline de scikit-learn que rellena los valores vacíos con la mediana y codifica las variables categóricas. Así la API recibe valores reales (\"Female\", 4.5 horas…) y el modelo registrado es exactamente el que se usa al predecir.\nChampion vs challenger: el nuevo modelo solo sustituye al de producción si supera el quality gate (RMSE &lt; 10 y R² &gt; 0.50) y no es peor que el actual.\nDatos versionados: cada entrenamiento guarda un hash del dataset y la división train/test es estable, de modo que añadir datos nuevos no cambia la evaluación de los anteriores y la comparación entre modelos es justa.\nMonitorización: la API registra cada predicción y avisa cuando una entrada está lejos de lo que el modelo vio al entrenar."
+  },
+  {
+    "objectID": "proyectos/rendimiento-academico.html#resultados",
+    "href": "proyectos/rendimiento-academico.html#resultados",
+    "title": "Predicción del rendimiento académico",
+    "section": "Resultados",
+    "text": "Resultados\nResultados en el conjunto de test (315 estudiantes):\n\n\n\nModelo\nRMSE\nMAE\nR²\n\n\n\n\nLinear Regression\n10.06\n6.72\n0.505\n\n\nRandom Forest\n8.29\n6.69\n0.663\n\n\nGradient Boosting\n8.02\n6.46\n0.685\n\n\n\nEl modelo en producción es el Gradient Boosting, con un error típico de unos ±8 puntos sobre 100. Como referencia, un modelo que predijera siempre la nota media tendría un RMSE de unos 14.4 y un R² de 0."
+  },
+  {
+    "objectID": "proyectos/rendimiento-academico.html#stack",
+    "href": "proyectos/rendimiento-academico.html#stack",
+    "title": "Predicción del rendimiento académico",
+    "section": "Stack",
+    "text": "Stack\n\n\n\n\n\n\n\nComponente\nTecnología\n\n\n\n\nFrontend\nReact 19 + Vite, desplegado en Vercel\n\n\nBackend\nNode.js + Express + SQLite, desplegado en Render\n\n\nModelo\nPython, scikit-learn (Gradient Boosting)\n\n\nSeguimiento y registro de modelos\nMLflow (Experiment Tracking + Model Registry)\n\n\nAPI del modelo\nFastAPI + Pydantic\n\n\nCI/CD\nGitHub Actions → Docker → GitHub Container Registry → Render\n\n\nCalidad\npytest + ruff"
+  },
+  {
+    "objectID": "proyectos/rendimiento-academico.html#código-y-demo",
+    "href": "proyectos/rendimiento-academico.html#código-y-demo",
+    "title": "Predicción del rendimiento académico",
+    "section": "Código y demo",
+    "text": "Código y demo\n\nProbar la aplicación\nRepositorio de la web (React + Node.js)\nRepositorio del modelo (MLOps)\n\n\n\n\n\n\n\nTip\n\n\n\nLos servicios usan el plan gratuito de Render, que se duerme tras un rato sin uso: la primera predicción puede tardar hasta un minuto."
   }
 ]
