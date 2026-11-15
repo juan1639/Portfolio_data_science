@@ -170,14 +170,14 @@
   {
     "objectID": "proyectos/grand-slams.html",
     "href": "proyectos/grand-slams.html",
-    "title": "Bar Chart Race: ganadores de Grand Slams",
+    "title": "Bar Chart Race (Vídeo): ganadores de Grand Slams",
     "section": "",
     "text": "Procesé un gran volumen de datos históricos para mostrar su evolución en un “Bar Chart Race” de 4 minutos."
   },
   {
     "objectID": "proyectos/grand-slams.html#el-proyecto",
     "href": "proyectos/grand-slams.html#el-proyecto",
-    "title": "Bar Chart Race: ganadores de Grand Slams",
+    "title": "Bar Chart Race (Vídeo): ganadores de Grand Slams",
     "section": "",
     "text": "Procesé un gran volumen de datos históricos para mostrar su evolución en un “Bar Chart Race” de 4 minutos."
   },
@@ -249,7 +249,7 @@
     "href": "proyectos.html",
     "title": "Mis proyectos recientes",
     "section": "",
-    "text": "Una selección de mis trabajos de Machine Learning, Deep Learning, IA generativa y MLOps. Cada proyecto incluye el problema, el enfoque, los resultados y el enlace al código.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMarketing bancario con Machine Learning\n\n\n\nMachine Learning\n\nscikit-learn\n\nPipelines\n\n\n\nModelo que predice qué clientes contratarán un depósito a plazo tras una campaña telefónica, construido con Pipelines de scikit-learn.\n\n\n\n\n\n\n\n\n\n\n\n\nAgente de IA que responde emails\n\n\n\nIA generativa\n\nAgentes\n\nPython\n\n\n\nAgente en Python que lee el correo de una lista de remitentes autorizados y redacta las respuestas con un modelo de lenguaje.\n\n\n\n\n\n\n\n\n\n\n\n\nMLOps: del modelo a producción\n\n\n\nMLOps\n\nDocker\n\nCI/CD\n\n\n\nPipeline que entrena, versiona y despliega un modelo de forma automática con entrenamiento continuo CI y despliegue continuo CD\n\n\n\n\n\n\n\n\n\n\n\n\nDeep Learning: reconocimiento de imágenes\n\n\n\nDeep Learning\n\nVisión por computador\n\n\n\nRed neuronal que clasifica imágenes de [tema del dataset] con una precisión de [X %].\n\n\n\n\n\n\n\n\n\n\n\n\nBar Chart Race: ganadores de Grand Slams\n\n\n\nVisualización de datos\n\nPython\n\n\n\nVídeo hecho a modo de entretenimiento de 4 minutos con la evolución histórica de los tenistas ganadores de Grand Slam.\n\n\n\n\n\n\n\n\n\n\n\n\nPredicción del rendimiento académico\n\n\n\nMLOps\n\nReact\n\nNode.js\n\nFastAPI\n\n\n\nAplicación web desplegada que estima la nota del examen de un estudiante a partir de sus hábitos (estudio, sueño, redes sociales…), con un modelo en producción mediante…\n\n\n\n\n\nNo matching items"
+    "text": "Una selección de mis trabajos de Machine Learning, Deep Learning, IA generativa y MLOps. Cada proyecto incluye el problema, el enfoque, los resultados y el enlace al código.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMarketing bancario con Machine Learning\n\n\n\nMachine Learning\n\nscikit-learn\n\nPipelines\n\n\n\nModelo que predice qué clientes contratarán un depósito a plazo tras una campaña telefónica, construido con Pipelines de scikit-learn.\n\n\n\n\n\n\n\n\n\n\n\n\nAgente de IA que responde emails\n\n\n\nIA generativa\n\nAgentes\n\nPython\n\n\n\nAgente en Python que lee el correo de una lista de remitentes autorizados y redacta las respuestas con un modelo de lenguaje.\n\n\n\n\n\n\n\n\n\n\n\n\nMLOps: del modelo a producción\n\n\n\nMLOps\n\nDocker\n\nCI/CD\n\n\n\nPipeline que entrena, versiona y despliega un modelo de forma automática con entrenamiento continuo CI y despliegue continuo CD\n\n\n\n\n\n\n\n\n\n\n\n\nDeep Learning: reconocimiento de imágenes\n\n\n\nDeep Learning\n\nVisión por computador\n\n\n\nRed neuronal que clasifica imágenes de [tema del dataset] con una precisión de [X %].\n\n\n\n\n\n\n\n\n\n\n\n\nBar Chart Race (Vídeo): ganadores de Grand Slams\n\n\n\nVisualización de datos\n\nPython\n\n\n\nVídeo hecho a modo de entretenimiento de 4 minutos con la evolución histórica de los tenistas ganadores de Grand Slam.\n\n\n\n\n\n\n\n\n\n\n\n\nPredicción del rendimiento académico\n\n\n\nMLOps\n\nReact\n\nNode.js\n\nFastAPI\n\n\n\nAplicación web desplegada que estima la nota del examen de un estudiante a partir de sus hábitos (estudio, sueño, redes sociales…), con un modelo en producción mediante…\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "proyectos/deep-learning-imagenes.html#este-proyecto-está-en-construcción",
@@ -357,10 +357,10 @@
     "text": "Stack\n\n\n\n\n\n\n\nComponente\nTecnología\n\n\n\n\nFrontend\nReact 19 + Vite, desplegado en Vercel\n\n\nBackend\nNode.js + Express + SQLite, desplegado en Render\n\n\nModelo\nPython, scikit-learn (Gradient Boosting)\n\n\nSeguimiento y registro de modelos\nMLflow (Experiment Tracking + Model Registry)\n\n\nAPI del modelo\nFastAPI + Pydantic\n\n\nCI/CD\nGitHub Actions → Docker → GitHub Container Registry → Render\n\n\nCalidad\npytest + ruff"
   },
   {
-    "objectID": "proyectos/rendimiento-academico.html#código-y-demo",
-    "href": "proyectos/rendimiento-academico.html#código-y-demo",
+    "objectID": "proyectos/rendimiento-academico.html#ver-proyecto",
+    "href": "proyectos/rendimiento-academico.html#ver-proyecto",
     "title": "Predicción del rendimiento académico",
-    "section": "Código y demo",
-    "text": "Código y demo\n\nLive API\nProbar la aplicación\nRepositorio de la web (React + Node.js)\nRepositorio del modelo (MLOps)\n\n\n\n\n\n\n\nTip\n\n\n\nLos servicios usan el plan gratuito de Render, que se duerme tras un rato sin uso: la primera predicción puede tardar hasta un minuto."
+    "section": "Ver proyecto",
+    "text": "Ver proyecto\n\nLive API\nProbar la aplicación  \n\n\n\n\n\n\n\nTip\n\n\n\nLos servicios usan el plan gratuito de Render, que se duerme tras un rato sin uso: la primera predicción puede tardar hasta un minuto."
   }
 ]

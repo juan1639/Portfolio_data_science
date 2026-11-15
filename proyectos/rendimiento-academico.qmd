@@ -126,12 +126,12 @@ media tendría un RMSE de unos 14.4 y un R² de 0.
 
 <br>
 
-## Código y demo
+## Ver proyecto
 
 - [Live API](https://mlops-students.onrender.com/docs){target="_blank" rel="noopener"}
 - [Probar la aplicación](https://mi-web-vite-students.vercel.app/){target="_blank" rel="noopener"}
-- [Repositorio de la web (React + Node.js)](https://github.com/juan1639/mi-web-vite-students){target="_blank" rel="noopener"}
-- [Repositorio del modelo (MLOps)](https://github.com/juan1639/mi-web-fastapi-students){target="_blank" rel="noopener"}
+<!-- - [Repositorio de la web (React + Node.js)](https://github.com/juan1639/mi-web-vite-students){target="_blank" rel="noopener"} -->
+<!-- - [Repositorio del modelo (MLOps)](https://github.com/juan1639/mi-web-fastapi-students){target="_blank" rel="noopener"} -->
 
 ::: {.callout-tip}
 *Los servicios usan el plan gratuito de Render, que se duerme tras un rato sin uso:*

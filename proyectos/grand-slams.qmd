@@ -1,5 +1,5 @@
 ---
-title: "Bar Chart Race: ganadores de Grand Slams"
+title: "Bar Chart Race (Vídeo): ganadores de Grand Slams"
 description: "Vídeo hecho a modo de entretenimiento de 4 minutos con la evolución histórica de los tenistas ganadores de Grand Slam."
 categories: [Visualización de datos, Python]
 order: 5

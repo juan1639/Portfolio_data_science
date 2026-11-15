@@ -64,6 +64,6 @@ flowchart TD
 - [Repositorio en GitHub](https://github.com/juan1639/MLOps_diabetes){target="_blank" rel="noopener"}
 
 ::: {.callout-note}
-La API está en el plan gratuito de Render: si lleva un rato sin recibir
-visitas, la primera petición puede tardar alrededor de un minuto en responder.
+*La API está en el plan gratuito de Render: si lleva un rato sin recibir*
+*visitas, la primera petición puede tardar alrededor de un minuto en responder.*
 :::
