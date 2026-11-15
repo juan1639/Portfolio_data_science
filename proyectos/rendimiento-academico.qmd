@@ -10,8 +10,9 @@ image: ../img/img-project-students.jpg
 
 ## El problema
 
-¿Cuánto influyen los hábitos de un estudiante en su nota? Este proyecto es una
-**aplicación web completa y desplegada** en la que el usuario rellena un formulario
+¿Cuánto influyen los hábitos de un estudiante en su nota?
+
+Este proyecto es una **aplicación web completa y desplegada** en la que el usuario rellena un formulario
 con los datos de un estudiante y obtiene la **nota estimada del examen (0–100)**.
 
 El formulario pide 11 variables, agrupadas en:
@@ -32,9 +33,9 @@ Kaggle (1.500 estudiantes tras eliminar duplicados). Se descartan las columnas
 **data leakage**.
 
 ::: {.callout-note}
-El dataset parece sintético: casi toda la nota la explican las horas de estudio,
-las redes sociales, la asistencia y los trabajos entregados. Es un proyecto para
-aprender a llevar un modelo a producción, no una evaluación real de estudiantes.
+*El dataset parece sintético: casi toda la nota la explican las horas de estudio,*
+*las redes sociales, la asistencia y los trabajos entregados. Es un proyecto para*
+*aprender a llevar un modelo a producción, no una evaluación real de estudiantes.*
 :::
 
 <br>
@@ -127,11 +128,12 @@ media tendría un RMSE de unos 14.4 y un R² de 0.
 
 ## Código y demo
 
+- [Live API](https://mlops-students.onrender.com){target="_blank" rel="noopener"}
 - [Probar la aplicación](https://mi-web-vite-students.vercel.app/){target="_blank" rel="noopener"}
 - [Repositorio de la web (React + Node.js)](https://github.com/juan1639/mi-web-vite-students){target="_blank" rel="noopener"}
 - [Repositorio del modelo (MLOps)](https://github.com/juan1639/mi-web-fastapi-students){target="_blank" rel="noopener"}
 
 ::: {.callout-tip}
-Los servicios usan el plan gratuito de Render, que se duerme tras un rato sin uso:
-la primera predicción puede tardar hasta un minuto.
+*Los servicios usan el plan gratuito de Render, que se duerme tras un rato sin uso:*
+*la primera predicción puede tardar hasta un minuto.*
 :::
