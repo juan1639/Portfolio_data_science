@@ -12,7 +12,7 @@ image: ../img/img-project-students.jpg
 
 ¿Cuánto influyen los hábitos de un estudiante en su nota?
 
-Este proyecto es una **aplicación web completa y desplegada** en la que el usuario rellena un formulario
+Este proyecto es una **aplicación web completa y desplegada** en la que se rellena un formulario
 con los datos de un estudiante y obtiene la **nota estimada del examen (0–100)**.
 
 El formulario pide 11 variables, agrupadas en:
@@ -128,7 +128,7 @@ media tendría un RMSE de unos 14.4 y un R² de 0.
 
 ## Código y demo
 
-- [Live API](https://mlops-students.onrender.com){target="_blank" rel="noopener"}
+- [Live API](https://mlops-students.onrender.com/docs){target="_blank" rel="noopener"}
 - [Probar la aplicación](https://mi-web-vite-students.vercel.app/){target="_blank" rel="noopener"}
 - [Repositorio de la web (React + Node.js)](https://github.com/juan1639/mi-web-vite-students){target="_blank" rel="noopener"}
 - [Repositorio del modelo (MLOps)](https://github.com/juan1639/mi-web-fastapi-students){target="_blank" rel="noopener"}
