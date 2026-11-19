@@ -8,6 +8,19 @@ image: ../img/img-project-mlops.jpg
 
 <br>
 
+## Ver proyecto
+
+- [Ver web](https://mlops-web.onrender.com/){target="_blank" rel="noopener"}
+- [Live API](https://mlops-diabetes-latest.onrender.com/docs){target="_blank" rel="noopener"}
+- [Repositorio en GitHub](https://github.com/juan1639/MLOps_diabetes){target="_blank" rel="noopener"}
+
+::: {.callout-note}
+*La API está en el plan gratuito de Render: si lleva un rato sin recibir*
+*visitas, la primera petición puede tardar alrededor de un minuto en responder.*
+:::
+
+<br>
+
 ## El problema
 
 Entrenar un modelo en un notebook es solo la mitad del trabajo: para que sea útil
@@ -57,13 +70,4 @@ flowchart TD
 
 <br>
 
-## Código
 
-- [Live API](https://mlops-diabetes-latest.onrender.com/docs){target="_blank" rel="noopener"}
-- [Ver web](https://mlops-web.onrender.com/){target="_blank" rel="noopener"}
-- [Repositorio en GitHub](https://github.com/juan1639/MLOps_diabetes){target="_blank" rel="noopener"}
-
-::: {.callout-note}
-*La API está en el plan gratuito de Render: si lleva un rato sin recibir*
-*visitas, la primera petición puede tardar alrededor de un minuto en responder.*
-:::

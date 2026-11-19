@@ -8,6 +8,22 @@ image: ../img/img-project-students.jpg
 
 <br>
 
+## Ver proyecto
+
+- [Probar la aplicación](https://mi-web-vite-students.vercel.app/){target="_blank" rel="noopener"}
+- [Live API](https://mlops-students.onrender.com/docs){target="_blank" rel="noopener"}
+<!-- - [Repositorio de la web (React + Node.js)](https://github.com/juan1639/mi-web-vite-students){target="_blank" rel="noopener"} -->
+<!-- - [Repositorio del modelo (MLOps)](https://github.com/juan1639/mi-web-fastapi-students){target="_blank" rel="noopener"} -->
+
+::: {.callout-tip}
+*Los servicios usan el plan gratuito de Render, que se duerme tras un rato sin uso:*
+*la primera predicción puede tardar hasta un minuto.*
+:::
+
+<br>
+
+## Descripción detallada del proyecto
+
 ## El problema
 
 ¿Cuánto influyen los hábitos de un estudiante en su nota?
@@ -123,17 +139,3 @@ media tendría un RMSE de unos 14.4 y un R² de 0.
 | API del modelo | **FastAPI** + Pydantic |
 | CI/CD | **GitHub Actions** → Docker → GitHub Container Registry → **Render** |
 | Calidad | pytest + ruff |
-
-<br>
-
-## Ver proyecto
-
-- [Live API](https://mlops-students.onrender.com/docs){target="_blank" rel="noopener"}
-- [Probar la aplicación](https://mi-web-vite-students.vercel.app/){target="_blank" rel="noopener"}
-<!-- - [Repositorio de la web (React + Node.js)](https://github.com/juan1639/mi-web-vite-students){target="_blank" rel="noopener"} -->
-<!-- - [Repositorio del modelo (MLOps)](https://github.com/juan1639/mi-web-fastapi-students){target="_blank" rel="noopener"} -->
-
-::: {.callout-tip}
-*Los servicios usan el plan gratuito de Render, que se duerme tras un rato sin uso:*
-*la primera predicción puede tardar hasta un minuto.*
-:::
