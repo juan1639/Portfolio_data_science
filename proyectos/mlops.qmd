@@ -10,7 +10,7 @@ image: ../img/img-project-mlops.jpg
 
 ## Ver proyecto
 
-- [Ver web](https://mlops-web.onrender.com/){target="_blank" rel="noopener"}
+- [Ver web](https://mi-web-fastapi-diabetes.vercel.app){target="_blank" rel="noopener"}
 - [Live API](https://mlops-diabetes-latest.onrender.com/docs){target="_blank" rel="noopener"}
 - [Repositorio en GitHub](https://github.com/juan1639/MLOps_diabetes){target="_blank" rel="noopener"}
 
