@@ -10,7 +10,7 @@ image: ../img/img-project-grandslams.jpg
 
 Procesé un gran volumen de datos históricos para mostrar su evolución en un "Bar Chart Race" de 4 minutos.
 
-{{< video https://www.youtube.com/watch?v=UpP2fRecgTw >}}
+{{< video https://youtu.be/iy6ciLnjs4w >}}
 
 <!-- ## Cómo lo hice -->
 
