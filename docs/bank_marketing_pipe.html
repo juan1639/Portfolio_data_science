@@ -187,6 +187,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#invocamos-la-función-creada-anteriormente" id="toc-invocamos-la-función-creada-anteriormente" class="nav-link" data-scroll-target="#invocamos-la-función-creada-anteriormente">Invocamos la función creada anteriormente:</a></li>
   <li><a href="#conclusión-decision-tree" id="toc-conclusión-decision-tree" class="nav-link" data-scroll-target="#conclusión-decision-tree"><strong>Conclusión Decision-Tree:</strong></a></li>
   <li><a href="#conclusión-random-forest" id="toc-conclusión-random-forest" class="nav-link" data-scroll-target="#conclusión-random-forest"><strong>Conclusión Random-Forest:</strong></a></li>
+  <li><a href="#visualización-de-resultados" id="toc-visualización-de-resultados" class="nav-link" data-scroll-target="#visualización-de-resultados"><strong>Visualización de resultados</strong></a>
+  <ul class="collapse">
+  <li><a href="#curva-de-ganancia" id="toc-curva-de-ganancia" class="nav-link" data-scroll-target="#curva-de-ganancia"><strong>Curva de ganancia</strong></a></li>
+  <li><a href="#matrices-de-confusión" id="toc-matrices-de-confusión" class="nav-link" data-scroll-target="#matrices-de-confusión"><strong>Matrices de confusión</strong></a></li>
+  <li><a href="#variables-más-influyentes-random-forest" id="toc-variables-más-influyentes-random-forest" class="nav-link" data-scroll-target="#variables-más-influyentes-random-forest"><strong>Variables más influyentes (Random Forest)</strong></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -217,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="importamos-todas-las-librerías-que-vamos-a-necesitar" class="level2">
 <h2 class="anchored" data-anchor-id="importamos-todas-las-librerías-que-vamos-a-necesitar">Importamos todas las librerías que vamos a necesitar:</h2>
-<div id="cell-3" class="cell" data-execution_count="3">
+<div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:06.241590Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:06.241590Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.543141Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.543141Z&quot;}}" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
@@ -239,19 +245,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Indicamos que los datos vienen separados por ; (no por , como suele ser habitual)</li>
 </ul>
-<div id="cell-6" class="cell" data-execution_count="4">
+<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.543141Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.543141Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.616700Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.616317Z&quot;}}" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"bank-full.csv"</span>, sep<span class="op">=</span><span class="st">";"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="visualizacion-en-consola-de-una-muestra-de-los-datos" class="level2">
 <h2 class="anchored" data-anchor-id="visualizacion-en-consola-de-una-muestra-de-los-datos">Visualizacion en consola de una muestra de los datos:</h2>
-<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:206}}" data-outputid="ca779fd2-695c-4f3b-b4b2-c270eaeae803" data-execution_count="5">
+<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.618736Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.618736Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.631911Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.631407Z&quot;}}" data-outputid="ca779fd2-695c-4f3b-b4b2-c270eaeae803" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#print("dataframe_head:\n", df.head())</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#print("\n")</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<div id="df-885fb682-5a72-4904-a759-53557bca3f52" class="colab-df-container">
-    <div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
 
 
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
@@ -382,86 +387,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 
 </div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-885fb682-5a72-4904-a759-53557bca3f52')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-885fb682-5a72-4904-a759-53557bca3f52 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-885fb682-5a72-4904-a759-53557bca3f52');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-    </div>
-  </div>
 </div>
 </div>
 </section>
@@ -470,7 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="mostramos-tb-los-tipos-de-datos" class="level2">
 <h2 class="anchored" data-anchor-id="mostramos-tb-los-tipos-de-datos">Mostramos tb los tipos de datos</h2>
-<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="63be9d73-e9ce-4e88-ac57-e8965be15f94" data-execution_count="6">
+<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.660538Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.660538Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.668288Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.668288Z&quot;}}" data-outputid="63be9d73-e9ce-4e88-ac57-e8965be15f94" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"numero de filas: "</span>, df.shape[<span class="dv">0</span>]) <span class="co"># tb vale len(df)</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"numero de columnas: "</span>, df.shape[<span class="dv">1</span>])</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
@@ -483,23 +408,23 @@ numero de columnas:  17
 
 
 df_types:
- age           int64
-job          object
-marital      object
-education    object
-default      object
-balance       int64
-housing      object
-loan         object
-contact      object
-day           int64
-month        object
-duration      int64
-campaign      int64
-pdays         int64
-previous      int64
-poutcome     object
-y            object
+ age          int64
+job            str
+marital        str
+education      str
+default        str
+balance      int64
+housing        str
+loan           str
+contact        str
+day          int64
+month          str
+duration     int64
+campaign     int64
+pdays        int64
+previous     int64
+poutcome       str
+y              str
 dtype: object
 
 </code></pre>
@@ -509,7 +434,7 @@ dtype: object
 <section id="mostramos-las-columnas-features" class="level2">
 <h2 class="anchored" data-anchor-id="mostramos-las-columnas-features">Mostramos las columnas (features)</h2>
 <p>( incluída la columna objetivo ‘y’ )</p>
-<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="4b7d5b87-bdbf-4761-9320-09dd7eb62c82" data-execution_count="7">
+<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.668288Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.668288Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.673431Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.673431Z&quot;}}" data-outputid="4b7d5b87-bdbf-4761-9320-09dd7eb62c82" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"df_columns:</span><span class="ch">\n</span><span class="st"> "</span>, df.columns)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -517,7 +442,7 @@ dtype: object
   Index(['age', 'job', 'marital', 'education', 'default', 'balance', 'housing',
        'loan', 'contact', 'day', 'month', 'duration', 'campaign', 'pdays',
        'previous', 'poutcome', 'y'],
-      dtype='object')
+      dtype='str')
 
 </code></pre>
 </div>
@@ -525,43 +450,42 @@ dtype: object
 </section>
 <section id="mostramos-info-del-dataframe" class="level2">
 <h2 class="anchored" data-anchor-id="mostramos-info-del-dataframe">Mostramos info del dataframe:</h2>
-<div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b1daf525-760c-4d4d-d586-de3e581d3518" data-execution_count="8">
+<div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.673431Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.673431Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.695047Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.695047Z&quot;}}" data-outputid="b1daf525-760c-4d4d-d586-de3e581d3518" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+<pre><code>&lt;class 'pandas.DataFrame'&gt;
 RangeIndex: 45211 entries, 0 to 45210
 Data columns (total 17 columns):
- #   Column     Non-Null Count  Dtype 
----  ------     --------------  ----- 
- 0   age        45211 non-null  int64 
- 1   job        45211 non-null  object
- 2   marital    45211 non-null  object
- 3   education  45211 non-null  object
- 4   default    45211 non-null  object
- 5   balance    45211 non-null  int64 
- 6   housing    45211 non-null  object
- 7   loan       45211 non-null  object
- 8   contact    45211 non-null  object
- 9   day        45211 non-null  int64 
- 10  month      45211 non-null  object
- 11  duration   45211 non-null  int64 
- 12  campaign   45211 non-null  int64 
- 13  pdays      45211 non-null  int64 
- 14  previous   45211 non-null  int64 
- 15  poutcome   45211 non-null  object
- 16  y          45211 non-null  object
-dtypes: int64(7), object(10)
-memory usage: 5.9+ MB</code></pre>
+ #   Column     Non-Null Count  Dtype
+---  ------     --------------  -----
+ 0   age        45211 non-null  int64
+ 1   job        45211 non-null  str  
+ 2   marital    45211 non-null  str  
+ 3   education  45211 non-null  str  
+ 4   default    45211 non-null  str  
+ 5   balance    45211 non-null  int64
+ 6   housing    45211 non-null  str  
+ 7   loan       45211 non-null  str  
+ 8   contact    45211 non-null  str  
+ 9   day        45211 non-null  int64
+ 10  month      45211 non-null  str  
+ 11  duration   45211 non-null  int64
+ 12  campaign   45211 non-null  int64
+ 13  pdays      45211 non-null  int64
+ 14  previous   45211 non-null  int64
+ 15  poutcome   45211 non-null  str  
+ 16  y          45211 non-null  str  
+dtypes: int64(7), str(10)
+memory usage: 5.9 MB</code></pre>
 </div>
 </div>
 </section>
 <section id="valores-generales-de-dataframe-describe" class="level2">
 <h2 class="anchored" data-anchor-id="valores-generales-de-dataframe-describe">Valores generales de dataframe (describe):</h2>
-<div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:300}}" data-outputid="419a65f9-f2b6-4a8a-dd97-9c5d179a761f" data-execution_count="9">
+<div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.695047Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.695047Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.717920Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.717920Z&quot;}}" data-outputid="419a65f9-f2b6-4a8a-dd97-9c5d179a761f" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<div id="df-0068e1dc-0283-4aa9-80a3-8f0dfe1efe22" class="colab-df-container">
-    <div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
 
 
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
@@ -662,92 +586,12 @@ memory usage: 5.9+ MB</code></pre>
 </table>
 
 </div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-0068e1dc-0283-4aa9-80a3-8f0dfe1efe22')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-0068e1dc-0283-4aa9-80a3-8f0dfe1efe22 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-0068e1dc-0283-4aa9-80a3-8f0dfe1efe22');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-    </div>
-  </div>
 </div>
 </div>
 </section>
 <section id="checkeamos-si-hay-datos-corruptos-vacíos-nan" class="level2">
 <h2 class="anchored" data-anchor-id="checkeamos-si-hay-datos-corruptos-vacíos-nan">Checkeamos si hay datos corruptos (vacíos / NaN)…</h2>
-<div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="1b585972-c16f-436e-ac8d-8fba82f93aae" data-execution_count="10">
+<div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.717920Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.717920Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.743861Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.743861Z&quot;}}" data-outputid="1b585972-c16f-436e-ac8d-8fba82f93aae" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Algun valor NaN o vacio? "</span>, df.isnull().values.<span class="bu">any</span>())</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Suma de valores NaN o vacio? "</span>, df.isnull().values.<span class="bu">sum</span>())</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -761,7 +605,7 @@ Suma de valores NaN o vacio?  0
 </section>
 <section id="asignamos-algunas-constates" class="level2">
 <h2 class="anchored" data-anchor-id="asignamos-algunas-constates">Asignamos algunas constates:</h2>
-<div id="cell-20" class="cell" data-execution_count="11">
+<div id="cell-20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.745868Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.745868Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.748350Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.748350Z&quot;}}" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>RANDOM_STATE <span class="op">=</span> <span class="dv">22</span> <span class="co"># Fijada semilla aleatoria</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -771,71 +615,18 @@ Suma de valores NaN o vacio?  0
 <li><strong>X</strong> Features</li>
 <li><strong>y</strong> Target</li>
 </ul>
-<div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:458}}" data-outputid="912fcfde-352c-4b27-d806-857b31a7910a">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">"y"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<p><strong>Excluimos <code>duration</code></strong> (duración de la llamada): solo se conoce cuando la llamada ya ha terminado, así que no está disponible al decidir a quién llamar. Usarla sería <em>data leakage</em> e inflaría las métricas, como advierte la documentación del dataset.</p>
+<div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.750356Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.750356Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.754638Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.754638Z&quot;}}" data-outputid="912fcfde-352c-4b27-d806-857b31a7910a" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">"y"</span>, <span class="st">"duration"</span>])</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">"y"</span>]</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>y.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">y</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
-<td>no</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
-<td>no</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
-<td>no</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>no</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
-<td>no</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
-<td>...</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">45206</th>
-<td>yes</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">45207</th>
-<td>yes</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">45208</th>
-<td>yes</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">45209</th>
-<td>no</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">45210</th>
-<td>no</td>
-</tr>
-</tbody>
-</table>
-
-<p>45211 rows × 1 columns</p>
-</div><br><label><b>dtype:</b> object</label>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>0    no
+1    no
+2    no
+3    no
+4    no
+Name: y, dtype: str</code></pre>
 </div>
 </div>
 </section>
@@ -845,16 +636,16 @@ Suma de valores NaN o vacio?  0
 <li><strong>numeric_features</strong> columnas de tipo numérico</li>
 <li><strong>categorical_features</strong> columnas de tipo categórico</li>
 </ul>
-<div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7d85cc15-98ed-4829-9f23-5f1353534e36" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>numeric_features <span class="op">=</span> X.select_dtypes(include<span class="op">=</span>[<span class="st">"int64"</span>, <span class="st">"float64"</span>]).columns</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>categorical_features <span class="op">=</span> X.select_dtypes(include<span class="op">=</span>[<span class="st">"object"</span>, <span class="st">"string"</span>]).columns</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Numeric_features:</span><span class="ch">\n</span><span class="st">"</span>, numeric_features.to_list())</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Cat_features:</span><span class="ch">\n</span><span class="st">"</span>, categorical_features.to_list())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.756644Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.756644Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.760845Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.760845Z&quot;}}" data-outputid="7d85cc15-98ed-4829-9f23-5f1353534e36" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>numeric_features <span class="op">=</span> X.select_dtypes(include<span class="op">=</span>[<span class="st">"int64"</span>, <span class="st">"float64"</span>]).columns</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>categorical_features <span class="op">=</span> X.select_dtypes(include<span class="op">=</span>[<span class="st">"object"</span>, <span class="st">"string"</span>]).columns</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Numeric_features:</span><span class="ch">\n</span><span class="st">"</span>, numeric_features.to_list())</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Cat_features:</span><span class="ch">\n</span><span class="st">"</span>, categorical_features.to_list())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Numeric_features:
- ['age', 'balance', 'day', 'duration', 'campaign', 'pdays', 'previous']
+ ['age', 'balance', 'day', 'campaign', 'pdays', 'previous']
 
 Cat_features:
  ['job', 'marital', 'education', 'default', 'housing', 'loan', 'contact', 'month', 'poutcome']</code></pre>
@@ -863,34 +654,34 @@ Cat_features:
 </section>
 <section id="separación-de-los-datos-en-train-test" class="level2">
 <h2 class="anchored" data-anchor-id="separación-de-los-datos-en-train-test">Separación de los datos en: <strong>Train / Test</strong></h2>
-<div id="cell-27" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span>RANDOM_STATE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.760845Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.760845Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.775857Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.775341Z&quot;}}" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span>RANDOM_STATE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="preprocesamiento-numéricas" class="level2">
 <h2 class="anchored" data-anchor-id="preprocesamiento-numéricas">Preprocesamiento <strong>(numéricas)</strong></h2>
-<div id="cell-29" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>numeric_transformer <span class="op">=</span> Pipeline([</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"scaler"</span>, MinMaxScaler())</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.775857Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.775857Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.780093Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.780093Z&quot;}}" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>numeric_transformer <span class="op">=</span> Pipeline([</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"scaler"</span>, MinMaxScaler())</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="preprocesamiento-categóricas" class="level2">
 <h2 class="anchored" data-anchor-id="preprocesamiento-categóricas">Preprocesamiento <strong>(categóricas)</strong></h2>
-<div id="cell-31" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>categorical_transformer <span class="op">=</span> Pipeline([</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"imputer"</span>, SimpleImputer(strategy<span class="op">=</span><span class="st">"most_frequent"</span>)),</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"one_hot_encoder"</span>, OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">"ignore"</span>))</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-31" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.780093Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.780093Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.784427Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.784427Z&quot;}}" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>categorical_transformer <span class="op">=</span> Pipeline([</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"imputer"</span>, SimpleImputer(strategy<span class="op">=</span><span class="st">"most_frequent"</span>)),</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"one_hot_encoder"</span>, OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">"ignore"</span>))</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="transformación-numéricas-y-categóricas" class="level2">
 <h2 class="anchored" data-anchor-id="transformación-numéricas-y-categóricas">Transformación <strong>(numéricas y categóricas)</strong></h2>
-<div id="cell-33" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer([</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"num"</span>, numeric_transformer, numeric_features),</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"cat"</span>, categorical_transformer, categorical_features)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.784427Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.784427Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.788725Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.788725Z&quot;}}" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer([</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"num"</span>, numeric_transformer, numeric_features),</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"cat"</span>, categorical_transformer, categorical_features)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="creamos-el-model-decision-tree-asignándo-estos-hiperparámetros" class="level2">
@@ -899,11 +690,11 @@ Cat_features:
 <li><strong>param 1</strong>: Aplicamos el parámetro clave: class_weight=“balanced” para manejar el desbalanceo</li>
 <li><strong>param 2</strong>: random_state=22 (para que el aleatorio sea siempre igual en cada ejecucion)</li>
 </ul>
-<div id="cell-35" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dt_model <span class="op">=</span> Pipeline([</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"prep"</span>, preprocessor),</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"classifier"</span>, DecisionTreeClassifier(class_weight<span class="op">=</span><span class="st">"balanced"</span>, random_state<span class="op">=</span><span class="dv">22</span>))</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.788725Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.788725Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.793881Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.793881Z&quot;}}" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dt_model <span class="op">=</span> Pipeline([</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"prep"</span>, preprocessor),</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"classifier"</span>, DecisionTreeClassifier(class_weight<span class="op">=</span><span class="st">"balanced"</span>, random_state<span class="op">=</span><span class="dv">22</span>))</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="creamos-el-model-random-forest-asignando-estos-hiperparámetros" class="level2">
@@ -914,11 +705,11 @@ Cat_features:
 <li><strong>param 3</strong>: Aplicamos balanced para manejar el desbalanceo</li>
 <li><strong>param 4</strong>: Random_state 22 para que NO cambie el aleatorio en cada ejecucion</li>
 </ul>
-<div id="cell-37" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>rf_model <span class="op">=</span> Pipeline([</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"prep"</span>, preprocessor),</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"classifier"</span>, RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">150</span>, min_samples_split<span class="op">=</span><span class="fl">0.3</span>, class_weight<span class="op">=</span><span class="st">"balanced"</span>, random_state<span class="op">=</span><span class="dv">22</span>))</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.793881Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.793881Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.798635Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.798635Z&quot;}}" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>rf_model <span class="op">=</span> Pipeline([</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"prep"</span>, preprocessor),</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"classifier"</span>, RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">150</span>, min_samples_split<span class="op">=</span><span class="fl">0.3</span>, class_weight<span class="op">=</span><span class="st">"balanced"</span>, random_state<span class="op">=</span><span class="dv">22</span>))</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="creamos-una-función" class="level2">
@@ -927,56 +718,56 @@ Cat_features:
 <section id="para-entrenar-los-diferentes-modelos" class="level2">
 <h2 class="anchored" data-anchor-id="para-entrenar-los-diferentes-modelos">Para entrenar los diferentes modelos</h2>
 <p>entrenar_modelo()</p>
-<div id="cell-39" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> entrenar_modelo(name, model):</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">  Función para entrenar los diferentes modelos:</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">  - Recibe como parametros: una descripción del modelo y el propio modelo</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - Devuelve: una variable con las predicciones 'y_pred'</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">  """</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Entrenar modelo:</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  model.fit(X_train, y_train)</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Predicciones:</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  y_pred <span class="op">=</span> model.predict(X_test)</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Metricas (clasification_report):</span></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">55</span>)</span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"--- MÉTRICAS </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> ---"</span>)</span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">55</span>)</span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(classification_report(y_test, y_pred))</span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Metricas (confusion-matrix):</span></span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"--- CONFUSION MATRIX (</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">) ---"</span>)</span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(confusion_matrix(y_test, y_pred))</span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> y_pred</span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.798635Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.798635Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:08.803796Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:08.803796Z&quot;}}" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> entrenar_modelo(name, model):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">  Función para entrenar los diferentes modelos:</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">  - Recibe como parametros: una descripción del modelo y el propio modelo</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - Devuelve: una variable con las predicciones 'y_pred'</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co">  """</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Entrenar modelo:</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  model.fit(X_train, y_train)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Predicciones:</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Metricas (clasification_report):</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">55</span>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"--- MÉTRICAS </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> ---"</span>)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">55</span>)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(classification_report(y_test, y_pred))</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Metricas (confusion-matrix):</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"--- CONFUSION MATRIX (</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">) ---"</span>)</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(confusion_matrix(y_test, y_pred))</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> y_pred</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="invocamos-la-función-creada-anteriormente" class="level2">
 <h2 class="anchored" data-anchor-id="invocamos-la-función-creada-anteriormente">Invocamos la función creada anteriormente:</h2>
 <p>(<em>Una vez por cada modelo que queramos entrenar</em>)</p>
-<div id="cell-41" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="3f35a68d-5a17-45bc-af03-99f675a70581" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>entrenar_modelo(<span class="st">"DECISION TREE"</span>, dt_model)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>entrenar_modelo(<span class="st">"RANDOM FOREST"</span>, rf_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-41" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:08.803796Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:08.803796Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:11.087298Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:11.087298Z&quot;}}" data-outputid="3f35a68d-5a17-45bc-af03-99f675a70581" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>entrenar_modelo(<span class="st">"DECISION TREE"</span>, dt_model)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>entrenar_modelo(<span class="st">"RANDOM FOREST"</span>, rf_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>=======================================================
 --- MÉTRICAS DECISION TREE ---
 =======================================================
               precision    recall  f1-score   support
 
-          no       0.93      0.93      0.93      7971
-         yes       0.47      0.47      0.47      1072
+          no       0.91      0.90      0.90      7971
+         yes       0.30      0.31      0.30      1072
 
-    accuracy                           0.88      9043
-   macro avg       0.70      0.70      0.70      9043
-weighted avg       0.88      0.88      0.88      9043
+    accuracy                           0.83      9043
+   macro avg       0.60      0.60      0.60      9043
+weighted avg       0.83      0.83      0.83      9043
 
 --- CONFUSION MATRIX (DECISION TREE) ---
-[[7411  560]
- [ 567  505]]
+[[7195  776]
+ [ 743  329]]
 
 
 =======================================================
@@ -984,36 +775,178 @@ weighted avg       0.88      0.88      0.88      9043
 =======================================================
               precision    recall  f1-score   support
 
-          no       0.97      0.76      0.85      7971
-         yes       0.31      0.80      0.45      1072
+          no       0.94      0.58      0.72      7971
+         yes       0.19      0.72      0.30      1072
 
-    accuracy                           0.77      9043
-   macro avg       0.64      0.78      0.65      9043
-weighted avg       0.89      0.77      0.81      9043
+    accuracy                           0.60      9043
+   macro avg       0.56      0.65      0.51      9043
+weighted avg       0.85      0.60      0.67      9043
 
 --- CONFUSION MATRIX (RANDOM FOREST) ---
-[[6097 1874]
- [ 216  856]]
+[[4652 3319]
+ [ 299  773]]
 
 </code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>array(['no', 'no', 'no', ..., 'yes', 'yes', 'no'], dtype=object)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>array(['no', 'no', 'no', ..., 'no', 'yes', 'no'],
+      shape=(9043,), dtype=object)</code></pre>
 </div>
 </div>
 </section>
 <section id="conclusión-decision-tree" class="level1">
 <h1><strong>Conclusión Decision-Tree:</strong></h1>
-<p>Aún con el parametro class_weight=balanced al modelo le cuesta distinguir patrones de contratación. (con un f1-score de un 47%)</p>
-<p>Sólo tiene <strong>buen resultado</strong> en patrones de <strong>no contratación</strong> al tener muchos mas ejemplos para aprender de ellos. (Aquí el f1-score llega hasta el 93%)</p>
-<p>En cuanto a la matriz de confusión sólo consiguió encontrar a 505 dejando “escapar” a 567</p>
+<p>Aún con el parámetro class_weight=balanced, al modelo le cuesta distinguir patrones de contratación (f1-score del 30 %).</p>
+<p>Solo tiene <strong>buen resultado</strong> en patrones de <strong>no contratación</strong>, al tener muchos más ejemplos de los que aprender (f1-score del 90 %).</p>
+<p>En la matriz de confusión encuentra a 329 clientes que contratan y deja “escapar” a 743.</p>
 </section>
 <section id="conclusión-random-forest" class="level1">
 <h1><strong>Conclusión Random-Forest:</strong></h1>
-<p>Aunque el Decision Tree tiene mejor Accuracy y F1-Score, para una campaña de marketing el <strong>modelo más útil es el Random Forest</strong>, ya que su Recall del 80% nos asegura que el banco captará a la gran mayoría de clientes interesados, aunque a costa de hacer más llamadas a clientes que finalmente no contratarán.</p>
-<p>En este modelo la matriz de confusión muestra que logró captar a 856 dejando “escapar” sólo a 216, mejorando muchísimo al otro modelo. Parece que este modelo es mejor para este ejercicio.</p>
+<p>El Decision Tree tiene mejor Accuracy (83 % frente a 60 %) y ambos empatan en F1-Score (0,30), pero para una campaña de marketing el <strong>modelo más útil es el Random Forest</strong>: su Recall del 72 % capta a la mayoría de los clientes interesados.</p>
+<p>En la matriz de confusión capta a 773 clientes y deja “escapar” a 299. El coste son 3.319 llamadas a clientes que no contratarán: su precisión es del 19 %, frente al 11,9 % de contrataciones en el conjunto de test si se llama al azar.</p>
+<p>Como devuelve una probabilidad, también permite priorizar: <strong>llamando solo al 30 % de clientes con mayor probabilidad se capta el 62 % de las contrataciones</strong>, aproximadamente el doble que llamando al azar.</p>
+</section>
+<section id="visualización-de-resultados" class="level1">
+<h1><strong>Visualización de resultados</strong></h1>
+<p>Configuramos un estilo común para las gráficas:</p>
+<div id="cell-46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:11.089303Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:11.089303Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:11.092637Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:11.092637Z&quot;}}" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>AZUL, GRIS, TINTA, TINTA_2 <span class="op">=</span> <span class="st">"#2a78d6"</span>, <span class="st">"#9a9992"</span>, <span class="st">"#0b0b0b"</span>, <span class="st">"#52514e"</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"figure.dpi"</span>: <span class="dv">130</span>, <span class="st">"font.size"</span>: <span class="dv">11</span>, <span class="st">"text.color"</span>: TINTA,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"axes.edgecolor"</span>: <span class="st">"#d8d7d2"</span>, <span class="st">"axes.labelcolor"</span>: TINTA_2,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"xtick.color"</span>: TINTA_2, <span class="st">"ytick.color"</span>: TINTA_2,</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"axes.spines.top"</span>: <span class="va">False</span>, <span class="st">"axes.spines.right"</span>: <span class="va">False</span>,</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"axes.titlelocation"</span>: <span class="st">"left"</span>, <span class="st">"axes.titleweight"</span>: <span class="st">"bold"</span>, <span class="st">"axes.titlesize"</span>: <span class="dv">14</span>,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="curva-de-ganancia" class="level2">
+<h2 class="anchored" data-anchor-id="curva-de-ganancia"><strong>Curva de ganancia</strong></h2>
+<p>Si el banco ordena a los clientes por probabilidad de contratar (Random Forest), ¿qué parte de las contrataciones consigue llamando solo a una parte de ellos?</p>
+<div id="cell-48" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:11.094644Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:11.094644Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:11.327781Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:11.327781Z&quot;}}" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>proba <span class="op">=</span> rf_model.predict_proba(X_test)[:, <span class="bu">list</span>(rf_model.classes_).index(<span class="st">"yes"</span>)]</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>orden <span class="op">=</span> np.argsort(<span class="op">-</span>proba, kind<span class="op">=</span><span class="st">"stable"</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>aciertos <span class="op">=</span> (y_test.to_numpy()[orden] <span class="op">==</span> <span class="st">"yes"</span>).cumsum()</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>pct_clientes <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="bu">len</span>(orden) <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="bu">len</span>(orden) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>pct_contrataciones <span class="op">=</span> aciertos <span class="op">/</span> aciertos[<span class="op">-</span><span class="dv">1</span>] <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>corte <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>valor_corte <span class="op">=</span> np.interp(corte, pct_clientes, pct_contrataciones)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, <span class="dv">100</span>], [<span class="dv">0</span>, <span class="dv">100</span>], color<span class="op">=</span>GRIS, lw<span class="op">=</span><span class="dv">2</span>, ls<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>ax.plot(pct_clientes, pct_contrataciones, color<span class="op">=</span>AZUL, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>ax.plot([corte, corte], [<span class="dv">0</span>, valor_corte], color<span class="op">=</span>TINTA_2, lw<span class="op">=</span><span class="dv">1</span>, ls<span class="op">=</span><span class="st">":"</span>)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, corte], [valor_corte, valor_corte], color<span class="op">=</span>TINTA_2, lw<span class="op">=</span><span class="dv">1</span>, ls<span class="op">=</span><span class="st">":"</span>)</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>ax.scatter([corte], [valor_corte], s<span class="op">=</span><span class="dv">70</span>, color<span class="op">=</span>AZUL, edgecolor<span class="op">=</span><span class="st">"white"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, zorder<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>ax.annotate(<span class="ss">f"Llamando al </span><span class="sc">{</span>corte<span class="sc">}</span><span class="ss"> % de los clientes</span><span class="ch">\n</span><span class="ss">se capta el </span><span class="sc">{</span>valor_corte<span class="sc">:.0f}</span><span class="ss"> % de las contrataciones"</span>,</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>            (corte, valor_corte), xytext<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">79</span>), color<span class="op">=</span>TINTA,</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>            arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">"-"</span>, color<span class="op">=</span>TINTA_2, lw<span class="op">=</span><span class="dv">1</span>, shrinkA<span class="op">=</span><span class="dv">4</span>, shrinkB<span class="op">=</span><span class="dv">6</span>))</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="dv">42</span>, <span class="dv">66</span>, <span class="st">"Random Forest"</span>, color<span class="op">=</span>TINTA, weight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="dv">73</span>, <span class="dv">60</span>, <span class="st">"Llamadas al azar"</span>, color<span class="op">=</span>TINTA_2)</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>ax.<span class="bu">set</span>(xlim<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">100</span>), ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">102</span>), xlabel<span class="op">=</span><span class="st">"</span><span class="sc">% d</span><span class="st">e clientes llamados (de mayor a menor probabilidad)"</span>,</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>       ylabel<span class="op">=</span><span class="st">"</span><span class="sc">% d</span><span class="st">e contrataciones captadas"</span>)</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>ax.grid(color<span class="op">=</span><span class="st">"#eeeeea"</span>, lw<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span> ax.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Curva de ganancia en el conjunto de test"</span>, pad<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.show()</span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Top </span><span class="sc">{</span>corte<span class="sc">}</span><span class="ss"> %: </span><span class="sc">{</span>valor_corte<span class="sc">:.1f}</span><span class="ss"> % de las contrataciones"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bank_marketing_pipe_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Top 30 %: 62.2 % de las contrataciones</code></pre>
+</div>
+</div>
+</section>
+<section id="matrices-de-confusión" class="level2">
+<h2 class="anchored" data-anchor-id="matrices-de-confusión"><strong>Matrices de confusión</strong></h2>
+<p>El color indica el porcentaje dentro de cada clase real.</p>
+<div id="cell-50" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:11.329786Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:11.329786Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:11.567348Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:11.567348Z&quot;}}" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">4.3</span>))</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>etiquetas <span class="op">=</span> [<span class="st">"No contrata"</span>, <span class="st">"Contrata"</span>]</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (nombre, modelo) <span class="kw">in</span> <span class="bu">zip</span>(axes, [(<span class="st">"Decision Tree"</span>, dt_model), (<span class="st">"Random Forest"</span>, rf_model)]):</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    cm <span class="op">=</span> confusion_matrix(y_test, modelo.predict(X_test), labels<span class="op">=</span>[<span class="st">"no"</span>, <span class="st">"yes"</span>])</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    pct <span class="op">=</span> cm <span class="op">/</span> cm.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    ax.imshow(pct, cmap<span class="op">=</span><span class="st">"Blues"</span>, vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>            ax.text(j, i, <span class="ss">f"</span><span class="sc">{</span>cm[i, j]<span class="sc">:,}</span><span class="ss">"</span>.replace(<span class="st">","</span>, <span class="st">"."</span>) <span class="op">+</span> <span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span>pct[i, j]<span class="sc">:.0%}</span><span class="ss">"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>,</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>                    color<span class="op">=</span><span class="st">"white"</span> <span class="cf">if</span> pct[i, j] <span class="op">&gt;</span> <span class="fl">.55</span> <span class="cf">else</span> TINTA, weight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    ax.set_xticks([<span class="dv">0</span>, <span class="dv">1</span>], etiquetas)<span class="op">;</span> ax.set_yticks([<span class="dv">0</span>, <span class="dv">1</span>], etiquetas)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">"Predicción"</span>, ylabel<span class="op">=</span><span class="st">"Valor real"</span>)<span class="op">;</span> ax.set_title(nombre)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(length<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> ax.spines.values(): s.set_visible(<span class="va">False</span>)</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bank_marketing_pipe_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="variables-más-influyentes-random-forest" class="level2">
+<h2 class="anchored" data-anchor-id="variables-más-influyentes-random-forest"><strong>Variables más influyentes (Random Forest)</strong></h2>
+<p>Sumamos la importancia de las columnas <em>one-hot</em> de cada variable original.</p>
+<div id="cell-52" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-11-23T17:04:11.567348Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-23T17:04:11.567348Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-23T17:04:11.745823Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-23T17:04:11.745823Z&quot;}}" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>NOMBRES <span class="op">=</span> {<span class="st">"age"</span>: <span class="st">"Edad"</span>, <span class="st">"job"</span>: <span class="st">"Profesión"</span>, <span class="st">"marital"</span>: <span class="st">"Estado civil"</span>, <span class="st">"education"</span>: <span class="st">"Educación"</span>,</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>           <span class="st">"default"</span>: <span class="st">"Impago de crédito"</span>, <span class="st">"balance"</span>: <span class="st">"Saldo"</span>, <span class="st">"housing"</span>: <span class="st">"Hipoteca"</span>, <span class="st">"loan"</span>: <span class="st">"Préstamo personal"</span>,</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">"contact"</span>: <span class="st">"Tipo de contacto"</span>, <span class="st">"day"</span>: <span class="st">"Día del mes"</span>, <span class="st">"month"</span>: <span class="st">"Mes"</span>, <span class="st">"campaign"</span>: <span class="st">"Contactos en esta campaña"</span>,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">"pdays"</span>: <span class="st">"Días desde el último contacto"</span>, <span class="st">"previous"</span>: <span class="st">"Contactos previos"</span>,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>           <span class="st">"poutcome"</span>: <span class="st">"Resultado de la campaña anterior"</span>}</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>columnas <span class="op">=</span> rf_model.named_steps[<span class="st">"prep"</span>].get_feature_names_out()</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>importancias <span class="op">=</span> rf_model.named_steps[<span class="st">"classifier"</span>].feature_importances_</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> variable_original(col):</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    tipo, resto <span class="op">=</span> col.split(<span class="st">"__"</span>, <span class="dv">1</span>)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> resto <span class="cf">if</span> tipo <span class="op">==</span> <span class="st">"num"</span> <span class="cf">else</span> <span class="bu">next</span>(v <span class="cf">for</span> v <span class="kw">in</span> categorical_features <span class="cf">if</span> resto.startswith(v <span class="op">+</span> <span class="st">"_"</span>))</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>imp <span class="op">=</span> pd.Series(importancias, index<span class="op">=</span>[variable_original(c) <span class="cf">for</span> c <span class="kw">in</span> columnas]).groupby(level<span class="op">=</span><span class="dv">0</span>).<span class="bu">sum</span>()</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> imp.sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>).sort_values()</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>ax.barh([NOMBRES[v] <span class="cf">for</span> v <span class="kw">in</span> top.index], top <span class="op">*</span> <span class="dv">100</span>, color<span class="op">=</span>AZUL, height<span class="op">=</span><span class="fl">.62</span>)</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(top <span class="op">*</span> <span class="dv">100</span>):</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>    ax.text(v <span class="op">+</span> <span class="fl">.5</span>, i, <span class="ss">f"</span><span class="sc">{</span>v<span class="sc">:.1f}</span><span class="ss"> %"</span>.replace(<span class="st">"."</span>, <span class="st">","</span>), va<span class="op">=</span><span class="st">"center"</span>, color<span class="op">=</span>TINTA)</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, top.<span class="bu">max</span>() <span class="op">*</span> <span class="dv">118</span>)<span class="op">;</span> ax.xaxis.set_visible(<span class="va">False</span>)</span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">"bottom"</span>].set_visible(<span class="va">False</span>)<span class="op">;</span> ax.spines[<span class="st">"left"</span>].set_visible(<span class="va">False</span>)<span class="op">;</span> ax.tick_params(length<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Las 10 variables más influyentes"</span>, pad<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.show()</span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((imp.sort_values(ascending<span class="op">=</span><span class="va">False</span>) <span class="op">*</span> <span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">1</span>).to_string())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bank_marketing_pipe_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>contact      27.8
+housing      19.0
+poutcome     18.2
+previous      8.8
+pdays         7.6
+month         6.8
+age           3.8
+balance       3.4
+loan          1.3
+job           1.2
+marital       0.9
+campaign      0.8
+education     0.3
+day           0.2
+default       0.0</code></pre>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

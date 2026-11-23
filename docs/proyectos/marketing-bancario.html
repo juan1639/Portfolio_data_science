@@ -129,6 +129,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#el-problema" id="toc-el-problema" class="nav-link active" data-scroll-target="#el-problema">El problema</a></li>
   <li><a href="#los-datos" id="toc-los-datos" class="nav-link" data-scroll-target="#los-datos">Los datos</a></li>
   <li><a href="#enfoque" id="toc-enfoque" class="nav-link" data-scroll-target="#enfoque">Enfoque</a></li>
+  <li><a href="#resultados" id="toc-resultados" class="nav-link" data-scroll-target="#resultados">Resultados</a>
+  <ul class="collapse">
+  <li><a href="#a-quién-conviene-llamar" id="toc-a-quién-conviene-llamar" class="nav-link" data-scroll-target="#a-quién-conviene-llamar">¿A quién conviene llamar?</a></li>
+  <li><a href="#qué-variables-pesan-más" id="toc-qué-variables-pesan-más" class="nav-link" data-scroll-target="#qué-variables-pesan-más">Qué variables pesan más</a></li>
+  <li><a href="#recomendación-para-el-banco" id="toc-recomendación-para-el-banco" class="nav-link" data-scroll-target="#recomendación-para-el-banco">Recomendación para el banco</a></li>
+  </ul></li>
   <li><a href="#código" id="toc-código" class="nav-link" data-scroll-target="#código">Código</a></li>
   </ul>
 </nav>
@@ -180,13 +186,60 @@ ul.task-list li input[type="checkbox"] {
 <section id="enfoque" class="level2">
 <h2 class="anchored" data-anchor-id="enfoque">Enfoque</h2>
 <ul>
-<li>[Describe el preprocesado: codificación de categóricas, escalado, etc.]</li>
+<li><strong>Sin fuga de información</strong>: se excluye <code>duration</code> (duración de la llamada), porque solo se conoce cuando la llamada ya ha terminado y no está disponible al decidir a quién llamar.</li>
+<li><strong>Preprocesado</strong>: escalado <code>MinMaxScaler</code> en las variables numéricas, e imputación y <code>OneHotEncoder</code> en las categóricas.</li>
 <li>Uso de <strong>Pipelines</strong> de scikit-learn para encadenar preprocesado y modelo y evitar fuga de datos.</li>
-<li>[Modelos comparados y cómo los evaluaste.]</li>
+<li><strong>Modelos</strong>: Decision Tree y Random Forest con <code>class_weight="balanced"</code>, ya que solo contrata alrededor del 12 % de los clientes. Se evalúan con un 20 % de datos reservado para test (9.043 clientes).</li>
 </ul>
-<!-- ## Resultados -->
-<!-- [Métricas principales (recall, precisión, F1, ROC-AUC) y una conclusión en lenguaje de negocio: qué recomendarías al banco.] -->
 <p><br></p>
+</section>
+<section id="resultados" class="level2">
+<h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
+<p>Métricas de la clase <strong>“contrata”</strong> en el conjunto de test:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Modelo</th>
+<th>Recall</th>
+<th>Precisión</th>
+<th>F1</th>
+<th>Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Decision Tree</td>
+<td>31 %</td>
+<td>30 %</td>
+<td>0,30</td>
+<td>83 %</td>
+</tr>
+<tr class="even">
+<td><strong>Random Forest</strong></td>
+<td><strong>72 %</strong></td>
+<td><strong>19 %</strong></td>
+<td><strong>0,30</strong></td>
+<td>60 %</td>
+</tr>
+</tbody>
+</table>
+<p>El Decision Tree acierta más en global porque predice sobre todo “no contrata”, la clase mayoritaria. Para una campaña interesa más el <strong>Random Forest</strong>: encuentra a 773 de los 1.072 clientes que contratan, frente a 329.</p>
+<p><img src="../img/img-bank-confusion.png" class="img-fluid" alt="Matrices de confusión. Decision Tree: 7.195 verdaderos negativos, 776 falsos positivos, 743 falsos negativos y 329 verdaderos positivos. Random Forest: 4.652, 3.319, 299 y 773."></p>
+<section id="a-quién-conviene-llamar" class="level3">
+<h3 class="anchored" data-anchor-id="a-quién-conviene-llamar">¿A quién conviene llamar?</h3>
+<p>El modelo ordena a los clientes por probabilidad de contratar. <strong>Llamando solo al 30 % con mayor probabilidad se capta el 62 % de las contrataciones</strong>, aproximadamente el doble que llamando al azar.</p>
+<p><img src="../img/img-bank-ganancia.png" class="img-fluid" alt="Curva de ganancia del Random Forest frente a llamadas al azar. Llamando al 30 % de los clientes se capta el 62 % de las contrataciones."></p>
+</section>
+<section id="qué-variables-pesan-más" class="level3">
+<h3 class="anchored" data-anchor-id="qué-variables-pesan-más">Qué variables pesan más</h3>
+<p>El tipo de contacto, tener hipoteca y el resultado de la campaña anterior concentran cerca de dos tercios de la importancia del modelo. Indican qué usa el modelo para predecir, no necesariamente qué causa la contratación.</p>
+<p><img src="../img/img-bank-importancia.png" class="img-fluid" alt="Barras con las 10 variables más influyentes. Las primeras son tipo de contacto (27,8 %), hipoteca (19,0 %) y resultado de la campaña anterior (18,2 %)."></p>
+</section>
+<section id="recomendación-para-el-banco" class="level3">
+<h3 class="anchored" data-anchor-id="recomendación-para-el-banco">Recomendación para el banco</h3>
+<p>Usar la probabilidad del Random Forest para <strong>priorizar la lista de llamadas</strong> y fijar el corte según el presupuesto de la campaña. Aun así, la mayoría de las llamadas a clientes señalados no acabará en contratación (precisión del 19 %, frente al 11,9 % al azar), así que el modelo sirve para ordenar el esfuerzo, no para asegurar ventas.</p>
+<p><br></p>
+</section>
 </section>
 <section id="código" class="level2">
 <h2 class="anchored" data-anchor-id="código">Código</h2>
